@@ -57,22 +57,21 @@ class FacilityQuestions extends React.Component {
   }
 
   getSectionHeader(el) {
+    const { id, sectionNum, defaultOpen = false } = el;
+    
     let classes = 'collapse';
-    const { id, defaultOpen = false } = el;
     if (defaultOpen) {
       classes += ' show';
     }
-
-    const headId = id + '_head';
-    const bodyId = id + '_body';
+    
     return (
       <Card key={id}>
-        <Card.Header id={headId}>
-            <Accordion.Toggle as={Button} variant='link' eventKey={id.slice(-1)}>
+        <Card.Header>
+            <Accordion.Toggle as={Button} variant='link' eventKey={sectionNum}>
               {el.text}  
             </Accordion.Toggle>
         </Card.Header>
-        <Accordion.Collapse eventKey={id.slice(-1)}>
+        <Accordion.Collapse eventKey={sectionNum}>
           <Card.Body>
             <div>content</div>
             {el.children.map(childEl => this.processElement(childEl))}

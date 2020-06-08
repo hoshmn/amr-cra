@@ -4,6 +4,7 @@ const subTypes = ['box', 'y_n'];
 export default [
   {
     id: 'fac_sec_1',
+    sectionNum: '1',
     text: 'Oversight Committee [LC1.1]',
     type: 'sectionHeader',
     defaultOpen: true,
@@ -32,12 +33,14 @@ export default [
   },
   {
     id: 'fac_sec_2',
+    sectionId: '2',
     text: 'Lab Handbook [LC1.2 - 1.4]',
     type: 'sectionHeader',
     children: [],
   },
   {
     id: 'fac_sec_3',
+    sectionId: '3',
     text: 'Lab Request form [LC1.5]',
     type: 'sectionHeader',
     children: [],
