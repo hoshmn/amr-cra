@@ -1,4 +1,7 @@
 import React from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import questions from './questions/facility';
 
 const expectedOutput = {
@@ -15,14 +18,11 @@ class FacilityQuestions extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('qs: ', questions);
     const contents = questions.map(el => this.processElement(el));
-    // console.log('?: ',contents);
     this.setState({ contents });
   }
 
   processElement(el) {
-    // console.log('el: ',el);
     const { type } = el;
 
     switch (type) {
@@ -52,7 +52,6 @@ class FacilityQuestions extends React.Component {
       //   return this.getSectionHeader(el);
     
       default:
-        // console.log('what tha??: ', el);
         break;
     }
   }
@@ -64,35 +63,22 @@ class FacilityQuestions extends React.Component {
       classes += ' show';
     }
 
-    console.log(id, classes);
     const headId = id + '_head';
     const bodyId = id + '_body';
     return (
-      <div className='card' key={id}>
-        <div className='card-header' id={headId}>
-          <h2 className='mb-0'>
-            <button
-              className='btn btn-link btn-block text-left' 
-              type='button' data-toggle='collapse'
-              data-target={`#${bodyId}`} 
-              aria-expanded={defaultOpen} 
-              aria-controls={bodyId}
-            >
+      <Card key={id}>
+        <Card.Header id={headId}>
+            <Accordion.Toggle as={Button} variant='link' eventKey={id.slice(-1)}>
               {el.text}  
-            </button>
-          </h2>
-        </div>
-        <div 
-          id={bodyId} className={classes}
-          data-parent='#facility-questions'
-          aria-labelledby={headId}
-        >
-          <div className='card-body'>
+            </Accordion.Toggle>
+        </Card.Header>
+        <Accordion.Collapse eventKey={id.slice(-1)}>
+          <Card.Body>
             <div>content</div>
             {el.children.map(childEl => this.processElement(childEl))}
-          </div>
-        </div>
-      </div>
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
     )
   }
 
@@ -158,12 +144,11 @@ class FacilityQuestions extends React.Component {
   }
 
   render() {
-    // console.log('!', this.state.contents);
     return (
-      <div id='facility-questions' className='accordion' action='#'>
+      <Accordion id='facility-questions' defaultActiveKey='1' >
         hi
         {this.state.contents}
-      </div>
+      </Accordion>
     );
   }
 }
