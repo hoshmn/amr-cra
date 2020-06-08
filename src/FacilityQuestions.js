@@ -27,38 +27,38 @@ class FacilityQuestions extends React.Component {
     const { type } = el;
 
     switch (type) {
-      case 'sectionHeader':
-        return this.getSectionHeader(el);
+      case 'section':
+        return this.getSection(el);
     
       case 'preface':
         return this.getPreface(el);
     
       case 'q':
-        const { id, expectedValue = true } = el;
+        const { id, subType, expectedValue = true } = el;
         qMap[id] = el;
         expectedOutput[id] = expectedValue;
-        if (el.subType === 'box') {
+        if (subType === 'box') {
           return this.getQuestionBox(el);
-        } else if (el.subType === 'y_n') {
+        } else if (subType === 'y_n') {
           return this.getQuestionYN(el);
         }
     
-      // case 'sectionHeader':
-      //   return this.getSectionHeader(el);
+      // case 'section':
+      //   return this.getSection(el);
     
-      // case 'sectionHeader':
-      //   return this.getSectionHeader(el);
+      // case 'section':
+      //   return this.getSection(el);
     
-      // case 'sectionHeader':
-      //   return this.getSectionHeader(el);
+      // case 'section':
+      //   return this.getSection(el);
     
       default:
         break;
     }
   }
 
-  getSectionHeader(el) {
-    const { id, sectionNum, defaultOpen = false } = el;
+  getSection(el) {
+    const { children, id, sectionNum, text, defaultOpen = false } = el;
     
     let classes = 'collapse';
     if (defaultOpen) {
@@ -69,56 +69,57 @@ class FacilityQuestions extends React.Component {
       <Card key={id}>
         <Card.Header>
             <Accordion.Toggle as={Button} variant='link' eventKey={sectionNum}>
-              {el.text}  
+              {text}  
             </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey={sectionNum}>
           <Card.Body>
             <div>content</div>
-            {el.children.map(childEl => this.processElement(childEl))}
+            {children.map(childEl => this.processElement(childEl))}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
     )
   }
 
-  getPreface(el) {
+  getPreface({ id, text}) {
     return (
-      <Form.Label key={el.id}>{el.text}</Form.Label>
+      <Form.Label key={id}>{text}</Form.Label>
     )
   }
 
-  getQuestionBox(el) {
+  getQuestionBox({ id, text }) {
     return (
       <Form.Check type='checkbox' 
-        id={el.id}
-        key={el.id}
-        label={el.text}
+        id={id}
+        key={id}
+        label={text}
+        // name={id}
       />
     )
   }
 
-  getQuestionYN(el) {
+  getQuestionYN({ id, text, standards, subQs }) {
     return (
-      <>
-        <Form.Group key={el.id}>
+      <div key={id}>
+        <Form.Group>
           <Form.Label>
-            {el.text}
-            <span className='standard-tag'>{el.standards}</span>
+            {text}
+            <span className='standard-tag'>{standards}</span>
           </Form.Label>
 
           <div className='responses'>
-              <Form.Check name={el.id} inline type='radio' id={el.id} label='yes' />
-              <Form.Check name={el.id} inline type='radio' id={el.id} label='no' />
+              <Form.Check name={id} inline type='radio' id={id} label='yes' />
+              <Form.Check name={id} inline type='radio' id={id} label='no' />
           </div>
         </Form.Group>
 
-        {el.subQs && 
+        {subQs && 
           <div className='sub-questions'>
-            {el.subQs.map(childEl => this.processElement(childEl))}
+            {subQs.map(childEl => this.processElement(childEl))}
           </div>
         }
-      </>
+      </div>
     )
   }
 

@@ -1,4 +1,4 @@
-const types = ['q', 'sectionHeader', 'preface'];
+const types = ['q', 'section', 'preface'];
 const subTypes = ['box', 'y_n'];
 
 export default [
@@ -6,7 +6,7 @@ export default [
     id: 'fac_sec_1',
     sectionNum: '1',
     text: 'Oversight Committee [LC1.1]',
-    type: 'sectionHeader',
+    type: 'section',
     defaultOpen: true,
     children: [
       {
@@ -35,14 +35,14 @@ export default [
     id: 'fac_sec_2',
     sectionNum: '2',
     text: 'Lab Handbook [LC1.2 - 1.4]',
-    type: 'sectionHeader',
+    type: 'section',
     children: [],
   },
   {
     id: 'fac_sec_3',
     sectionNum: '3',
     text: 'Lab Request form [LC1.5]',
-    type: 'sectionHeader',
+    type: 'section',
     children: [],
   },
 ]
