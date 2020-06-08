@@ -15,14 +15,14 @@ class FacilityQuestions extends React.Component {
   }
 
   componentDidMount() {
-    console.log('qs: ', questions);
+    // console.log('qs: ', questions);
     const contents = questions.map(el => this.processElement(el));
-    console.log('?: ',contents);
+    // console.log('?: ',contents);
     this.setState({ contents });
   }
 
   processElement(el) {
-    console.log('el: ',el);
+    // console.log('el: ',el);
     const { type } = el;
 
     switch (type) {
@@ -52,45 +52,65 @@ class FacilityQuestions extends React.Component {
       //   return this.getSectionHeader(el);
     
       default:
-        console.log('what tha??: ', el);
+        // console.log('what tha??: ', el);
         break;
     }
   }
 
   getSectionHeader(el) {
+    let classes = 'collapse';
+    const { id, defaultOpen = false } = el;
+    if (defaultOpen) {
+      classes += ' show';
+    }
+
+    console.log(id, classes);
+    const headId = id + '_head';
+    const bodyId = id + '_body';
     return (
-      <div class='card' key={el.id}>
-        <div class="card-header" id={el.id}>
-          <h2 class="mb-0">
+      <div className='card' key={id}>
+        <div className='card-header' id={headId}>
+          <h2 className='mb-0'>
             <button
-              class="btn btn-link btn-block text-left" 
-              type="button" data-toggle="collapse" data-target={`#${el.id}`} 
-              aria-expanded="true" aria-controls={el.id}
-              >
+              className='btn btn-link btn-block text-left' 
+              type='button' data-toggle='collapse'
+              data-target={`#${bodyId}`} 
+              aria-expanded={defaultOpen} 
+              aria-controls={bodyId}
+            >
               {el.text}  
             </button>
           </h2>
         </div>
-        {el.children ? el.children.map(childEl => this.processElement(childEl)) : null}
+        <div 
+          id={bodyId} className={classes}
+          data-parent='#facility-questions'
+          aria-labelledby={headId}
+        >
+          <div className='card-body'>
+            <div>content</div>
+            {el.children.map(childEl => this.processElement(childEl))}
+          </div>
+        </div>
       </div>
     )
   }
 
   getPreface(el) {
     return (
-      <label class="form-check-label question-text" key={el.id}>{el.text}</label>
+      <label className='form-check-label question-text' key={el.id}>{el.text}</label>
     )
   }
 
   getQuestionBox(el) {
     return (
       <div key={el.id}>
-         <input class="form-check-input" type="checkbox" 
-          name="oversight-committee-c"
+         <input className='form-check-input' type='checkbox' 
+          name='oversight-committee-c'
           id={el.id}
           value={el.id}
         />
-        <label class="form-check-label" for={el.id}>
+        <label className='form-check-label' htmlFor={el.id}>
           {el.text}
         </label>
       </div>
@@ -100,33 +120,33 @@ class FacilityQuestions extends React.Component {
   getQuestionYN(el) {
     return (
       <div key={el.id}>
-        <label class="form-check-label question-text">
+        <label className='form-check-label question-text'>
           {el.text}
-          <span class='standard-tag'>(F1, U1, B1)</span>
+          <span className='standard-tag'>{el.standards}</span>
         </label>
 
-        <div class="responses">
+        <div className='responses'>
 
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" 
+          <div className='form-check form-check-inline'>
+            <input className='form-check-input' type='radio' 
               name={el.id}
               id={el.id + '_yes'}
               value={el.id + '_yes'}
             />
-            <label class="form-check-label" for={el.id + '_yes'}>Yes</label>
+            <label className='form-check-label' htmlFor={el.id + '_yes'}>Yes</label>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" 
+          <div className='form-check form-check-inline'>
+            <input className='form-check-input' type='radio' 
               name={el.id}
               id={el.id + '_no'}
               value={el.id + '_no'}
             />
-            <label class="form-check-label" for={el.id + '_no'}>No</label>
+            <label className='form-check-label' htmlFor={el.id + '_no'}>No</label>
           </div>
 
 
           {el.subQs && 
-            <div class='sub-questions'>
+            <div className='sub-questions'>
               {el.subQs.map(childEl => this.processElement(childEl))}
             </div>
           }
@@ -138,9 +158,9 @@ class FacilityQuestions extends React.Component {
   }
 
   render() {
-    console.log('!', this.state.contents);
+    // console.log('!', this.state.contents);
     return (
-      <div className="FacilityQuestions">
+      <div id='facility-questions' className='accordion' action='#'>
         hi
         {this.state.contents}
       </div>

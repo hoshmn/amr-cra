@@ -6,6 +6,7 @@ export default [
     id: 'fac_sec_1',
     text: 'Oversight Committee [LC1.1]',
     type: 'sectionHeader',
+    defaultOpen: true,
     children: [
       {
         id: 'fac_q_1',
@@ -33,10 +34,12 @@ export default [
     id: 'fac_sec_2',
     text: 'Lab Handbook [LC1.2 - 1.4]',
     type: 'sectionHeader',
+    children: [],
   },
   {
     id: 'fac_sec_3',
     text: 'Lab Request form [LC1.5]',
     type: 'sectionHeader',
+    children: [],
   },
 ]
