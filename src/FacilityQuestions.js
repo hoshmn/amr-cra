@@ -11,11 +11,15 @@ const expectedOutput = {
 
 const qMap = {};
 
+const radioNoTag = '_no';
+
 class FacilityQuestions extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { contents: null };
+
+    this.toggleSubQs = this.toggleSubQs.bind(this);
   }
 
   componentDidMount() {
@@ -99,9 +103,32 @@ class FacilityQuestions extends React.Component {
     )
   }
 
+  toggleSubQs(e) {
+    // ASSUMES SHOW IF ANSWER IS YES
+    let { id } = e.target;
+    let show = true;
+    if (id.endsWith(radioNoTag)) {
+      id = id.slice(0, id.length - radioNoTag.length);
+      show = false;
+    }
+    // this.setState({ [id]: show });
+
+    // TODO: use refs?
+    const parent = document.querySelector(`#${id}_parent`);
+    parent.classList.toggle('show-sub-questions', show);
+  }
+
   getQuestionYN({ id, text, standards, subQs }) {
+    let showSubQs = false;
+
+    // const cang = e => {
+    //   console.log(e.target.id);
+    //   showSubQs = !showSubQs;
+    // }
+
+    const onChange = subQs ? this.toggleSubQs : null;
     return (
-      <div key={id}>
+      <div key={id} id={id + '_parent'} class='parent-questions'>
         <Form.Group>
           <Form.Label>
             {text}
@@ -109,8 +136,8 @@ class FacilityQuestions extends React.Component {
           </Form.Label>
 
           <div className='responses'>
-              <Form.Check name={id} inline type='radio' id={id} label='yes' />
-              <Form.Check name={id} inline type='radio' id={id} label='no' />
+              <Form.Check onChange={onChange} name={id} inline type='radio' id={id} label='yes' />
+              <Form.Check onChange={onChange} name={id} inline type='radio' id={id+radioNoTag} label='no' />
           </div>
         </Form.Group>
 
@@ -126,7 +153,11 @@ class FacilityQuestions extends React.Component {
   render() {
     return (
       <Accordion id='facility-questions' defaultActiveKey='1' >
-        hi
+        <div class="instructions">
+          <h3>Facility-Level Assessment</h3>
+          <span>Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment.</span>
+          <span>The corresponding data sources are indicated in the section headers for reference. The relevant standards are indicated after each question in parentheses.</span>
+        </div>
         {this.state.contents}
       </Accordion>
     );
