@@ -2,6 +2,7 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 import questions from './questions/facility';
 
 const expectedOutput = {
@@ -83,62 +84,41 @@ class FacilityQuestions extends React.Component {
 
   getPreface(el) {
     return (
-      <label className='form-check-label question-text' key={el.id}>{el.text}</label>
+      <Form.Label key={el.id}>{el.text}</Form.Label>
     )
   }
 
   getQuestionBox(el) {
     return (
-      <div key={el.id}>
-         <input className='form-check-input' type='checkbox' 
-          name='oversight-committee-c'
-          id={el.id}
-          value={el.id}
-        />
-        <label className='form-check-label' htmlFor={el.id}>
-          {el.text}
-        </label>
-      </div>
+      <Form.Check type='checkbox' 
+        id={el.id}
+        key={el.id}
+        label={el.text}
+      />
     )
   }
 
   getQuestionYN(el) {
     return (
-      <div key={el.id}>
-        <label className='form-check-label question-text'>
-          {el.text}
-          <span className='standard-tag'>{el.standards}</span>
-        </label>
+      <>
+        <Form.Group key={el.id}>
+          <Form.Label>
+            {el.text}
+            <span className='standard-tag'>{el.standards}</span>
+          </Form.Label>
 
-        <div className='responses'>
-
-          <div className='form-check form-check-inline'>
-            <input className='form-check-input' type='radio' 
-              name={el.id}
-              id={el.id + '_yes'}
-              value={el.id + '_yes'}
-            />
-            <label className='form-check-label' htmlFor={el.id + '_yes'}>Yes</label>
+          <div className='responses'>
+              <Form.Check name={el.id} inline type='radio' id={el.id} label='yes' />
+              <Form.Check name={el.id} inline type='radio' id={el.id} label='no' />
           </div>
-          <div className='form-check form-check-inline'>
-            <input className='form-check-input' type='radio' 
-              name={el.id}
-              id={el.id + '_no'}
-              value={el.id + '_no'}
-            />
-            <label className='form-check-label' htmlFor={el.id + '_no'}>No</label>
+        </Form.Group>
+
+        {el.subQs && 
+          <div className='sub-questions'>
+            {el.subQs.map(childEl => this.processElement(childEl))}
           </div>
-
-
-          {el.subQs && 
-            <div className='sub-questions'>
-              {el.subQs.map(childEl => this.processElement(childEl))}
-            </div>
-          }
-
-
-        </div>
-      </div>
+        }
+      </>
     )
   }
 
