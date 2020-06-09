@@ -88,7 +88,7 @@ class FacilityQuestions extends React.Component {
   getPreface({ id, text, standards }) {
     return (
       <Form.Label key={id}>
-        {text}
+        <span className='question-text'>{text}</span>
         {!!standards && <span className='standard-tag'> {standards}</span>}
       </Form.Label>
     )
@@ -99,10 +99,10 @@ class FacilityQuestions extends React.Component {
       <>
         {!!tags && !!tags.length &&
           <span className='specimen-tags'>
-            {tags.map(t => <i className={t} />)}
+            {tags.map(t => <i key={t} className={t} />)}
           </span>
         }
-        {text}
+        <span className='response-text'>{text}</span>
         <span className='standard-tag'> {standards}</span>
       </>
     )
@@ -135,25 +135,25 @@ class FacilityQuestions extends React.Component {
 
     const onChange = subQs ? this.toggleSubQs : null;
     return (
-      <div key={id} id={id + '_parent'} class='parent-questions'>
+      <div key={id} id={id + '_parent'} className='parent-questions'>
         <Form.Group>
           <Form.Label>
             {!!tags && !!tags.length &&
               <span className='specimen-tags'>
-                {tags.map(t => <i className={t} />)}
+                {tags.map(t => <i key={t} className={t} />)}
               </span>
             }
-            {text}
+            <span className='question-text'>{text}</span>
             <span className='standard-tag'> {standards}</span>
           </Form.Label>
 
-          <div className='responses'>
+          <div className='response-text'>
               <Form.Check onChange={onChange} name={id} inline type='radio' id={id} label='yes' />
               <Form.Check onChange={onChange} name={id} inline type='radio' id={id+radioNoTag} label='no' />
           </div>
         </Form.Group>
 
-        {subQs && 
+        {!!subQs && 
           <div className='sub-questions'>
             {subQs.map(childEl => this.processElement(childEl))}
           </div>
@@ -165,7 +165,7 @@ class FacilityQuestions extends React.Component {
   render() {
     return (
       <Accordion id='facility-questions' defaultActiveKey='1' >
-        <div class="instructions">
+        <div className="instructions">
           <h3>Facility-Level Assessment</h3>
           <span>Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment.</span>
           <span>The corresponding data sources are indicated in the section headers for reference. The relevant standards are indicated after each question in parentheses.</span>

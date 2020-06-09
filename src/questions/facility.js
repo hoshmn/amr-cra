@@ -93,7 +93,7 @@ export default [
         id:'fac_q_2_c15', type:'q', subType:'box', tags:['b'], standards: '(B19)',
         text: `The volume of blood collected should follow the manufacturer's recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children`
       },{
-        id:'fac_q_2_sub_preface_2', type:'preface', text:'Are collection containers correctly labelled for:'
+        id:'fac_q_2_sub_preface_d', type:'preface', text:'Are collection containers correctly labelled for:'
       },{
         id:'fac_q_2_d1', type:'q', subType:'box', tags:['f'], standards:'(F7)',
         text: `Faeces`
@@ -104,15 +104,15 @@ export default [
         id:'fac_q_2_d3', type:'q', subType:'box', tags:['u'],standards:'(U9)',
         text: `Urine`
       },{
-        id:'fac_q_2_sub_preface_3', type:'preface', text:'Are samples delivered to the laboratory as soon as possible and within the recommended time periods for:'
+        id:'fac_q_2_sub_preface_e', type:'preface', text:'Are samples delivered to the laboratory as soon as possible and within the recommended time periods for:'
       },{
-        id:'fac_q_2_d1', type:'q', subType:'box', tags:['f'], standards:'(F11)',
+        id:'fac_q_2_e1', type:'q', subType:'box', tags:['f'], standards:'(F11)',
         text: `Faeces`
       },{
-        id:'fac_q_2_d2', type:'q', subType:'box', tags:['b'],standards:'(B24)',
+        id:'fac_q_2_e2', type:'q', subType:'box', tags:['b'],standards:'(B24)',
         text: `Blood`
       },{
-        id:'fac_q_2_d3', type:'q', subType:'box', tags:['u'],standards:'(U16)',
+        id:'fac_q_2_e3', type:'q', subType:'box', tags:['u'],standards:'(U16)',
         text: `Urine`
       }]
     },{
