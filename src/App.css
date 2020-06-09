@@ -1,4 +1,6 @@
-
+div.form-group {
+  margin-bottom: 7px;
+}
 
 /* @keyframes App-logo-spin {
   from {
@@ -13,6 +15,10 @@ h2 {
   padding: 30px;
   text-align: center;
 }
+h3 {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
 .instructions {
   padding: 0 30px 15px;
 }
@@ -21,6 +27,10 @@ h2 {
   display: block;
 }
 
+.child-questions {
+  padding-left: 20px;
+  padding-bottom: 7px;
+}
 .sub-questions {
   display: none;
 }
@@ -32,22 +42,24 @@ h2 {
   padding-top: 20px;
   padding-left: 20px;
 } */
+.form-label {
+  padding-top: 7px;
+}
 .question-text {
+  /* display: inline; */
   font-size: 16px;
   font-weight: 500;
 }
 .response-text {
+  /* display: inline; */
   font-weight: 300;
   font-size: 14px;
-  padding-top: 7px;
+  /* padding-bottom: 7px; */
   padding-left: 7px;
-}
-.question-group {
-  padding-left: 20px;
 }
 
 .form-check {
-  padding-bottom: 5px;
+  padding-bottom: 3px;
 }
 span.standard-tag {
   display: inline;

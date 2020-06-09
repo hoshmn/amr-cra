@@ -116,37 +116,39 @@ export default [
         text: `Urine`
       }]
     },{
-      id:'fac_q_3_preface', type:'preface', text:'Do the facility treatment guidelines include the following requirements:'
-    },{
-      id: 'fac_q_3a',
-      text: 'To do faecal culture if there is dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection?',
-      standards: '(F3)',
-      tags: ['f'],
-      weight: 1,
-      recs: [],
-      resources: [],
-      type: 'q',
-      subType: 'y_n'
-    },{
-      id: 'fac_q_3b',
-      text: 'To do urine culture if there are clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy?',
-      standards: '(U3)',
-      tags: ['u'],
-      weight: 1,
-      recs: [],
-      resources: [],
-      type: 'q',
-      subType: 'y_n'
-    },{
-      id: 'fac_q_3c',
-      text: 'To do blood culture with clinical suspicion of blood stream infection?',
-      standards: '(B3)',
-      tags: ['b'],
-      weight: 1,
-      recs: [],
-      resources: [],
-      type: 'q',
-      subType: 'y_n'
+      id:'fac_q_3_preface', type:'preface',
+      text:'Do the facility treatment guidelines include the following requirements:',
+      children: [{
+        id: 'fac_q_3a',
+        text: 'To do faecal culture if there is dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection?',
+        standards: '(F3)',
+        tags: ['f'],
+        weight: 1,
+        recs: [],
+        resources: [],
+        type: 'q',
+        subType: 'y_n'
+      },{
+        id: 'fac_q_3b',
+        text: 'To do urine culture if there are clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy?',
+        standards: '(U3)',
+        tags: ['u'],
+        weight: 1,
+        recs: [],
+        resources: [],
+        type: 'q',
+        subType: 'y_n'
+      },{
+        id: 'fac_q_3c',
+        text: 'To do blood culture with clinical suspicion of blood stream infection?',
+        standards: '(B3)',
+        tags: ['b'],
+        weight: 1,
+        recs: [],
+        resources: [],
+        type: 'q',
+        subType: 'y_n'
+      }]
     }],
   },
 

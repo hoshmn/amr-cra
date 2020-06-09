@@ -85,12 +85,19 @@ class FacilityQuestions extends React.Component {
     )
   }
 
-  getPreface({ id, text, standards }) {
+  getPreface({ id, text, standards, children }) {
     return (
-      <Form.Label key={id}>
-        <span className='question-text'>{text}</span>
-        {!!standards && <span className='standard-tag'> {standards}</span>}
-      </Form.Label>
+      <div key={id}>
+        <Form.Label>
+          <span className='question-text'>{text}</span>
+          {!!standards && <span className='standard-tag'> {standards}</span>}
+        </Form.Label>
+        {!!children && !!children.length &&
+          <div className='child-questions'>
+            {children.map(childEl => this.processElement(childEl))}
+          </div>
+        }
+      </div>
     )
   }
 
@@ -154,7 +161,7 @@ class FacilityQuestions extends React.Component {
         </Form.Group>
 
         {!!subQs && 
-          <div className='sub-questions'>
+          <div className='sub-questions child-questions'>
             {subQs.map(childEl => this.processElement(childEl))}
           </div>
         }
