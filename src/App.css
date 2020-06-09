@@ -46,11 +46,13 @@ h3 {
   padding-top: 7px;
 }
 .question-text {
+  /* must be inline to take specimen span on same line */
   /* display: inline; */
   font-size: 16px;
   font-weight: 500;
 }
 .response-text {
+  /* must be inline to take specimen span on same line */
   /* display: inline; */
   font-weight: 300;
   font-size: 14px;

@@ -25,6 +25,7 @@ class FacilityQuestions extends React.Component {
   componentDidMount() {
     const contents = questions.map(el => this.processElement(el));
     this.setState({ contents });
+    this.props.sendMap(qMap);
   }
 
   processElement(el) {
@@ -172,7 +173,7 @@ class FacilityQuestions extends React.Component {
   render() {
     return (
       <Accordion id='facility-questions' defaultActiveKey='1' >
-        <div className="instructions">
+        <div className='instructions'>
           <h3>Facility-Level Assessment</h3>
           <span>Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment.</span>
           <span>The corresponding data sources are indicated in the section headers for reference. The relevant standards are indicated after each question in parentheses.</span>
