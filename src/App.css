@@ -9,7 +9,7 @@
   }
 } */
 
-h1 {
+h2 {
   padding: 30px;
   text-align: center;
 }
@@ -45,7 +45,7 @@ h1 {
   padding-left: 20px;
 }
 
-.responses .form-check {
+.form-check {
   padding-bottom: 8px;
 }
 span.standard-tag {

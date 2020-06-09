@@ -9,15 +9,15 @@ function App() {
   return (
     <div className="App">
       <h2>AMR Continuous Quality Improvement Assessment</h2>
-      <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
-        <Tab eventKey="home" title="Home">
+      <Tabs defaultActiveKey="facility">
+        <Tab eventKey="facility" title="Facility">
           <FacilityQuestions />
         </Tab>
-        <Tab eventKey="profile" title="Profile">
-          <div>hihi profile</div>
+        <Tab eventKey="lab" title="Lab">
+          <div>Lab content</div>
         </Tab>
-        <Tab eventKey="contact" title="Contact" disabled>
-          <div>hihi contact</div>
+        <Tab eventKey="submit" title="Submit" disabled>
+          <div>hihi submit</div>
         </Tab>
       </Tabs>
 

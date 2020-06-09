@@ -78,7 +78,6 @@ class FacilityQuestions extends React.Component {
         </Card.Header>
         <Accordion.Collapse eventKey={sectionNum}>
           <Card.Body>
-            <div>content</div>
             {children.map(childEl => this.processElement(childEl))}
           </Card.Body>
         </Accordion.Collapse>
@@ -86,18 +85,32 @@ class FacilityQuestions extends React.Component {
     )
   }
 
-  getPreface({ id, text}) {
+  getPreface({ id, text, standards }) {
     return (
-      <Form.Label key={id}>{text}</Form.Label>
+      <Form.Label key={id}>
+        {text}
+        {!!standards && <span className='standard-tag'> {standards}</span>}
+      </Form.Label>
     )
   }
 
-  getQuestionBox({ id, text }) {
+  getQuestionBox({ id, text, tags, standards }) {
+    const label = (
+      <>
+        {!!tags && !!tags.length &&
+          <span className='specimen-tags'>
+            {tags.map(t => <i className={t} />)}
+          </span>
+        }
+        {text}
+        <span className='standard-tag'> {standards}</span>
+      </>
+    )
     return (
       <Form.Check type='checkbox' 
         id={id}
         key={id}
-        label={text}
+        label={label}
         // name={id}
       />
     )
@@ -118,21 +131,20 @@ class FacilityQuestions extends React.Component {
     parent.classList.toggle('show-sub-questions', show);
   }
 
-  getQuestionYN({ id, text, standards, subQs }) {
-    let showSubQs = false;
-
-    // const cang = e => {
-    //   console.log(e.target.id);
-    //   showSubQs = !showSubQs;
-    // }
+  getQuestionYN({ id, text, standards, subQs, tags }) {
 
     const onChange = subQs ? this.toggleSubQs : null;
     return (
       <div key={id} id={id + '_parent'} class='parent-questions'>
         <Form.Group>
           <Form.Label>
+            {!!tags && !!tags.length &&
+              <span className='specimen-tags'>
+                {tags.map(t => <i className={t} />)}
+              </span>
+            }
             {text}
-            <span className='standard-tag'>{standards}</span>
+            <span className='standard-tag'> {standards}</span>
           </Form.Label>
 
           <div className='responses'>
