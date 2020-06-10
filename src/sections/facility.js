@@ -1,3 +1,4 @@
+// section and preface may have children, q may have subQs
 const types = ['q', 'section', 'preface'];
 const subTypes = ['box', 'y_n'];
 
@@ -26,12 +27,25 @@ const questions = [{
     subType: 'y_n',
     // expectedValue: true,
     // revealIf: true,
-    subQs: [
-      {id:'fac_q_1_sub_preface', text:'Does the committee:', type:'preface'},
-      {id:'fac_q_1_c1', text:'Develop/revise treatment guidelines', type:'q', subType:'box'},
-      {id:'fac_q_1_c2', text:'Use cumulative AST data to inform guidelines', type:'q', subType:'box'},
-      {id:'fac_q_1_c3', text:'Review antibiotic consumption data', type:'q', subType:'box'},
-      {id:'fac_q_1_c4', text:'Review data from AMS rounds', type:'q', subType:'box'},
+    subQs: [{
+        id:'fac_q_1_sub_preface', text:'Does the committee:', type:'preface'
+      },{
+        id:'fac_q_1_c1', type:'q', subType:'box',
+        text:'Develop/revise treatment guidelines',
+        recs:[],
+      },{
+        id:'fac_q_1_c2', type:'q', subType:'box',
+        text:'Use cumulative AST data to inform guidelines',
+        recs:[],
+      },{
+        id:'fac_q_1_c3', type:'q', subType:'box',
+        text:'Review antibiotic consumption data',
+        recs:[],
+      },{
+        id:'fac_q_1_c4', type:'q', subType:'box',
+        text:'Review data from AMS rounds',
+        recs:[],
+      },
     ]},
   ],
 },
@@ -54,7 +68,7 @@ const questions = [{
     subQs: [{
       id:'fac_q_2_sub_preface', text:'Does the handbook state:', type:'preface'
     },{
-      id:'fac_q_2_c1', type:'q', subType:'box', tags:['b','f','u'], standards: '(F4, U4, B4)',
+      id:'fac_q_2_c1', type:'q', subType:'box', tags:['f','u','b'], standards: '(F4, U4, B4)',
       text: `Informed consent should be obtained before collection of faeces, urine or blood for culture`
     },{
       id:'fac_q_2_c2', type:'q', subType:'box', tags:['u','b'], standards: '(F5)',
@@ -104,10 +118,10 @@ const questions = [{
       id:'fac_q_2_d1', type:'q', subType:'box', tags:['f'], standards:'(F7)',
       text: `Faeces`
     },{
-      id:'fac_q_2_d2', type:'q', subType:'box', tags:['b'],standards:'(B20)',
+      id:'fac_q_2_d2', type:'q', subType:'box', tags:['b'], standards:'(B20)',
       text: `Blood`
     },{
-      id:'fac_q_2_d3', type:'q', subType:'box', tags:['u'],standards:'(U9)',
+      id:'fac_q_2_d3', type:'q', subType:'box', tags:['u'], standards:'(U9)',
       text: `Urine`
     },{
       id:'fac_q_2_sub_preface_e', type:'preface', text:'Are samples delivered to the laboratory as soon as possible and within the recommended time periods for:'
@@ -115,10 +129,10 @@ const questions = [{
       id:'fac_q_2_e1', type:'q', subType:'box', tags:['f'], standards:'(F11)',
       text: `Faeces`
     },{
-      id:'fac_q_2_e2', type:'q', subType:'box', tags:['b'],standards:'(B24)',
+      id:'fac_q_2_e2', type:'q', subType:'box', tags:['b'], standards:'(B24)',
       text: `Blood`
     },{
-      id:'fac_q_2_e3', type:'q', subType:'box', tags:['u'],standards:'(U16)',
+      id:'fac_q_2_e3', type:'q', subType:'box', tags:['u'], standards:'(U16)',
       text: `Urine`
     }]
   },{
@@ -164,7 +178,8 @@ const questions = [{
   text: 'Lab Request form [LC1.5]',
   type: 'section',
   children: [{
-    id:'fac_q_4_preface', type:'preface', standards:'(F8, U10, B21)',text:'Does the laboratory request form include:'
+    id:'fac_q_4_preface', type:'preface', standards:'(F8, U10, B21)',
+    text:'Does the laboratory request form include:'
   },{
     id:'fac_q_4a', type:'q', subType:'box',
     text: `Patient identifiers`

@@ -9,7 +9,7 @@ import sectionsMap from './sections';
 //   // id: 'val'
 // };
 
-const qMap = {};
+const qs = [];
 
 const radioNoTag = '_no';
 
@@ -26,7 +26,7 @@ class AssessmentSection extends React.Component {
     const { questions } = sectionsMap[this.props.section];
     const contents = questions.map(el => this.processElement(el));
     this.setState({ contents });
-    this.props.sendMap(this.props.section, qMap);
+    this.props.sendMap(this.props.section, qs);
   }
 
   getInstructions() {
@@ -51,7 +51,7 @@ class AssessmentSection extends React.Component {
     
       case 'q':
         const { id, subType, expectedValue = true } = el;
-        qMap[id] = el;
+        qs.push(el);
         // expectedOutput[id] = expectedValue;
         if (subType === 'box') {
           return this.getQuestionBox(el);

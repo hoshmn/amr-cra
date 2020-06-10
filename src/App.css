@@ -11,6 +11,11 @@ div.form-group {
   }
 } */
 
+div.card-body {
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
 h2 {
   padding: 30px;
   text-align: center;
@@ -20,7 +25,7 @@ h3 {
   padding-bottom: 20px;
 }
 .instructions {
-  padding: 0 30px 15px;
+  padding: 0 35px 15px;
 }
 .instructions span {
   padding-bottom: 10px;
@@ -93,17 +98,11 @@ span.specimen-tags i.f {
 button.submit {
   margin: 30px;
 }
-/* 
-#assessment.complete {
-  display: none;
-}
+
 #results {
-  display: none;
-}
-#results.complete {
-  display: block;
+  /* display: none; */
   padding: 30px;
-} */
+}
 
 #results .prio-section {
   border: solid 2px;
