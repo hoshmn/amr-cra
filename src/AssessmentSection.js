@@ -3,17 +3,17 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import questions from './questions/facility';
+import sectionsMap from './sections';
 
-const expectedOutput = {
-  // id: 'val'
-};
+// const expectedOutput = {
+//   // id: 'val'
+// };
 
 const qMap = {};
 
 const radioNoTag = '_no';
 
-class FacilityQuestions extends React.Component {
+class AssessmentSection extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,9 +23,20 @@ class FacilityQuestions extends React.Component {
   }
 
   componentDidMount() {
+    const { questions } = sectionsMap[this.props.section];
     const contents = questions.map(el => this.processElement(el));
     this.setState({ contents });
-    this.props.sendMap(qMap);
+    this.props.sendMap(this.props.section, qMap);
+  }
+
+  getInstructions() {
+    const { title, instructions } = sectionsMap[this.props.section];
+    return (
+      <div className='instructions'>
+        <h3>{title}</h3>
+        {instructions.map((sect, i) =><span key={i}>{sect}</span>)}
+      </div>
+    )
   }
 
   processElement(el) {
@@ -41,7 +52,7 @@ class FacilityQuestions extends React.Component {
       case 'q':
         const { id, subType, expectedValue = true } = el;
         qMap[id] = el;
-        expectedOutput[id] = expectedValue;
+        // expectedOutput[id] = expectedValue;
         if (subType === 'box') {
           return this.getQuestionBox(el);
         } else if (subType === 'y_n') {
@@ -172,16 +183,12 @@ class FacilityQuestions extends React.Component {
 
   render() {
     return (
-      <Accordion id='facility-questions' defaultActiveKey='1' >
-        <div className='instructions'>
-          <h3>Facility-Level Assessment</h3>
-          <span>Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment.</span>
-          <span>The corresponding data sources are indicated in the section headers for reference. The relevant standards are indicated after each question in parentheses.</span>
-        </div>
+      <Accordion id={`${this.props.section}-section`} defaultActiveKey='1' >
+        {this.getInstructions()}
         {this.state.contents}
       </Accordion>
     );
   }
 }
 
-export default FacilityQuestions;
+export default AssessmentSection;
