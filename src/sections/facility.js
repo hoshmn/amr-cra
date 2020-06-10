@@ -18,7 +18,7 @@ const questions = [{
   children: [{
     id: 'fac_q_1',
     text: 'Does the clinical facility have an oversight committee?',
-    standards: '(F1, U1, B1)',
+    standards: 'F1, U1, B1',
     tags: [],
     weight: 1,
     recs: [],
@@ -58,7 +58,7 @@ const questions = [{
   children: [{
     id: 'fac_q_2',
     text: 'Does the clinical facility have a “Laboratory Handbook” which describes specimen collection, storage, and transportation of samples?',
-    standards: '(F2, U2, B2)',
+    standards: 'F2, U2, B2',
     tags: [],
     weight: 1,
     recs: [],
@@ -68,71 +68,71 @@ const questions = [{
     subQs: [{
       id:'fac_q_2_sub_preface', text:'Does the handbook state:', type:'preface'
     },{
-      id:'fac_q_2_c1', type:'q', subType:'box', tags:['f','u','b'], standards: '(F4, U4, B4)',
+      id:'fac_q_2_c1', type:'q', subType:'box', tags:['f','u','b'], standards: 'F4, U4, B4',
       text: `Informed consent should be obtained before collection of faeces, urine or blood for culture`
     },{
-      id:'fac_q_2_c2', type:'q', subType:'box', tags:['u','b'], standards: '(F5)',
+      id:'fac_q_2_c2', type:'q', subType:'box', tags:['u','b'], standards: 'F5',
       text: `Urine and blood should be collected before administration of antibiotics `
     },{
-      id:'fac_q_2_c3', type:'q', subType:'box', tags:['f'], standards: '(U5, B5)',
+      id:'fac_q_2_c3', type:'q', subType:'box', tags:['f'], standards: 'U5, B5',
       text: `Faeces should be collected using aseptic technique `
     },{
-      id:'fac_q_2_c4', type:'q', subType:'box', tags:['f'], standards: '(F6)',
+      id:'fac_q_2_c4', type:'q', subType:'box', tags:['f'], standards: 'F6',
       text: `Minimum of 1g of faeces should be collected for faeces culture`
     },{
-      id:'fac_q_2_c5', type:'q', subType:'box', tags:['u'], standards: '(U8)',
+      id:'fac_q_2_c5', type:'q', subType:'box', tags:['u'], standards: 'U8',
       text: `A minimum of 3 mL urine should be collected for urine culture`
     },{
-      id:'fac_q_2_c6', type:'q', subType:'box', tags:['b'], standards: '(B6)',
+      id:'fac_q_2_c6', type:'q', subType:'box', tags:['b'], standards: 'B6',
       text: `Handwashing should be performed prior to performing blood collection for culture`
     },{
-      id:'fac_q_2_c7', type:'q', subType:'box', tags:['b'], standards: '(B7)',
+      id:'fac_q_2_c7', type:'q', subType:'box', tags:['b'], standards: 'B7',
       text: `Hands should be disinfected prior to performing a blood culture`
     },{
-      id:'fac_q_2_c8', type:'q', subType:'box', tags:['b'], standards: '(B8)',
+      id:'fac_q_2_c8', type:'q', subType:'box', tags:['b'], standards: 'B8',
       text: `Sterile gloves should be used when performing a blood culture`
     },{
-      id:'fac_q_2_c9', type:'q', subType:'box', tags:['b'], standards: '(B9)',
+      id:'fac_q_2_c9', type:'q', subType:'box', tags:['b'], standards: 'B9',
       text: `Blood cultures should be drawn from peripheral sites`
     },{
-      id:'fac_q_2_c10', type:'q', subType:'box', tags:['b'], standards: '(B10)',
+      id:'fac_q_2_c10', type:'q', subType:'box', tags:['b'], standards: 'B10',
       text: `Serial blood cultures should be collected from separate venipuncture sites`
     },{
-      id:'fac_q_2_c11', type:'q', subType:'box', tags:['b'], standards: '(B11)',
+      id:'fac_q_2_c11', type:'q', subType:'box', tags:['b'], standards: 'B11',
       text: `Puncture site should be cleaned properly as per manufacturer recommended technique and using appropriate disinfectant`
     },{
-      id:'fac_q_2_c12', type:'q', subType:'box', tags:['b'], standards: '(B14)',
+      id:'fac_q_2_c12', type:'q', subType:'box', tags:['b'], standards: 'B14',
       text: `Bottle-top should be disinfected and disinfectant should be allowed to dry prior to inoculation`
     },{
-      id:'fac_q_2_c13', type:'q', subType:'box', tags:['b'], standards: '(B15)',
+      id:'fac_q_2_c13', type:'q', subType:'box', tags:['b'], standards: 'B15',
       text: `Needles should not be exchanged between blood culture collection and inoculation of blood culture bottles`
     },{
-      id:'fac_q_2_c14', type:'q', subType:'box', tags:['b'], standards: '(B17)',
+      id:'fac_q_2_c14', type:'q', subType:'box', tags:['b'], standards: 'B17',
       text: `Minimum of 2 and maximum of 3 Blood cultures should be drawn within 24 hours`
     },{
-      id:'fac_q_2_c15', type:'q', subType:'box', tags:['b'], standards: '(B19)',
+      id:'fac_q_2_c15', type:'q', subType:'box', tags:['b'], standards: 'B19',
       text: `The volume of blood collected should follow the manufacturer's recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children`
     },{
       id:'fac_q_2_sub_preface_d', type:'preface', text:'Are collection containers correctly labelled for:'
     },{
-      id:'fac_q_2_d1', type:'q', subType:'box', tags:['f'], standards:'(F7)',
+      id:'fac_q_2_d1', type:'q', subType:'box', tags:['f'], standards: 'F7',
       text: `Faeces`
     },{
-      id:'fac_q_2_d2', type:'q', subType:'box', tags:['b'], standards:'(B20)',
+      id:'fac_q_2_d2', type:'q', subType:'box', tags:['b'], standards: 'B20',
       text: `Blood`
     },{
-      id:'fac_q_2_d3', type:'q', subType:'box', tags:['u'], standards:'(U9)',
+      id:'fac_q_2_d3', type:'q', subType:'box', tags:['u'], standards: 'U9',
       text: `Urine`
     },{
       id:'fac_q_2_sub_preface_e', type:'preface', text:'Are samples delivered to the laboratory as soon as possible and within the recommended time periods for:'
     },{
-      id:'fac_q_2_e1', type:'q', subType:'box', tags:['f'], standards:'(F11)',
+      id:'fac_q_2_e1', type:'q', subType:'box', tags:['f'], standards: 'F11',
       text: `Faeces`
     },{
-      id:'fac_q_2_e2', type:'q', subType:'box', tags:['b'], standards:'(B24)',
+      id:'fac_q_2_e2', type:'q', subType:'box', tags:['b'], standards: 'B24',
       text: `Blood`
     },{
-      id:'fac_q_2_e3', type:'q', subType:'box', tags:['u'], standards:'(U16)',
+      id:'fac_q_2_e3', type:'q', subType:'box', tags:['u'], standards: 'U16',
       text: `Urine`
     }]
   },{
@@ -141,7 +141,7 @@ const questions = [{
     children: [{
       id: 'fac_q_3a',
       text: 'To do faecal culture if there is dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection?',
-      standards: '(F3)',
+      standards: 'F3',
       tags: ['f'],
       weight: 1,
       recs: [],
@@ -151,7 +151,7 @@ const questions = [{
     },{
       id: 'fac_q_3b',
       text: 'To do urine culture if there are clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy?',
-      standards: '(U3)',
+      standards: 'U3',
       tags: ['u'],
       weight: 1,
       recs: [],
@@ -161,7 +161,7 @@ const questions = [{
     },{
       id: 'fac_q_3c',
       text: 'To do blood culture with clinical suspicion of blood stream infection?',
-      standards: '(B3)',
+      standards: 'B3',
       tags: ['b'],
       weight: 1,
       recs: [],
@@ -178,7 +178,7 @@ const questions = [{
   text: 'Lab Request form [LC1.5]',
   type: 'section',
   children: [{
-    id:'fac_q_4_preface', type:'preface', standards:'(F8, U10, B21)',
+    id:'fac_q_4_preface', type:'preface', standards: 'F8, U10, B21',
     text:'Does the laboratory request form include:'
   },{
     id:'fac_q_4a', type:'q', subType:'box',

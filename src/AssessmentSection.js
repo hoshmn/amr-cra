@@ -102,7 +102,7 @@ class AssessmentSection extends React.Component {
       <div key={id}>
         <Form.Label>
           <span className='question-text'>{text}</span>
-          {!!standards && <span className='standard-tag'> {standards}</span>}
+          {!!standards && <span className='standard-tag'> ({standards})</span>}
         </Form.Label>
         {!!children && !!children.length &&
           <div className='child-questions'>
@@ -122,7 +122,7 @@ class AssessmentSection extends React.Component {
           </span>
         }
         <span className='response-text'>{text}</span>
-        <span className='standard-tag'> {standards}</span>
+        {!!standards && <span className='standard-tag'> ({standards})</span>}
       </>
     )
     return (
@@ -163,7 +163,7 @@ class AssessmentSection extends React.Component {
               </span>
             }
             <span className='question-text'>{text}</span>
-            <span className='standard-tag'> {standards}</span>
+            {!!standards && <span className='standard-tag'> ({standards})</span>}
           </Form.Label>
 
           <div className='response-text'>

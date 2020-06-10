@@ -99,42 +99,42 @@ button.submit {
   margin: 30px;
 }
 
-#results {
+.results {
   /* display: none; */
   padding: 30px;
 }
 
-#results .prio-section {
+.results .prio-section {
   border: solid 2px;
   margin-bottom: 20px;
   padding: 30px;
 }
-#results .prio-1 {
+.results .prio-1 {
   border-color: red;
 }
-#results .prio-2 {
+.results .prio-2 {
   border-color: orange;
 }
-#results .prio-3 {
+.results .prio-3 {
   border-color: gold;
 }
-#results h3 {
+.results h3 {
   padding: 30px 0;
 }
-#results h5 {
+.results h5 {
   padding-top: 20px;
 }
-#results .priority {
+.results .priority {
   text-align: center;
 }
-#results .negate-tag {
+.results .negate-tag {
   color: red;
   transform: rotate(45deg) scale(1.5);
   display: inline-block;
 }
-#results .resources {
+.results .resources {
   padding-bottom: 30px;
 }
-#results .text {
+.results .text {
   color: #19195b;
 }

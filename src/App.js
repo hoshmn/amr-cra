@@ -8,17 +8,13 @@ import AssessmentSection from './AssessmentSection';
 import Results from './Results';
 
 // TODO:
-// - genericize AssessmentSection into AssessmentSection 
-// - (take instructions, title, questions obj as props)
-// - update sendMap to reflect
-// - create Submit tab that becomes Results, disables other tabs, processes this.maps into priorities/recs/resources
+// - feed in correct text for results missed standards, prioritize
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { 
-      // facilityMap: null
       submitted: false,
       missedFQs: null,
     };
@@ -37,7 +33,7 @@ class App extends React.Component {
       return !el;
     });
     this.setState({ submitted: true, missedFQs });
-    console.log(missedFQs);
+    // console.log(missedFQs);
   }
 
   getSubmitTab() {
@@ -59,12 +55,12 @@ class App extends React.Component {
   }
 
   render() {
-  
+    const submitTitle = this.state.submitted ? 'Results': 'Submit';
     return (
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
         <Tabs defaultActiveKey='facility'>
-          <Tab eventKey='facility' title='Facility'>
+          <Tab eventKey='facility' title='Facility' disabled={this.state.submitted}>
             <AssessmentSection
               sendMap={this.sendMap}
               section='facility'
@@ -73,7 +69,7 @@ class App extends React.Component {
           <Tab eventKey='lab' title='Lab' disabled={this.state.submitted}>
             <div>Lab content</div>
           </Tab>
-          <Tab eventKey='submit' title='Submit'>
+          <Tab eventKey='submit' title={submitTitle}>
             {this.getSubmitTab()}
           </Tab>
         </Tabs>
