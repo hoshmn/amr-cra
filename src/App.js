@@ -43,12 +43,11 @@ class App extends React.Component {
 
     return (
       <div>
-        you sure tho?
         <Button
           onClick={this.submit} 
-          variant='outline-primary'
+          variant='outline-primary' size='lg'
         >
-          Submit
+          Submit Assessment
         </Button>
       </div>
     )
@@ -67,7 +66,8 @@ class App extends React.Component {
             />
           </Tab>
           <Tab eventKey='lab' title='Lab' disabled={this.state.submitted}>
-            <div>Lab content</div>
+            <div>Lab Content</div>
+            <em>[each assessment section gets a tab like this]</em>
           </Tab>
           <Tab eventKey='submit' title={submitTitle}>
             {this.getSubmitTab()}
