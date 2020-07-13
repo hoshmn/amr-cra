@@ -59,13 +59,13 @@ class App extends React.Component {
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
         <Tabs defaultActiveKey='facility'>
-          <Tab eventKey='facility' title='Facility' disabled={this.state.submitted}>
+          <Tab eventKey='facility' title='Clinical Facility Level' disabled={this.state.submitted}>
             <AssessmentSection
               sendMap={this.sendMap}
               section='facility'
             />
           </Tab>
-          <Tab eventKey='lab' title='Lab' disabled={this.state.submitted}>
+          <Tab eventKey='inputs' title='Clinical Facility Data Inputs' disabled={this.state.submitted}>
             <div>Lab Content</div>
             <em>[each assessment section gets a tab like this]</em>
           </Tab>
