@@ -143,19 +143,27 @@ button.submit {
   max-width: 500px;
 }
 
-.target input {
-  width: 50px;
-  height: 22px;
+
+input.target {
+  padding-right: 3px;
+  max-width: 60px;
+  height: 26px;
+  display: inline-block;
   margin-right: 6px;
 }
-.target span {
-  line-height: 30px;
+input.target ~ label {
+  display: inline;
+  line-height: 36px;
 }
 
-table th {
+/* UNIVERSAL TABLE STYLES */
+table.table th {
   text-align: center;
 }
-table tr input[type='number'] {
+table.table td {
+  vertical-align: middle;
+}
+table.table tr input[type='number'] {
   min-width: 70px;
   max-width: 80px;
   margin: auto;

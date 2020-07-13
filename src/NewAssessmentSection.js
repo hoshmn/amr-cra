@@ -10,7 +10,7 @@ import sectionsMap from './sections';
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = true;
+const DEV = false;
 
 const qs = [];
 
@@ -388,10 +388,17 @@ class AssessmentSection extends React.Component {
             <div className='target-section' key={tSection.sectionName}>
               <h5>{tSection.sectionName}</h5>
               {tSection.sectionTargets.map((t, idx) => (
-                <div className='target' key={getTargetId(t, tSection)}>
-                  <input id={getTargetId(t, tSection)} type='number' min={0} max={100} defaultValue={100} />
-                  <span>{t.text}</span>
-                </div>
+                <>
+                  <Form.Control
+                    className='target'
+                    // label={t.text}
+                    key={getTargetId(t, tSection)}
+                    id={getTargetId(t, tSection)}
+                    type='number' min={0} max={100} defaultValue={100}
+                    />
+                  <Form.Label>{t.text}</Form.Label>
+                  <br/>  
+                </>
               ))}
               <br/>
             </div>
