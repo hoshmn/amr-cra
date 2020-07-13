@@ -9,9 +9,7 @@ import sectionsMap from './sections';
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-// const expectedOutput = {
-//   // id: 'val'
-// };
+const DEV = true;
 
 const qs = [];
 
@@ -45,9 +43,9 @@ class AssessmentSection extends React.Component {
       <div className='instructions'>
         <h3>{title}</h3>
         {instructions.map((sect, i) =><span className='instruction' key={i}>{sect}</span>)}
-        {!this.state.begun && this.getDeptSelection()}
-        {!this.state.begun && this.getTargetSetting()}
-        {!this.state.begun && this.getStartButton()}
+        {!DEV && !this.state.begun && this.getDeptSelection()}
+        {!DEV && !this.state.begun && this.getTargetSetting()}
+        {!DEV && !this.state.begun && this.getStartButton()}
       </div>
     )
   }
@@ -87,21 +85,16 @@ class AssessmentSection extends React.Component {
   }
 
   getSection(el) {
-    const { children, id, sectionNum, text, defaultOpen = false } = el;
-    
-    let classes = 'collapse';
-    if (defaultOpen) {
-      classes += ' show';
-    }
-    
+    const { children, id, text, dataSource='' } = el;
     return (
       <Card key={id}>
         <Card.Header>
-            <Accordion.Toggle as={Button} variant='link' eventKey={sectionNum}>
-              {text}  
+            <Accordion.Toggle as={Button} variant='link' eventKey={id}>
+              {dataSource + ' ' + text}  
+              {/* {dataSource ? `${dataSource} ${text}` : text} */}
             </Accordion.Toggle>
         </Card.Header>
-        <Accordion.Collapse eventKey={sectionNum}>
+        <Accordion.Collapse eventKey={id}>
           <Card.Body>
             {children.map(childEl => this.processElement(childEl))}
           </Card.Body>
@@ -268,18 +261,18 @@ class AssessmentSection extends React.Component {
 
     return (
       <div className='mt-3'>
-        <h4>Select 4 departments to assess</h4>
+        <h4>Select four departments to assess</h4>
         <Multiselect
-          options={departments} // Options to display in the dropdown
-          placeholder='Select Department'
+          options={departments}
+          placeholder='select departments'
           avoidHighlightFirstOption={true}
           selectionLimit={4}
           showCheckbox={true}
           closeOnSelect={false}
           closeIcon='cancel'
           //selectedValues={1} // Preselected value to persist in dropdown
-          onSelect={this.selectDept} // Function will trigger on select event
-          onRemove={this.removeDept} // Function will trigger on remove event
+          onSelect={this.selectDept}
+          onRemove={this.removeDept}
           displayValue="name" // Property name to display in the dropdown options
         />
       </div>
@@ -324,10 +317,13 @@ class AssessmentSection extends React.Component {
   }
 
   render() {
+    const { departments, targets } = sectionsMap[this.props.section];
+    const showContents = this.state.begun || !(departments && targets);
+
     return (
       <Accordion id={`${this.props.section}-section`}>
         {this.getInstructions()}
-        {this.state.begun && this.state.contents}
+        {(showContents || DEV) && this.state.contents}
       </Accordion>
     );
   }

@@ -74,21 +74,16 @@ class AssessmentSection extends React.Component {
   }
 
   getSection(el) {
-    const { children, id, sectionNum, text, defaultOpen = false } = el;
-    
-    let classes = 'collapse';
-    if (defaultOpen) {
-      classes += ' show';
-    }
+    const { children, id, text } = el;
     
     return (
       <Card key={id}>
         <Card.Header>
-            <Accordion.Toggle as={Button} variant='link' eventKey={sectionNum}>
+            <Accordion.Toggle as={Button} variant='link' eventKey={id}>
               {text}  
             </Accordion.Toggle>
         </Card.Header>
-        <Accordion.Collapse eventKey={sectionNum}>
+        <Accordion.Collapse eventKey={id}>
           <Card.Body>
             {children.map(childEl => this.processElement(childEl))}
           </Card.Body>

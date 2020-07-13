@@ -1,6 +1,6 @@
 // section and preface may have children, q may have subQs
 const types = ['q', 'section', 'preface'];
-const subTypes = ['box', 'y_n'];
+const subTypes = ['box', 'y_n', '%'];
 
 const title = 'Clinical Facility Data Inputs';
 
@@ -36,7 +36,7 @@ const targets = [
     { id: 'meet', text: "Percentage of departments that have clinical staff and laboratory staff regularly meet (at least quarterly) to troubleshoot gaps in laboratory-clinical linkages, including specimen collection, referral, interpretation and reporting?" },
   ]},
   
-  { sectionId: 'collectionAll', sectionName: 'Indicator: Sample Collection (All)', sectionTargets: [
+  { sectionId: 'collection-all', sectionName: 'Indicator: Sample Collection (All)', sectionTargets: [
     { id: 'informed', text: "Percentage of patients for whom sample collection and informed consent was obtained and documented in the clinical notes" },
     { id: 'significant', text: "Percentage of patients for whom a clinically significant sample was collected" },
     { id: 'aseptic', text: "Percentage of patients from whom the sample was collected using aseptic and correct technique" },
@@ -46,7 +46,7 @@ const targets = [
     { id: 'form', text: "Percentage of patients with completely and accurately completed lab request form" },
   ]},
   
-  { sectionId: 'collectionBlood', sectionName: 'Indicator: Sample Collection (Blood only)', sectionTargets: [
+  { sectionId: 'collection-blood', sectionName: 'Indicator: Sample Collection (Blood only)', sectionTargets: [
     { id: 'washed', text: "Percentage of patients for whom clinician taking blood sample washed hands prior to procedure" },
     { id: 'disinfected', text: "Percentage of patients for whom clinician taking blood sample disinfected hands prior to procedure" },
     { id: 'sterile', text: "Percentage of patients for whom clinician taking blood sample used sterile gloves for procedure" },
@@ -73,7 +73,7 @@ const targets = [
     { id: 'fridge', text: "Percentage of departments that have a designated fridge for storage of samples" },
   ]},
   
-  { sectionId: 'resultUse', sectionName: 'Indicator: Use Test Result', sectionTargets: [
+  { sectionId: 'result-use', sectionName: 'Indicator: Use Test Result', sectionTargets: [
     { id: 'folder', text: "Percentage of patients whose records were reviewed where there is evidence that laboratory test results are placed in the patient folder" },
     { id: 'communicated', text: "Percentage of patients that critical call out test results from the lab were communicated promptly to the clinician/wards and documented" },
     { id: 'revised', text: "Percentage of patients where there is evidence that antibiotic treatment is revised based on the laboratory AST result" },
@@ -84,196 +84,198 @@ const targets = [
   ]},
 ];
 
-const questions = [{
+const q_1_1 = {
+  id: 'q_1_1',
+  text: 'Is a copy of the current treatment guidelines available in this department?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F1, U1, B1'
+};
+const q_1_2 = {
+  id: 'q_1_2',
+  text: 'Is there evidence that the ward or department actively monitors test results for patterns suggestive of nosocomial outbreaks or hospital acquired infections?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F17, U19, B30'
+};
+const q_1_3 = {
+  id: 'q_1_3',
+  text: 'Does the ward or department engage the laboratory if there is suggestive of nosocomial outbreaks or hospital acquired infections?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F17, U19, B30'
+};
+const q_1_4 = {
+  id: 'q_1_4',
+  text: 'Do the ward or department clinical staff and laboratory staff regularly meet (at least quarterly) to troubleshoot gaps in laboratory-clinical linkages, including specimen collection, referral, interpretation and reporting?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F17, U19, B30'
+};
+const inp_sec_1 = {
   id: 'fac_sec_1',
-  sectionNum: '1',
-  text: 'Oversight Committee [LC1.1]',
+  text: 'Department Documents, Policies & Structures',
   type: 'section',
-  defaultOpen: true,
-  children: [{
-    id: 'fac_q_1',
-    text: 'Does the clinical facility have an oversight committee?',
-    standards: 'F1, U1, B1',
-    tags: [],
-    weight: 1,
-    recs: [],
-    resources: [],
-    type: 'q',
-    subType: 'y_n',
-    // expectedValue: true,
-    // revealIf: true,
-    subQs: [{
-        id:'fac_q_1_sub_preface', text:'Does the committee:', type:'preface'
-      },{
-        id:'fac_q_1_c1', type:'q', subType:'box',
-        text:'Develop/revise treatment guidelines',
-        recs:[],
-      },{
-        id:'fac_q_1_c2', type:'q', subType:'box',
-        text:'Use cumulative AST data to inform guidelines',
-        recs:[],
-      },{
-        id:'fac_q_1_c3', type:'q', subType:'box',
-        text:'Review antibiotic consumption data',
-        recs:[],
-      },{
-        id:'fac_q_1_c4', type:'q', subType:'box',
-        text:'Review data from AMS rounds',
-        recs:[],
-      },
-    ]},
-  ],
-},
+  children: [q_1_1, q_1_2, q_1_3, q_1_4]
+};
 
-{
+const q_2_1 = {
+  id: 'q_2_1',
+  text: 'Is a “Laboratory Handbook” which describes specimen collection, storage, and transportation of samples available to clinical staff in the ward or department?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F2, U2, B2',
+};
+const q_2_2 = {
+  id: 'q_2_2',
+  text: 'Are clinical staff aware of the target time to transfer samples (all specimen types) to the lab?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F11, U13',
+};
+const q_2_3 = {
+  id: 'q_2_3',
+  text: 'Are clinical staff aware of the need to store faeces and urine samples in fridge if there is a delay?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F10, U12',
+};
+const q_2_4 = {
+  id: 'q_2_4',
+  text: 'Is there designated fridge storage space for samples in the department/ward?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'F10, U12',
+};
+const q_2_5 = {
+  id: 'q_2_5',
+  text: 'Are clinical staff aware of the need to store blood samples at room temperature if there is a delay?',
+  type: 'q',
+  subType: 'y_n',
+  standards: 'B23',
+};
+const inp_sec_2 = {
   id: 'fac_sec_2',
-  sectionNum: '2',
-  text: 'Lab Handbook [LC1.2 - 1.4]',
+  text: 'Sample Requisition, collection, transport & storage',
   type: 'section',
-  children: [{
-    id: 'fac_q_2',
-    text: 'Does the clinical facility have a “Laboratory Handbook” which describes specimen collection, storage, and transportation of samples?',
-    standards: 'F2, U2, B2',
-    tags: [],
-    weight: 1,
-    recs: [],
-    resources: [],
-    type: 'q',
-    subType: 'y_n',
-    subQs: [{
-      id:'fac_q_2_sub_preface', text:'Does the handbook state:', type:'preface'
-    },{
-      id:'fac_q_2_c1', type:'q', subType:'box', tags:['f','u','b'], standards: 'F4, U4, B4',
-      text: `Informed consent should be obtained before collection of faeces, urine or blood for culture`
-    },{
-      id:'fac_q_2_c2', type:'q', subType:'box', tags:['u','b'], standards: 'F5',
-      text: `Urine and blood should be collected before administration of antibiotics `
-    },{
-      id:'fac_q_2_c3', type:'q', subType:'box', tags:['f'], standards: 'U5, B5',
-      text: `Faeces should be collected using aseptic technique `
-    },{
-      id:'fac_q_2_c4', type:'q', subType:'box', tags:['f'], standards: 'F6',
-      text: `Minimum of 1g of faeces should be collected for faeces culture`
-    },{
-      id:'fac_q_2_c5', type:'q', subType:'box', tags:['u'], standards: 'U8',
-      text: `A minimum of 3 mL urine should be collected for urine culture`
-    },{
-      id:'fac_q_2_c6', type:'q', subType:'box', tags:['b'], standards: 'B6',
-      text: `Handwashing should be performed prior to performing blood collection for culture`
-    },{
-      id:'fac_q_2_c7', type:'q', subType:'box', tags:['b'], standards: 'B7',
-      text: `Hands should be disinfected prior to performing a blood culture`
-    },{
-      id:'fac_q_2_c8', type:'q', subType:'box', tags:['b'], standards: 'B8',
-      text: `Sterile gloves should be used when performing a blood culture`
-    },{
-      id:'fac_q_2_c9', type:'q', subType:'box', tags:['b'], standards: 'B9',
-      text: `Blood cultures should be drawn from peripheral sites`
-    },{
-      id:'fac_q_2_c10', type:'q', subType:'box', tags:['b'], standards: 'B10',
-      text: `Serial blood cultures should be collected from separate venipuncture sites`
-    },{
-      id:'fac_q_2_c11', type:'q', subType:'box', tags:['b'], standards: 'B11',
-      text: `Puncture site should be cleaned properly as per manufacturer recommended technique and using appropriate disinfectant`
-    },{
-      id:'fac_q_2_c12', type:'q', subType:'box', tags:['b'], standards: 'B14',
-      text: `Bottle-top should be disinfected and disinfectant should be allowed to dry prior to inoculation`
-    },{
-      id:'fac_q_2_c13', type:'q', subType:'box', tags:['b'], standards: 'B15',
-      text: `Needles should not be exchanged between blood culture collection and inoculation of blood culture bottles`
-    },{
-      id:'fac_q_2_c14', type:'q', subType:'box', tags:['b'], standards: 'B17',
-      text: `Minimum of 2 and maximum of 3 Blood cultures should be drawn within 24 hours`
-    },{
-      id:'fac_q_2_c15', type:'q', subType:'box', tags:['b'], standards: 'B19',
-      text: `The volume of blood collected should follow the manufacturer's recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children`
-    },{
-      id:'fac_q_2_sub_preface_d', type:'preface', text:'Are collection containers correctly labelled for:'
-    },{
-      id:'fac_q_2_d1', type:'q', subType:'box', tags:['f'], standards: 'F7',
-      text: `Faeces`
-    },{
-      id:'fac_q_2_d2', type:'q', subType:'box', tags:['b'], standards: 'B20',
-      text: `Blood`
-    },{
-      id:'fac_q_2_d3', type:'q', subType:'box', tags:['u'], standards: 'U9',
-      text: `Urine`
-    },{
-      id:'fac_q_2_sub_preface_e', type:'preface', text:'Are samples delivered to the laboratory as soon as possible and within the recommended time periods for:'
-    },{
-      id:'fac_q_2_e1', type:'q', subType:'box', tags:['f'], standards: 'F11',
-      text: `Faeces`
-    },{
-      id:'fac_q_2_e2', type:'q', subType:'box', tags:['b'], standards: 'B24',
-      text: `Blood`
-    },{
-      id:'fac_q_2_e3', type:'q', subType:'box', tags:['u'], standards: 'U16',
-      text: `Urine`
-    }]
-  },{
-    id:'fac_q_3_preface', type:'preface',
-    text:'Do the facility treatment guidelines include the following requirements:',
-    children: [{
-      id: 'fac_q_3a',
-      text: 'To do faecal culture if there is dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection?',
-      standards: 'F3',
-      tags: ['f'],
-      weight: 1,
-      recs: [],
-      resources: [],
-      type: 'q',
-      subType: 'y_n'
-    },{
-      id: 'fac_q_3b',
-      text: 'To do urine culture if there are clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy?',
-      standards: 'U3',
-      tags: ['u'],
-      weight: 1,
-      recs: [],
-      resources: [],
-      type: 'q',
-      subType: 'y_n'
-    },{
-      id: 'fac_q_3c',
-      text: 'To do blood culture with clinical suspicion of blood stream infection?',
-      standards: 'B3',
-      tags: ['b'],
-      weight: 1,
-      recs: [],
-      resources: [],
-      type: 'q',
-      subType: 'y_n'
-    }]
-  }],
-},
-
-{
+  children: [q_2_1, q_2_2, q_2_3, q_2_4, q_2_5]
+};
+const q_3_01 = {
+  id: 'q_3_01',
+  text: 'Number of patients with dysentery whose records were reviewed',
+  type: 'q',
+  subType: '%',
+  standards: 'F3'
+};
+const q_3_02 = {
+  id: 'q_3_02',
+  text: 'Number of patients reviewed who had faecal culture ordered',
+  type: 'q',
+  subType: '%',
+  standards: 'F3'
+};
+const q_3_03 = {
+  id: 'q_3_03',
+  text: 'Number of patients for whom faecal sample collection procedure was witnessed',
+  type: 'q',
+  subType: '%',
+  standards: 'F4-F9'
+};
+const q_3_04 = {
+  id: 'q_3_04',
+  text: 'Number of patients for whom informed consent was obtained and documented in the clinical notes before performing faeces culture',
+  type: 'q',
+  subType: '%',
+  standards: 'F4'
+};
+const q_3_05 = {
+  id: 'q_3_05',
+  text: 'Number of patients from whom faeces were collected using aseptic technique',
+  type: 'q',
+  subType: '%',
+  standards: 'F5'
+};
+const q_3_06 = {
+  id: 'q_3_06',
+  text: 'Number of patients for whom a minimum of 1g of feaces was collected for faeces culture',
+  type: 'q',
+  subType: '%',
+  standards: 'F6'
+};
+const q_3_07 = {
+  id: 'q_3_07',
+  text: 'Number of patients for whom the faeces collection containers are correctly labelled including at least: patient identifiers, site, date and time of collection',
+  type: 'q',
+  subType: '%',
+  standards: 'F7'
+};
+ const q_3_08 = {
+   id: 'q_3_08',
+   text: 'Number of patients for whom the lab request form was filled out completely and accurately, including at least: patient identifiers, site, date and time of collection, clinical information regarding suspected diagnosis, and contact details of requesting doctor',
+   type: 'q',
+   subType: '%',
+   standards: 'F8'
+ };
+const q_3_09 = {
+  id: 'q_3_09',
+  text: 'Number of patients for whom faeces collection is documented in the clinical notes',
+  type: 'q',
+  subType: '%',
+  standards: 'F9'
+};
+const q_3_10 = {
+  id: 'q_3_10',
+  text: 'Number of patients for faeces culture whose records were reviewed ',
+  type: 'q',
+  subType: '%',
+  standards: 'F14, F16'
+};
+const q_3_11  = {
+  id: 'q_3_11',
+  text: 'Number of patients for faeces culture whose records were reviewed where there is evidence that laboratory test results are placed in the patient folder',
+  type: 'q',
+  subType: '%',
+  standards: 'F14'
+};
+const q_3_12  = {
+  id: 'q_3_12',
+  text: 'Number of patients for faeces that critical call outs regarding patients test results received from lab are promptly communicated to the clinician/wards and documented',
+  type: 'q',
+  subType: '%',
+  standards: 'F16'
+};
+const q_3_13  = {
+  id: 'q_3_13',
+  text: 'Number of patients for faeces culture whose records were reviewed there is evidence that antibiotic treatment is revised based on the laboratory AST result',
+  type: 'q',
+  subType: '%',
+  standards: 'F16'
+};
+const q_3_14  = {
+  id: 'q_3_14',
+  text: 'Number of patients for faeces culture whose records were reviewed and there is evidence that antibiotic treatment followed the clinical site prescriber guidelines for common medical conditions',
+  type: 'q',
+  subType: '%',
+  standards: 'F16'
+};
+const q_3_15  = {
+  id: 'q_3_15',
+  text: 'Number of patients for faeces culture whose records were reviewed and there is evidence that antibiotic treatment is consistent with medices formulary ',
+  type: 'q',
+  subType: '%',
+  standards: 'F16'
+};
+const inp_sec_3 = {
   id: 'fac_sec_3',
-  sectionNum: '3',
-  text: 'Lab Request form [LC1.5]',
+  text: 'Faeces Culture',
   type: 'section',
-  children: [{
-    id:'fac_q_4_preface', type:'preface', standards: 'F8, U10, B21',
-    text:'Does the laboratory request form include:'
-  },{
-    id:'fac_q_4a', type:'q', subType:'box',
-    text: `Patient identifiers`
-  },{
-    id:'fac_q_4b', type:'q', subType:'box',
-    text: `Site name`
-  },{
-    id:'fac_q_4c', type:'q', subType:'box',
-    text: `Date of admission`
-  },{
-    id:'fac_q_4d', type:'q', subType:'box',
-    text: `Date & time of collection`
-  },{
-    id:'fac_q_4e', type:'q', subType:'box',
-    text: `Clinical information regarding suspected diagnosis`
-  },{
-    id:'fac_q_4f', type:'q', subType:'box',
-    text: `Contact details of requesting doctor`
-  }],
-}];
+  children: [q_3_01, q_3_02, q_3_03, q_3_04, q_3_05, q_3_06, q_3_07, q_3_08, q_3_09, q_3_10, q_3_11, q_3_12, q_3_13, q_3_14, q_3_15]
+};
+
+const questions = [
+  inp_sec_1,
+  inp_sec_2,
+  inp_sec_3,
+];
 
 export { title, instructions, questions, targets, departments }

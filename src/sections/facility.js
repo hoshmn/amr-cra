@@ -11,10 +11,9 @@ const instructions = [
 
 const questions = [{
   id: 'fac_sec_1',
-  sectionNum: '1',
-  text: 'Oversight Committee [LC1.1]',
+  text: 'Oversight Committee',
+  dataSource: '[LC1.1]',
   type: 'section',
-  defaultOpen: true,
   children: [{
     id: 'fac_q_1',
     text: 'Does the clinical facility have an oversight committee?',
@@ -52,8 +51,8 @@ const questions = [{
 
 {
   id: 'fac_sec_2',
-  sectionNum: '2',
-  text: 'Lab Handbook [LC1.2 - 1.4]',
+  text: 'Lab Handbook',
+  dataSource: '[LC1.2 - 1.4]',
   type: 'section',
   children: [{
     id: 'fac_q_2',
@@ -174,8 +173,8 @@ const questions = [{
 
 {
   id: 'fac_sec_3',
-  sectionNum: '3',
-  text: 'Lab Request form [LC1.5]',
+  text: 'Lab Request form',
+  dataSource: '[LC1.5]',
   type: 'section',
   children: [{
     id:'fac_q_4_preface', type:'preface', standards: 'F8, U10, B21',
