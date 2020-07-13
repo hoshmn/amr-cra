@@ -27,7 +27,7 @@ h3 {
 .instructions {
   padding: 0 35px 15px;
 }
-.instructions span {
+.instructions .instruction {
   padding-bottom: 10px;
   display: block;
 }
@@ -137,4 +137,17 @@ button.submit {
 }
 .results .text {
   color: #19195b;
+}
+
+#multiselectContainerReact {
+  max-width: 500px;
+}
+
+.target input {
+  width: 50px;
+  height: 22px;
+  margin-right: 6px;
+}
+.target span {
+  line-height: 30px;
 }

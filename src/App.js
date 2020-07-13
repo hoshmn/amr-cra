@@ -4,7 +4,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AssessmentSection from './AssessmentSection';
+import AssessmentSection from './NewAssessmentSection';
 import Results from './Results';
 
 // TODO:
@@ -58,7 +58,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
-        <Tabs defaultActiveKey='facility'>
+        <Tabs defaultActiveKey='inputs'>
           <Tab eventKey='facility' title='Clinical Facility Level' disabled={this.state.submitted}>
             <AssessmentSection
               sendMap={this.sendMap}
@@ -66,8 +66,10 @@ class App extends React.Component {
             />
           </Tab>
           <Tab eventKey='inputs' title='Clinical Facility Data Inputs' disabled={this.state.submitted}>
-            <div>Lab Content</div>
-            <em>[each assessment section gets a tab like this]</em>
+            <AssessmentSection
+              sendMap={this.sendMap}
+              section='inputs'
+            />
           </Tab>
           <Tab eventKey='submit' title={submitTitle}>
             {this.getSubmitTab()}
