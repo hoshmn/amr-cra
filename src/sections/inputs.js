@@ -1,6 +1,9 @@
 // section and preface may have children, q may have subQs
 const types = ['q', 'section', 'preface'];
-const subTypes = ['box', 'y_n', '%'];
+const subTypes = [
+  'box', 'y_n', '%', // for qs
+  'table' // for sections
+];
 
 const title = 'Clinical Facility Data Inputs';
 
@@ -269,6 +272,7 @@ const inp_sec_3 = {
   id: 'fac_sec_3',
   text: 'Faeces Culture',
   type: 'section',
+  subType: 'table',
   children: [q_3_01, q_3_02, q_3_03, q_3_04, q_3_05, q_3_06, q_3_07, q_3_08, q_3_09, q_3_10, q_3_11, q_3_12, q_3_13, q_3_14, q_3_15]
 };
 

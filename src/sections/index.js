@@ -11,6 +11,7 @@ const sectionsMap = {
     title: inputsTitle,
     instructions: inputsInstructions,
     questions: inputsQuestions,
+    requiresSetup: true,
     targets: inputsTargets,
     departments
   }

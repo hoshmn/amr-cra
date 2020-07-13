@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Table from 'react-bootstrap/Table';
 import sectionsMap from './sections';
 
 import { Multiselect } from 'multiselect-react-dropdown';
@@ -22,15 +23,28 @@ class AssessmentSection extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { contents: null, selectedDepts: [], begun: false, warnings: [] };
+    const { departments } = sectionsMap[this.props.section];
+    const selectedDepts = DEV && departments ? departments.slice(0,4) : []
+    this.state = { contents: null, selectedDepts, begun: false, warnings: [] };
 
     this.toggleSubQs = this.toggleSubQs.bind(this);
     this.selectDept = this.selectDept.bind(this);
     this.removeDept = this.removeDept.bind(this);
     this.begin = this.begin.bind(this);
+
+    this.processElement = this.processElement.bind(this);
+    this.getSection = this.getSection.bind(this);
+    this.getQTable = this.getQTable.bind(this);
   }
 
   componentDidMount() {
+    const { requiresSetup } = sectionsMap[this.props.section];
+    if (!requiresSetup || DEV) {
+      this.generateQuestions();
+    }
+  }
+
+  generateQuestions() {
     const { questions } = sectionsMap[this.props.section];
     const contents = questions.map(el => this.processElement(el));
     this.setState({ contents });
@@ -68,6 +82,8 @@ class AssessmentSection extends React.Component {
           return this.getQuestionBox(el);
         } else if (subType === 'y_n') {
           return this.getQuestionYN(el);
+        } else if (subType === '%') {
+          return this.getQuestionPerc(el);
         }
     
       // case 'section':
@@ -85,7 +101,13 @@ class AssessmentSection extends React.Component {
   }
 
   getSection(el) {
-    const { children, id, text, dataSource='' } = el;
+    const { children, id, text, subType, dataSource='' } = el;
+    let content;
+    if (subType === 'table') {
+      content = this.getQTable(children);
+    } else {
+      content = _.map(children, this.processElement);
+    }
     return (
       <Card key={id}>
         <Card.Header>
@@ -96,10 +118,62 @@ class AssessmentSection extends React.Component {
         </Card.Header>
         <Accordion.Collapse eventKey={id}>
           <Card.Body>
-            {children.map(childEl => this.processElement(childEl))}
+            {content}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
+    )
+  }
+
+  getQTable(children) {
+    // console.log('hit')
+    return (
+      <Table striped bordered responsive size='lg'>
+      <thead>
+        <tr>
+          <th></th>
+          {this.state.selectedDepts.map(d => {
+            return <th key={d.name}>{d.name}</th>
+          })}
+        </tr>
+      </thead>
+      <tbody>
+        {children.map(q => {
+          qs.push(q);
+          const { id, text, tags, standards, subType } = q;
+          const question = (
+            <>
+              {!!tags && !!tags.length &&
+                <span className='specimen-tags'>
+                  {tags.map(t => <i key={t} className={t} />)}
+                </span>
+              }
+              <span className='response-text'>{text}</span>
+              {!!standards && <span className='standard-tag'> ({standards})</span>}
+            </>
+          )
+
+          return (
+            <tr key={q.id}>
+              <td>{question}</td>
+              {this.state.selectedDepts.map(d => {
+                if (subType !== '%') {
+                  console.error('Table only currently implemented for % qs. To add a subtype, change return below.');
+                  return;
+                }
+                return (
+                  <td key={d.id+'-'+q.id}>
+                    <Form.Control type='number' min={0}
+                      id={id}
+                    />
+                  </td>
+                )
+              })}
+            </tr>
+          )
+        })}
+        </tbody>
+      </Table>
     )
   }
 
@@ -138,6 +212,31 @@ class AssessmentSection extends React.Component {
         label={label}
         // name={id}
       />
+    )
+  }
+
+  getQuestionPerc({ id, text, tags, standards }) {
+    const label = (
+      <>
+        {!!tags && !!tags.length &&
+          <span className='specimen-tags'>
+            {tags.map(t => <i key={t} className={t} />)}
+          </span>
+        }
+        <span className='response-text'>{text}</span>
+        {!!standards && <span className='standard-tag'> ({standards})</span>}
+      </>
+    )
+    return (
+      <>
+      <Form.Control 
+        id={id}
+        key={id}
+        // label={label}
+        type='number' min={0} max={100}
+      />
+      {label}
+      </>
     )
   }
 
@@ -198,9 +297,9 @@ class AssessmentSection extends React.Component {
   }
 
   begin() {
-    const { targets } = sectionsMap[this.props.section];
-
     const fourDepts = this.state.selectedDepts.length === 4;
+    
+    const { targets } = sectionsMap[this.props.section];
     const targetsComplete = targets.every(tSection => 
       tSection.sectionTargets.every(t => {
         const id = getTargetId(t, tSection);
@@ -209,15 +308,9 @@ class AssessmentSection extends React.Component {
           return false;
         }
         const val = Number(target.value);
-        console.log(val)
         return !isNaN(val) && val >= 0 && val <= 100;
       })
     )
-    console.log(fourDepts)
-    console.log(targetsComplete)
-    if (fourDepts && targetsComplete) {
-      this.setState({ begun: true, warnings: [] });
-    }
 
     const warnings = [];
     if (!fourDepts) {
@@ -227,17 +320,20 @@ class AssessmentSection extends React.Component {
       warnings.push('ensure that all target percentages are set as integers less than or equal to 100')
     }
 
-    this.setState({ warnings });
+    const begun = fourDepts && targetsComplete;
+    if (begun) {
+      this.generateQuestions();
+    }
+    this.setState({ warnings, begun });
   }
 
   getStartButton() {
-    const { departments, targets } = sectionsMap[this.props.section];
-    if (!departments && !targets) {
+    const { departments, targets, requiresSetup } = sectionsMap[this.props.section];
+    if (!requiresSetup) {
       return;
     }
 
     let warningText = null;
-    console.log(this.state.warnings)
     if (this.state.warnings.length) {
       warningText = `Please ${this.state.warnings.join(' and ')}.`;
     }
@@ -317,8 +413,8 @@ class AssessmentSection extends React.Component {
   }
 
   render() {
-    const { departments, targets } = sectionsMap[this.props.section];
-    const showContents = this.state.begun || !(departments && targets);
+    const { departments, targets, requiresSetup } = sectionsMap[this.props.section];
+    const showContents = this.state.begun || !requiresSetup;
 
     return (
       <Accordion id={`${this.props.section}-section`}>

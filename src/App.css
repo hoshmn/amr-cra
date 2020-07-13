@@ -151,3 +151,12 @@ button.submit {
 .target span {
   line-height: 30px;
 }
+
+table th {
+  text-align: center;
+}
+table tr input[type='number'] {
+  min-width: 70px;
+  max-width: 80px;
+  margin: auto;
+}

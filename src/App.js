@@ -32,8 +32,7 @@ class App extends React.Component {
       const el = document.querySelector(`#${q.id}:checked`);
       return !el;
     });
-    this.setState({ submitted: true, missedFQs });
-    // console.log(missedFQs);
+    this.setState({ submitted: true, missedFQs });;
   }
 
   getSubmitTab() {
