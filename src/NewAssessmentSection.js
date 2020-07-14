@@ -6,20 +6,14 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
 import sectionsMap from './sections';
+import { getTableCellId, getTargetId } from './helperFunctions'
 
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
 const DEV = false;
 
-const qs = [];
-
 const radioNoTag = '_no';
-
-const getTargetId = (target, targetSection) => 
-  `target-${targetSection.sectionId}--${target.id}`;
-const getTableCellId = (department, question) => 
-  `cell-${department.id}--${question.id}`;
 
 class AssessmentSection extends React.Component {
   constructor(props) {
@@ -37,6 +31,8 @@ class AssessmentSection extends React.Component {
     this.processElement = this.processElement.bind(this);
     this.getSection = this.getSection.bind(this);
     this.getQTable = this.getQTable.bind(this);
+
+    this.qs = [];
   }
 
   componentDidMount() {
@@ -50,7 +46,8 @@ class AssessmentSection extends React.Component {
     const { questions } = sectionsMap[this.props.section];
     const contents = questions.map(el => this.processElement(el));
     this.setState({ contents });
-    this.props.sendMap(this.props.section, qs);
+
+    this.props.sendMap(this.props.section, this.qs, this.state.selectedDepts);
   }
 
   getInstructions() {
@@ -78,7 +75,7 @@ class AssessmentSection extends React.Component {
     
       case 'q':
         const { id, subType, expectedValue = true } = el;
-        qs.push(el);
+        this.qs.push(el);
         // expectedOutput[id] = expectedValue;
         if (subType === 'box') {
           return this.getQuestionBox(el);
@@ -141,7 +138,7 @@ class AssessmentSection extends React.Component {
       </thead>
       <tbody>
         {children.map(q => {
-          qs.push(q);
+          this.qs.push(q);
           const { id, text, tags, standards, subType } = q;
           const question = (
             <>

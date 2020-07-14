@@ -8,8 +8,8 @@ const subTypes = [
 const title = 'Clinical Facility Data Inputs';
 
 const instructions = [
-  'Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment.',
-  'The corresponding data sources are indicated in the section headers for reference. The relevant standards are indicated after each question in parentheses.'
+  'Clinical Facility Data Inputs instructions...',
+  'Before beggining this section, please select four departments to assess, as well as the target numbers.'
 ];
 
 const departments = [

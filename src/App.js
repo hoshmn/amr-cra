@@ -6,6 +6,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AssessmentSection from './NewAssessmentSection';
 import Results from './Results';
+import { getTargetId, getTableCellId } from './helperFunctions';
+
+const DEV = true;
 
 // TODO:
 // - feed in correct text for results missed standards, prioritize
@@ -23,15 +26,43 @@ class App extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
-  sendMap(section, qs) {
+  sendMap(section, qs, departments) {
+    qs.departments = departments
     this[section] = qs;
   }
 
   submit() {
-    const missedFQs = this.facility.filter(q => {
-      const el = document.querySelector(`#${q.id}:checked`);
-      return !el;
+    const missedFQs = this['facility'].filter(q => {
+      const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
+      return !correctAnswerGiven;
     });
+
+    // process inputs sections
+    const iqs = this['inputs'];
+    iqs.forEach(q => {
+      // add answers
+      q.answers = {};
+      let TOTAL = 0;
+      iqs.departments.forEach(d => {
+        const uid = getTableCellId(d, q);
+        if (q.subType === 'y_n') {
+          const correctAnswerGiven = !!document.querySelector(`#${uid}:checked`);
+          q.answers[d.id] = correctAnswerGiven;
+          TOTAL += correctAnswerGiven;
+        } else if (q.subType === '%') {
+          const el = document.querySelector(`#${uid}`);
+          let val = el ? Number(el.value) : null;
+          console.log(el)
+          console.log(val)
+          q.answers[d.id] = val;
+          TOTAL += val||0;
+        }
+      });
+      q.answers.TOTAL = TOTAL;
+    })
+    console.log(iqs);
+    debugger;
+
     this.setState({ submitted: true, missedFQs });;
   }
 
@@ -58,13 +89,13 @@ class App extends React.Component {
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
         <Tabs defaultActiveKey='inputs'>
-          <Tab eventKey='facility' title='Clinical Facility Level' disabled={this.state.submitted}>
+          <Tab eventKey='facility' title='Clinical Facility Level' disabled={!DEV && this.state.submitted}>
             <AssessmentSection
               sendMap={this.sendMap}
               section='facility'
             />
           </Tab>
-          <Tab eventKey='inputs' title='Clinical Facility Data Inputs' disabled={this.state.submitted}>
+          <Tab eventKey='inputs' title='Clinical Facility Data Inputs' disabled={!DEV && this.state.submitted}>
             <AssessmentSection
               sendMap={this.sendMap}
               section='inputs'
