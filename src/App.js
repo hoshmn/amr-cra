@@ -18,6 +18,7 @@ class App extends React.Component {
     super(props);
 
     this.state = { 
+      warnings: [],
       submitted: false,
       missedFQs: null,
     };
@@ -32,6 +33,13 @@ class App extends React.Component {
   }
 
   submit() {
+    if (!this['facility'] || !this['inputs']) {
+      const warnings = ['You must begin all assessment sections before submitting'];
+      this.setState({ warnings })
+      return;
+    }
+
+
     const missedFQs = this['facility'].questions.filter(q => {
       const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
       return !correctAnswerGiven;
@@ -73,6 +81,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <div className='warnings text-danger'>{this.state.warnings.join('\n')}</div>
         <Button
           onClick={this.submit} 
           variant='outline-primary' size='lg'
