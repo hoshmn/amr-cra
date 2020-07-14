@@ -25,7 +25,7 @@ class App extends React.Component {
       warnings: [],
       submitted: false,
       missedFQs: null,
-      processedIQs: null,
+      processedInputs: null,
     };
 
     this.sendMap = this.sendMap.bind(this);
@@ -139,8 +139,9 @@ class App extends React.Component {
     this.setState({ 
       submitted: true,
       missedFQs,
-      processedIQs: inputSectionObj.questions,
-      warnings: [] });;
+      processedInputs: inputResultSections,
+      warnings: []
+    });;
   }
 
   getFacilityTab() {
@@ -160,7 +161,7 @@ class App extends React.Component {
     if (this.state.submitted) {
       return (
         <ResultsTable 
-          processedQs={this.state.processedIQs}
+          processedQs={this.state.processedInputs}
           section='inputs'
         />);
     }

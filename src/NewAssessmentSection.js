@@ -11,7 +11,7 @@ import { getTableCellId, getTargetId } from './helperFunctions'
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = false;
+const DEV = true;
 
 const radioNoTag = '_no';
 
@@ -37,8 +37,23 @@ class AssessmentSection extends React.Component {
 
   componentDidMount() {
     const { requiresSetup } = sectionsMap[this.props.section];
+
+
+    const targetData = {};
     if (!requiresSetup || DEV) {
-      this.generateQuestions();
+
+      if (DEV && requiresSetup) {
+        const { targets } = sectionsMap[this.props.section];
+        console.log('!!!', targets);
+        targets.forEach(tSection => 
+          tSection.sectionTargets.forEach(t => {
+            _.set(targetData, [tSection.sectionId, t.id], 100);
+          })
+        )
+      }
+
+
+      this.generateQuestions(targetData);
     }
   }
 
@@ -166,7 +181,11 @@ class AssessmentSection extends React.Component {
                 let content;
                 switch (subType) {
                   case '%':
-                    content = <Form.Control type='number' min={0} id={uid} />;
+                    let dv = null;
+                    if (DEV) {
+                      dv = Math.floor(Math.random() * 100);
+                    }
+                    content = <Form.Control type='number' min={0} id={uid} defaultValue={dv} />;
                     break;
 
                   case 'y_n':
