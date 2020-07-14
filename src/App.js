@@ -6,7 +6,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AssessmentSection from './NewAssessmentSection';
 import Results from './Results';
+import ResultsTable from './ResultsTable';
+import sectionsMap from './sections';
 import { getTargetId, getTableCellId } from './helperFunctions';
+
+import _ from 'lodash'
 
 const DEV = true;
 
@@ -21,6 +25,7 @@ class App extends React.Component {
       warnings: [],
       submitted: false,
       missedFQs: null,
+      processedIQs: null,
     };
 
     this.sendMap = this.sendMap.bind(this);
@@ -47,6 +52,8 @@ class App extends React.Component {
 
     // process inputs sections
     const inputSectionObj = this['inputs'];
+    const { results: inputResultSections } = sectionsMap['inputs'];
+
     inputSectionObj.questions.forEach(q => {
       // add responses
       q.responses = {};
@@ -66,10 +73,68 @@ class App extends React.Component {
           TOTAL += val||0;
         }
       });
-      q.responses.TOTAL = TOTAL;
+      // q.responses.TOTAL = TOTAL;
     })
     console.log(inputSectionObj);
 
+    inputResultSections.forEach(rSect => {
+      rSect.results.forEach(r => {
+        const { target, question, numerator, denominator } = r;
+        if (!target) {
+          console.error('Cannot calculate result without target: ', r);
+        }
+        // _.get
+        r.targetValue = inputSectionObj.targetData[target.sectionId][target.id];
+        // r.responseData = {};
+
+        if (question) {
+          console.log('rq: ', r.question);
+
+          r.responseData = r.question.responses;
+          let answered = 0;
+          let yeses = 0;
+          _.each(r.responseData, resp => {
+            if (!_.isNil(resp)) {
+              answered++;
+            }
+            if (!!resp) {
+              yeses++;
+            }
+          });
+
+          r.actualPerc = !answered ? '?' : (yeses/answered) * 100;
+
+        } else if (numerator && denominator) { // it's a % type result
+          console.log('rn: ', r.numerator, ' rd: ', r.denominator);
+
+          r.responseData = {};
+          let totalNum = 0;
+          let totalDenom = 0;
+          _.each(r.numerator.responses, (numV, dept) => {
+            let perc = null;
+            const denomV = _.get(r, ['denominator', 'responses', dept]);
+            if (_.isNil(numV) || _.isNil(denomV)) {
+              console.log('Empty num or denom val');
+              // _.set(r.responseData, dept, '?');
+              perc = '?';
+            } else {
+              totalNum += numV;
+              totalDenom += denomV;
+              perc = (numV / denomV) * 100;
+            }
+
+            _.set(r.responseData, dept, perc);
+          });
+
+          r.actualPerc = !totalDenom ? '?' : (totalNum / totalDenom) * 100
+
+        } else {
+          console.error('Cannot calculate result without a linked question or num/denom: ', r);
+        }
+      })
+    });
+
+    debugger
 
     this.setState({ 
       submitted: true,
@@ -93,7 +158,11 @@ class App extends React.Component {
 
   getInputsTab() {
     if (this.state.submitted) {
-      return <Results missedFQs={this.state.missedFQs} />;
+      return (
+        <ResultsTable 
+          processedQs={this.state.processedIQs}
+          section='inputs'
+        />);
     }
     return (
       <AssessmentSection
@@ -131,10 +200,10 @@ class App extends React.Component {
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
         <Tabs defaultActiveKey='inputs'>
-          <Tab eventKey='facility' title={facilityTitle} disabled={!DEV && this.state.submitted}>
+          <Tab eventKey='facility' title={facilityTitle}>
             {this.getFacilityTab()}
            </Tab>
-          <Tab eventKey='inputs' title={inputsTitle} disabled={!DEV && this.state.submitted}>
+          <Tab eventKey='inputs' title={inputsTitle}>
             {this.getInputsTab()}
           </Tab>
           <Tab eventKey='submit' title={submitTitle}>

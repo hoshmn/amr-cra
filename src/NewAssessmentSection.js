@@ -42,7 +42,7 @@ class AssessmentSection extends React.Component {
     }
   }
 
-  generateQuestions(targets) {
+  generateQuestions(targetData) {
     const { questions } = sectionsMap[this.props.section];
     const contents = questions.map(el => this.processElement(el));
     this.setState({ contents });
@@ -50,7 +50,7 @@ class AssessmentSection extends React.Component {
     const sectionObj = {
       questions: this.qs,
       departments: this.state.selectedDepts,
-      targets
+      targetData
     }
     this.props.sendMap(this.props.section, sectionObj);
   }
@@ -145,7 +145,7 @@ class AssessmentSection extends React.Component {
         {children.map(q => {
           this.qs.push(q);
           const { id, text, tags, standards, subType } = q;
-          const question = (
+          const question = ( // TODO: KEY
             <>
               {!!tags && !!tags.length &&
                 <span className='specimen-tags'>
@@ -236,6 +236,7 @@ class AssessmentSection extends React.Component {
   }
 
   getQuestionPerc({ id, text, tags, standards }) {
+    // UNUSED
     const label = (
       <>
         {!!tags && !!tags.length &&
@@ -320,15 +321,27 @@ class AssessmentSection extends React.Component {
     const fourDepts = this.state.selectedDepts.length === 4;
     
     const { targets } = sectionsMap[this.props.section];
+    const targetData = {};
+
     const targetsComplete = targets.every(tSection => 
       tSection.sectionTargets.every(t => {
-        const id = getTargetId(t, tSection);
-        const target = document.querySelector(`#${id}`);
+        const { sectionId } = tSection;
+        const uid = getTargetId(sectionId, t.id);
+        const target = document.querySelector(`#${uid}`);
         if (!target.value) {
           return false;
         }
         const val = Number(target.value);
-        return !isNaN(val) && val >= 0 && val <= 100;
+        const validTarget = !isNaN(val) && val >= 0 && val <= 100;
+
+        // _.set
+        if (!targetData[sectionId]) {
+          targetData[sectionId] = {};
+        }
+        // we use this opportunity to record all target values for use if the section is complete
+        targetData[sectionId][t.id] = val;
+
+        return validTarget;
       })
     )
 
@@ -343,7 +356,7 @@ class AssessmentSection extends React.Component {
     const begun = fourDepts && targetsComplete;
     this.setState({ warnings, begun }, () => {
       if (begun) {
-        this.generateQuestions(targets);
+        this.generateQuestions(targetData);
       }
     });
   }
@@ -413,8 +426,8 @@ class AssessmentSection extends React.Component {
                   <Form.Control
                     className='target'
                     // label={t.text}
-                    key={getTargetId(t, tSection)}
-                    id={getTargetId(t, tSection)}
+                    key={getTargetId(tSection.sectionId, t.id)}
+                    id={getTargetId(tSection.sectionId, t.id)}
                     type='number' min={0} max={100} defaultValue={100}
                     />
                   <Form.Label>{t.text}</Form.Label>

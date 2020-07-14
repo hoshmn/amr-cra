@@ -1,5 +1,5 @@
-const getTargetId = (target, targetSection) => 
-  `target-${targetSection.sectionId}--${target.id}`;
+const getTargetId = (targetSectionId, targetId) => 
+  `target-${targetSectionId}--${targetId}`;
   
 const getTableCellId = (department, question) => 
   `cell-${department.id}--${question.id}`;

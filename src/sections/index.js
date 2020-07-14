@@ -1,5 +1,5 @@
 import { title as facilityTitle, instructions as facilityInstructions, questions as facilityQuestions } from './facility';
-import { title as inputsTitle, instructions as inputsInstructions, questions as inputsQuestions, targets as inputsTargets, departments } from './inputs';
+import { title as inputsTitle, instructions as inputsInstructions, questions as inputsQuestions, targets as inputsTargets, results as inputsResults, departments } from './inputs';
 
 const sectionsMap = {
   facility: { 
@@ -13,6 +13,7 @@ const sectionsMap = {
     questions: inputsQuestions,
     requiresSetup: true,
     targets: inputsTargets,
+    results: inputsResults,
     departments
   }
 }
