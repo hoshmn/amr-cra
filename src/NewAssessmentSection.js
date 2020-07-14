@@ -42,12 +42,17 @@ class AssessmentSection extends React.Component {
     }
   }
 
-  generateQuestions() {
+  generateQuestions(targets) {
     const { questions } = sectionsMap[this.props.section];
     const contents = questions.map(el => this.processElement(el));
     this.setState({ contents });
-
-    this.props.sendMap(this.props.section, this.qs, this.state.selectedDepts);
+    
+    const sectionObj = {
+      questions: this.qs,
+      departments: this.state.selectedDepts,
+      targets
+    }
+    this.props.sendMap(this.props.section, sectionObj);
   }
 
   getInstructions() {
@@ -336,10 +341,11 @@ class AssessmentSection extends React.Component {
     }
 
     const begun = fourDepts && targetsComplete;
-    if (begun) {
-      this.generateQuestions();
-    }
-    this.setState({ warnings, begun });
+    this.setState({ warnings, begun }, () => {
+      if (begun) {
+        this.generateQuestions(targets);
+      }
+    });
   }
 
   getStartButton() {

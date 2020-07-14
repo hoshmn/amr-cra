@@ -26,41 +26,41 @@ class App extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
-  sendMap(section, qs, departments) {
-    qs.departments = departments
-    this[section] = qs;
+  sendMap(section, sectionObj) {
+    this[section] = sectionObj;
+    console.log(section, sectionObj)
   }
 
   submit() {
-    const missedFQs = this['facility'].filter(q => {
+    const missedFQs = this['facility'].questions.filter(q => {
       const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
       return !correctAnswerGiven;
     });
 
     // process inputs sections
-    const iqs = this['inputs'];
-    iqs.forEach(q => {
+    const inputSectionObj = this['inputs'];
+    inputSectionObj.questions.forEach(q => {
       // add answers
-      q.answers = {};
+      q.responses = {};
       let TOTAL = 0;
-      iqs.departments.forEach(d => {
+      inputSectionObj.departments.forEach(d => {
         const uid = getTableCellId(d, q);
         if (q.subType === 'y_n') {
           const correctAnswerGiven = !!document.querySelector(`#${uid}:checked`);
-          q.answers[d.id] = correctAnswerGiven;
+          q.responses[d.id] = correctAnswerGiven;
           TOTAL += correctAnswerGiven;
         } else if (q.subType === '%') {
           const el = document.querySelector(`#${uid}`);
           let val = el ? Number(el.value) : null;
           console.log(el)
           console.log(val)
-          q.answers[d.id] = val;
+          q.responses[d.id] = val;
           TOTAL += val||0;
         }
       });
-      q.answers.TOTAL = TOTAL;
+      q.responses.TOTAL = TOTAL;
     })
-    console.log(iqs);
+    console.log(inputSectionObj);
     debugger;
 
     this.setState({ submitted: true, missedFQs });;
