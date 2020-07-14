@@ -34,7 +34,7 @@ class App extends React.Component {
 
   submit() {
     if (!this['facility'] || !this['inputs']) {
-      const warnings = ['You must begin all assessment sections before submitting'];
+      const warnings = ['You must begin all assessment sections before submitting.'];
       this.setState({ warnings })
       return;
     }
@@ -48,7 +48,7 @@ class App extends React.Component {
     // process inputs sections
     const inputSectionObj = this['inputs'];
     inputSectionObj.questions.forEach(q => {
-      // add answers
+      // add responses
       q.responses = {};
       let TOTAL = 0;
       inputSectionObj.departments.forEach(d => {
@@ -69,46 +69,73 @@ class App extends React.Component {
       q.responses.TOTAL = TOTAL;
     })
     console.log(inputSectionObj);
-    debugger;
 
-    this.setState({ submitted: true, missedFQs });;
+
+    this.setState({ 
+      submitted: true,
+      missedFQs,
+      processedIQs: inputSectionObj.questions,
+      warnings: [] });;
   }
 
-  getSubmitTab() {
+  getFacilityTab() {
     if (this.state.submitted) {
       return <Results missedFQs={this.state.missedFQs} />;
     }
+    return (
+      <AssessmentSection
+        sendMap={this.sendMap}
+        section='facility'
+      />
+    )
+  }
 
+
+  getInputsTab() {
+    if (this.state.submitted) {
+      return <Results missedFQs={this.state.missedFQs} />;
+    }
+    return (
+      <AssessmentSection
+        sendMap={this.sendMap}
+        section='inputs'
+      />
+    )
+  }
+
+  getSubmitTab() {
     return (
       <div>
         <div className='warnings text-danger'>{this.state.warnings.join('\n')}</div>
         <Button
+          disabled={this.state.submitted}
           onClick={this.submit} 
           variant='outline-primary' size='lg'
         >
-          Submit Assessment
+          {this.state.submitted ? 'Submitted' : 'Submit Assessment'}
         </Button>
       </div>
     )
   }
 
   render() {
-    const submitTitle = this.state.submitted ? 'Results': 'Submit';
+    const submitTitle = this.state.submitted ? 'Submit': 'Submit';
+    let facilityTitle = 'Clinical Facility Level';
+    let inputsTitle = 'Clinical Facility Data Inputs';
+    if (this.state.submitted) {
+      facilityTitle += ' [RESULTS]';
+      inputsTitle += ' [RESULTS]';
+    }
+
     return (
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
         <Tabs defaultActiveKey='inputs'>
-          <Tab eventKey='facility' title='Clinical Facility Level' disabled={!DEV && this.state.submitted}>
-            <AssessmentSection
-              sendMap={this.sendMap}
-              section='facility'
-            />
-          </Tab>
-          <Tab eventKey='inputs' title='Clinical Facility Data Inputs' disabled={!DEV && this.state.submitted}>
-            <AssessmentSection
-              sendMap={this.sendMap}
-              section='inputs'
-            />
+          <Tab eventKey='facility' title={facilityTitle} disabled={!DEV && this.state.submitted}>
+            {this.getFacilityTab()}
+           </Tab>
+          <Tab eventKey='inputs' title={inputsTitle} disabled={!DEV && this.state.submitted}>
+            {this.getInputsTab()}
           </Tab>
           <Tab eventKey='submit' title={submitTitle}>
             {this.getSubmitTab()}

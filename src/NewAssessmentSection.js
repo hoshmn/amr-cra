@@ -349,7 +349,7 @@ class AssessmentSection extends React.Component {
   }
 
   getStartButton() {
-    const { departments, targets, requiresSetup } = sectionsMap[this.props.section];
+    const { requiresSetup } = sectionsMap[this.props.section];
     if (!requiresSetup) {
       return;
     }
