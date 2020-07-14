@@ -18,6 +18,8 @@ const radioNoTag = '_no';
 
 const getTargetId = (target, targetSection) => 
   `target-${targetSection.sectionId}--${target.id}`;
+const getTableCellId = (department, question) => 
+  `cell-${department.id}--${question.id}`;
 
 class AssessmentSection extends React.Component {
   constructor(props) {
@@ -157,15 +159,31 @@ class AssessmentSection extends React.Component {
             <tr key={q.id}>
               <td>{question}</td>
               {this.state.selectedDepts.map(d => {
-                if (subType !== '%') {
-                  console.error('Table only currently implemented for % qs. To add a subtype, change return below.');
-                  return;
+
+                const uid = getTableCellId(d, q);
+                let content;
+                switch (subType) {
+                  case '%':
+                    content = <Form.Control type='number' min={0} id={uid} />;
+                    break;
+
+                  case 'y_n':
+                    content = (
+                      <>
+                        <Form.Check name={uid} type='radio' id={uid} label='yes' />
+                        <Form.Check name={uid} type='radio' id={uid+radioNoTag} label='no' />
+                      </>
+                      )
+                    break;
+                
+                  default:
+                    console.error('Table not implemented for subtype: ' + subType);
+                    return;
                 }
+
                 return (
-                  <td key={d.id+'-'+q.id}>
-                    <Form.Control type='number' min={0}
-                      id={id}
-                    />
+                  <td key={uid}>
+                    {content}
                   </td>
                 )
               })}

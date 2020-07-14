@@ -119,6 +119,7 @@ const inp_sec_1 = {
   id: 'fac_sec_1',
   text: 'Department Documents, Policies & Structures',
   type: 'section',
+  subType: 'table',
   children: [q_1_1, q_1_2, q_1_3, q_1_4]
 };
 
@@ -161,6 +162,7 @@ const inp_sec_2 = {
   id: 'fac_sec_2',
   text: 'Sample Requisition, collection, transport & storage',
   type: 'section',
+  subType: 'table',
   children: [q_2_1, q_2_2, q_2_3, q_2_4, q_2_5]
 };
 const q_3_01 = {
