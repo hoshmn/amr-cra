@@ -87,33 +87,35 @@ const targets = [
   ]},
 ];
 
+// QUESTIONS
+
 const q_1_1 = {
   id: 'q_1_1',
   text: 'Is a copy of the current treatment guidelines available in this department?',
   type: 'q',
   subType: 'y_n',
-  standards: 'F1, U1, B1'
+  standards: 'F1, U1, B1',
 };
 const q_1_2 = {
   id: 'q_1_2',
   text: 'Is there evidence that the ward or department actively monitors test results for patterns suggestive of nosocomial outbreaks or hospital acquired infections?',
   type: 'q',
   subType: 'y_n',
-  standards: 'F17, U19, B30'
+  standards: 'F17, U19, B30',
 };
 const q_1_3 = {
   id: 'q_1_3',
   text: 'Does the ward or department engage the laboratory if there is suggestive of nosocomial outbreaks or hospital acquired infections?',
   type: 'q',
   subType: 'y_n',
-  standards: 'F17, U19, B30'
+  standards: 'F17, U19, B30',
 };
 const q_1_4 = {
   id: 'q_1_4',
   text: 'Do the ward or department clinical staff and laboratory staff regularly meet (at least quarterly) to troubleshoot gaps in laboratory-clinical linkages, including specimen collection, referral, interpretation and reporting?',
   type: 'q',
   subType: 'y_n',
-  standards: 'F17, U19, B30'
+  standards: 'F17, U19, B30',
 };
 const inp_sec_1 = {
   id: 'fac_sec_1',
@@ -122,6 +124,7 @@ const inp_sec_1 = {
   subType: 'table',
   children: [q_1_1, q_1_2, q_1_3, q_1_4]
 };
+
 
 const q_2_1 = {
   id: 'q_2_1',
@@ -165,6 +168,8 @@ const inp_sec_2 = {
   subType: 'table',
   children: [q_2_1, q_2_2, q_2_3, q_2_4, q_2_5]
 };
+
+
 const q_3_01 = {
   id: 'q_3_01',
   text: 'Number of patients with dysentery whose records were reviewed',
@@ -177,7 +182,7 @@ const q_3_02 = {
   text: 'Number of patients reviewed who had faecal culture ordered',
   type: 'q',
   subType: '%',
-  standards: 'F3'
+  standards: 'F3',
 };
 const q_3_03 = {
   id: 'q_3_03',
@@ -284,4 +289,149 @@ const questions = [
   inp_sec_3,
 ];
 
-export { title, instructions, questions, targets, departments }
+
+// RESULTS
+
+const r_1_1 = {
+  text: 'Percentage of departments that should have a copy of the current treatment guidelines',
+  question: q_1_1,
+  target: { sectionId: 'documentation', id: 'guidelines' },
+  standard: 'F1, U1, B1',
+  resources: [],
+  recommendations: [
+    'Distribute treatment guidelines to departments with none currently available'
+  ]
+}
+const r_1_2 = {
+  text: 'Proportion of patients with dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection who had faecal culture ordered',
+  numerator: q_3_02,
+  denominator: q_3_01,
+  target: { sectionId: 'collection-all', id: 'significant' },
+  standard: 'F3',
+  resources: [],
+  recommendations: [
+    '[1] Conduct clinician training on use of faecal culture to diagnose diahorreal disease',
+    '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
+    '[3] Ensure efficient systems for sample collecti""&""on and transport to lab',
+    '[4] Consider official training visits for facilities with <60% compliance',
+    '[5] Consider clinical audits for facilites with <40% compliance',
+  ]
+}
+const r_1_3 = {
+  text: 'Proportion of patients with clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy who had urine culture ordered',
+  question: null,
+  target: { sectionId: 'collection-all', id: 'significant' },
+  standard: 'U3',
+  resources: [],
+  recommendations: [
+    '[1] Conduct clinician training on use of urine culture to diagnose urinary tract infection',
+    '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
+    '[3] Ensure efficient systems for sample collecti""&""on and transport to lab',
+    '[4] Consider official training visits for facilities with <60% compliance',
+    '[5] Consider clinical audits for facilites with <40% compliance',
+  ]
+}
+const r_1_4 = {
+  text: 'Proportion of patients with clinical suspicion of bloodstream infection who had blood culture ordered',
+  question: null,
+  target: { sectionId: 'collection-all', id: 'significant' },
+  standard: 'B3',
+  resources: [],
+  recommendations: [
+    '[1] Conduct clinician training on use of blood culture to diagnose bloodstream infections',
+    '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
+    '[3] Ensure efficient systems for sample collecti""&""on and transport to lab',
+    '[4] Consider official training visits for facilities with <60% compliance',
+    '[5] Consider clinical audits for facilites with <40% compliance',
+  ]
+}
+const inp_r_sec_1 = {
+  text: 'A. Appropriate Diagnostic Test Order (Clinical Facility, by Department)',
+  results: [r_1_1]
+};
+
+
+const r_2_1 = {
+  standard: 'F4',
+  text: 'Proportion of patients for whom informed consent was obtained and documented in the clinical notes before performing faeces culture',
+  numerator: q_3_04,
+  denominator: q_3_03,
+  target: { sectionId: 'collection-all', id: 'informed' },
+  recommendations: [
+    '[1] Remind clinicians of the importance of correct use & documentation of request forms, including informed consent, as incomplete forms will lead to samples being rejected. ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that patient details, including informed consent, are essential for sample processing',
+  ],
+  resources: []
+} 
+const r_2_2 = {
+  standard: 'F5',
+  text: 'Proportion of patients from whom faeces were collected using aseptic technique',
+  numerator: q_3_05,
+  denominator: q_3_03,
+  target: { sectionId: 'collection-all', id: 'aseptic' },
+  recommendations: [
+    '[1] Remind clinicians that samples not collected aseptically, are of doubtful clinical significance. ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that samples not collected aseptically, are of doubtful clinical significance, and a repeat sample must be sent ASAP',
+  ],
+  resources: []
+} 
+const r_2_3 = {
+  standard: 'F6',
+  text: 'Proportion of patients for whom a minimum of 1g of feaces was collected for faeces culture',
+  numerator: q_3_06,
+  denominator: q_3_03,
+  target: { sectionId: 'collection-all', id: 'minimum' },
+  recommendations: [
+    '[1] Remind clinicians that a suffient quantity of faecal mater is required for testing and true representation of the microbes within',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that samples not collected in sufficient quantity may adversly affect the results and may lead to false negatives',
+  ],
+  resources: []
+} 
+const r_2_4 = {
+  standard: 'F7',
+  text: 'Proportion of patients with correctly labelled sample collection containers',
+  numerator: q_3_07,
+  denominator: q_3_03,
+  target: { sectionId: 'collection-all', id: 'labelled' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correctly labelling patient identifiers on sample containers, as incomplete or incorrect details will lead to samples being rejected ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient details on samples are essential for sample processing, those with incomplete patient identifiers must be rejected and if possible a request for a new sample sent',
+  ],
+  resources: []
+} 
+const r_2_5 = {
+  standard: 'F8',
+  text: 'Proportion of patients with completely and accurately completed lab request form',
+  numerator: q_3_08,
+  denominator: q_3_03,
+  target: { sectionId: 'collection-all', id: 'form' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correct documentation of patient and sample details on all request forms, as incomplete or incorrect details will lead to samples being rejected ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient & sample details on request forms are essential for sample processing, those with incomplete patient identifiers or wrong sample details must be rejected and if possible a request for a new sample sent',
+  ],
+  resources: []
+} 
+const r_2_6 = {
+  standard: 'F9',
+  text: 'Proportion of patients with faecal collection documented in clinical notes',
+  numerator: q_3_09,
+  denominator: q_3_03,
+  target: { sectionId: 'collection-all', id: 'informed' },
+  recommendations: [
+    '[1] Remind clinicians on the importance of complete and correct sample notes and clinical history',
+    '[2] All samples must be noted and described for the material they contain on the request form to ensure correct sample processing and pairing of samples with the relevant request form',
+  ],
+  resources: []
+} 
+
+const inp_r_sec_2 = {
+  text: 'A. Appropriate Diagnostic Test Order (Clinical Facility, by Department)',
+  results: [r_2_1, r_2_2, r_2_3, r_2_4, r_2_5, r_2_6]
+};
+
+const results = [
+  inp_r_sec_1,
+  inp_r_sec_2
+]
+
+export { title, instructions, questions, targets, results, departments }
