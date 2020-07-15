@@ -12,7 +12,7 @@ import { getTargetId, getTableCellId } from './helperFunctions';
 
 import _ from 'lodash'
 
-const DEV = false;
+const DEV = true;
 
 // TODO:
 // - feed in correct text for results missed standards, prioritize
