@@ -10,7 +10,7 @@ import { getTableCellId, getTargetId } from './helperFunctions'
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = true;
+const DEV = false;
 
 const radioNoTag = '_no';
 
