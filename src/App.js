@@ -4,7 +4,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AssessmentSection from './NewAssessmentSection';
+import AssessmentSection from './AssessmentSection';
 import Results from './Results';
 import ResultsTable from './ResultsTable';
 import sectionsMap from './sections';
