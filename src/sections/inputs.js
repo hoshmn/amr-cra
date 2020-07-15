@@ -38,7 +38,7 @@ const targets = [
     { id: 'nosocomial', text: "Percentage of departments that engage the laboratory if there is suggestive of nosocomial outbreaks or hospital acquired infections?" },
     { id: 'meet', text: "Percentage of departments that have clinical staff and laboratory staff regularly meet (at least quarterly) to troubleshoot gaps in laboratory-clinical linkages, including specimen collection, referral, interpretation and reporting?" },
   ]},
-  
+
   { sectionId: 'collection-all', sectionName: 'Indicator: Sample Collection (All)', sectionTargets: [
     { id: 'informed', text: "Percentage of patients for whom sample collection and informed consent was obtained and documented in the clinical notes" },
     { id: 'significant', text: "Percentage of patients for whom a clinically significant sample was collected" },
@@ -48,7 +48,7 @@ const targets = [
     { id: 'labelled', text: "Percentage of patients with correctly labelled sample collection containers" },
     { id: 'form', text: "Percentage of patients with completely and accurately completed lab request form" },
   ]},
-  
+
   { sectionId: 'collection-blood', sectionName: 'Indicator: Sample Collection (Blood only)', sectionTargets: [
     { id: 'washed', text: "Percentage of patients for whom clinician taking blood sample washed hands prior to procedure" },
     { id: 'disinfected', text: "Percentage of patients for whom clinician taking blood sample disinfected hands prior to procedure" },
@@ -65,7 +65,7 @@ const targets = [
     { id: 'aerobic', text: "Percentage of patients patients whom had an aerobic blood culture in a resource-limited setting" },
     { id: 'volume', text: "Percentageof patients whom had blood collection where the volume followed the manufacturer's recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children" },
   ]},
-  
+
   { sectionId: 'turnaround', sectionName: 'Indicator: Turnaround time (TAT) of sample sent to lab', sectionTargets: [
     { id: 'faeces', text: "Turnaround time from faeces sample collection to receipt at lab (in hours)" },
     { id: 'urine', text: "Turnaround time from urine sample collection to receipt at lab  (in hours)" },
@@ -75,7 +75,7 @@ const targets = [
     { id: 'store', text: "Percentage of clinical staff that are aware of how to store a sample if there is a delay in transporting it to the lab" },
     { id: 'fridge', text: "Percentage of departments that have a designated fridge for storage of samples" },
   ]},
-  
+
   { sectionId: 'result-use', sectionName: 'Indicator: Use Test Result', sectionTargets: [
     { id: 'folder', text: "Percentage of patients whose records were reviewed where there is evidence that laboratory test results are placed in the patient folder" },
     { id: 'communicated', text: "Percentage of patients that critical call out test results from the lab were communicated promptly to the clinician/wards and documented" },
@@ -288,126 +288,126 @@ const q_4_1 = {
   type: 'q',
   subType: '%',
   standards: 'U3',
-  text: 'Number of patients with urinary tract infection whose records were reviewed' 
+  text: 'Number of patients with urinary tract infection whose records were reviewed'
 };
 const q_4_2 = {
   id: 'q_4_2',
   type: 'q',
   subType: '%',
   standards: 'U3',
-  text: 'Number of patients reviewed who had urine culture ordered ' 
+  text: 'Number of patients reviewed who had urine culture ordered '
 };
 const q_4_3 = {
   id: 'q_4_3',
   type: 'q',
   subType: '%',
   standards: 'U5-11',
-  text: 'Number of patients for whom urine sample collection procedure was witnessed' 
+  text: 'Number of patients for whom urine sample collection procedure was witnessed'
 };
 const q_4_4 = {
   id: 'q_4_4',
   type: 'q',
   subType: '%',
   standards: 'U4',
-  text: 'Number of patients for whom informed consent was obtained and documented in the clinical notes before performing urine culture' 
+  text: 'Number of patients for whom informed consent was obtained and documented in the clinical notes before performing urine culture'
 };
 const q_4_5 = {
   id: 'q_4_5',
   type: 'q',
   subType: '%',
   standards: 'U5',
-  text: 'Number of patients for whom urine was collected before administration of antibiotics' 
+  text: 'Number of patients for whom urine was collected before administration of antibiotics'
 };
 const q_4_6 = {
   id: 'q_4_6',
   type: 'q',
   subType: '%',
   standards: 'U6',
-  text: 'Number of patients advised by clinical staff on the correct procedure for mid-stream urine collection ' 
+  text: 'Number of patients advised by clinical staff on the correct procedure for mid-stream urine collection '
 };
 const q_4_7 = {
   id: 'q_4_7',
   type: 'q',
   subType: '%',
   standards: 'U7',
-  text: 'Number of patients reviewed for whom suprapubic urine samples were collected for culture' 
+  text: 'Number of patients reviewed for whom suprapubic urine samples were collected for culture'
 };
 const q_4_8 = {
   id: 'q_4_8',
   type: 'q',
   subType: '%',
   standards: 'U7',
-  text: 'Number of patients from whom suprapubic urine samples were collected using aseptic technique' 
+  text: 'Number of patients from whom suprapubic urine samples were collected using aseptic technique'
 };
 const q_4_9 = {
   id: 'q_4_9',
   type: 'q',
   subType: '%',
   standards: 'U8',
-  text: 'Number of patients for whom a minimum of 3ml of urine was collected for culture' 
+  text: 'Number of patients for whom a minimum of 3ml of urine was collected for culture'
 };
 const q_4_10 = {
   id: 'q_4_10',
   type: 'q',
   subType: '%',
   standards: 'U9',
-  text: 'Number of patients for whom urine collection containers are correctly labelled including at least: patient identifiers, site, date and time of collection' 
+  text: 'Number of patients for whom urine collection containers are correctly labelled including at least: patient identifiers, site, date and time of collection'
 };
 const q_4_11 = {
   id: 'q_4_11',
   type: 'q',
   subType: '%',
   standards: 'U10',
-  text: 'Number of patients for whom the lab request form was filled out completely and accurately, including at least: patient identifiers, site, date and time of collection, clinical information regarding suspected diagnosis, and contact details of requesting doctor' 
+  text: 'Number of patients for whom the lab request form was filled out completely and accurately, including at least: patient identifiers, site, date and time of collection, clinical information regarding suspected diagnosis, and contact details of requesting doctor'
 };
 const q_4_12 = {
   id: 'q_4_12',
   type: 'q',
   subType: '%',
   standards: 'U11',
-  text: 'Number of patients for whom urine collection is documented in the clinical notes' 
+  text: 'Number of patients for whom urine collection is documented in the clinical notes'
 };
 const q_4_13 = {
   id: 'q_4_13',
   type: 'q',
   subType: '%',
   standards: 'U16/U18',
-  text: 'Number of patients for urine culture whose records were reviewed ' 
+  text: 'Number of patients for urine culture whose records were reviewed '
 };
 const q_4_14 = {
   id: 'q_4_14',
   type: 'q',
   subType: '%',
   standards: 'U16',
-  text: 'Number of patients for urine culture whose records were reviewed where there is evidence that laboratory test results are placed in the patient folder' 
+  text: 'Number of patients for urine culture whose records were reviewed where there is evidence that laboratory test results are placed in the patient folder'
 };
 const q_4_15 = {
   id: 'q_4_15',
   type: 'q',
   subType: '%',
   standards: 'U16',
-  text: 'Number of patients for urine that critical call outs regarding patients test results received from lab are promptly communicated to the clinician/wards and documented' 
+  text: 'Number of patients for urine that critical call outs regarding patients test results received from lab are promptly communicated to the clinician/wards and documented'
 };
 const q_4_16 = {
   id: 'q_4_16',
   type: 'q',
   subType: '%',
   standards: 'U18',
-  text: 'Number of patients for urine culture whose records were reviewed there is evidence that antibiotic treatment is revised based on the laboratory AST result' 
+  text: 'Number of patients for urine culture whose records were reviewed there is evidence that antibiotic treatment is revised based on the laboratory AST result'
 };
 const q_4_17 = {
   id: 'q_4_17',
   type: 'q',
   subType: '%',
   standards: 'U18',
-  text: 'Number of patients for urine culture whose records were reviewed and there is evidence that antibiotic treatment followed the clinical site prescriber guidelines for common medical conditions' 
+  text: 'Number of patients for urine culture whose records were reviewed and there is evidence that antibiotic treatment followed the clinical site prescriber guidelines for common medical conditions'
 };
 const q_4_18 = {
   id: 'q_4_18',
   type: 'q',
   subType: '%',
   standards: 'U18',
-  text: 'Number of patients for urine culture whose records were reviewed and there is evidence that antibiotic treatment is consistent with medices formulary ' 
+  text: 'Number of patients for urine culture whose records were reviewed and there is evidence that antibiotic treatment is consistent with medices formulary '
 };
 
 const inp_sec_4 = {
@@ -707,7 +707,7 @@ const r_2_1 = {
     '[2] Stipulate that a "Reply" line should be included on clinical reports that patient details, including informed consent, are essential for sample processing',
   ],
   resources: []
-} 
+}
 const r_2_2 = {
   standards: 'F5',
   text: 'Proportion of patients from whom faeces were collected using aseptic technique',
@@ -719,7 +719,7 @@ const r_2_2 = {
     '[2] Stipulate that a "Reply" line should be included on clinical reports that samples not collected aseptically, are of doubtful clinical significance, and a repeat sample must be sent ASAP',
   ],
   resources: []
-} 
+}
 const r_2_3 = {
   standards: 'F6',
   text: 'Proportion of patients for whom a minimum of 1g of feaces was collected for faeces culture',
@@ -731,7 +731,7 @@ const r_2_3 = {
     '[2] Stipulate that a "Reply" line should be included on clinical reports that samples not collected in sufficient quantity may adversly affect the results and may lead to false negatives',
   ],
   resources: []
-} 
+}
 const r_2_4 = {
   standards: 'F7',
   text: 'Proportion of patients with correctly labelled sample collection containers',
@@ -743,7 +743,7 @@ const r_2_4 = {
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient details on samples are essential for sample processing, those with incomplete patient identifiers must be rejected and if possible a request for a new sample sent',
   ],
   resources: []
-} 
+}
 const r_2_5 = {
   standards: 'F8',
   text: 'Proportion of patients with completely and accurately completed lab request form',
@@ -755,7 +755,7 @@ const r_2_5 = {
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient & sample details on request forms are essential for sample processing, those with incomplete patient identifiers or wrong sample details must be rejected and if possible a request for a new sample sent',
   ],
   resources: []
-} 
+}
 const r_2_6 = {
   standards: 'F9',
   text: 'Proportion of patients with faecal collection documented in clinical notes',
@@ -767,16 +767,127 @@ const r_2_6 = {
     '[2] All samples must be noted and described for the material they contain on the request form to ensure correct sample processing and pairing of samples with the relevant request form',
   ],
   resources: []
-} 
+}
 
 const inp_r_sec_2 = {
   text: 'B1. Sample Collection: Faeces',
   results: [r_2_1, r_2_2, r_2_3, r_2_4, r_2_5, r_2_6]
 };
 
+const r_3_1 = {
+  standards: 'U4',
+  text: 'Proportion of patients for whom informed consent was obtained and documented in the clinical notes before performing urine culture',
+  numerator: q_4_4,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'informed' },
+  recommendations: [
+    '[1] Remind clinicians of the importance of correct use & documentation of request forms, including informed consent, as incomplete forms will lead to samples being rejected. ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that patient details, including informed consent, are essential for sample processing'
+  ]
+};
+const r_3_2 = {
+  standards: 'U5',
+  text: 'Proportion of patients with urine collected for culture prior to administration of antibiotics',
+  numerator: q_4_5,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'antibiotics' },
+  recommendations: [
+    '[1] Please note that best practice states that urine sample should be sent prior to prescribing of antibiotics',
+    '[2] Samples where patients have already taken antibiotics must have this noted, as well as which antibiotic was taken, as antibiotic use can lead to false negatives and will require staff to have knowledge in order to interpret results correctly',
+    '[3] Stipulate that a "Report" line is included in all clinical reports, that antibiotic use prior to urine sampling, must be noted'
+]
+};
+const r_3_3 = {
+  standards: 'U6',
+  text: 'Proportion of patients advised by clinical staff on the correct procedure for mid-stream urine collection ',
+  numerator: q_4_6,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'aseptic' },
+  recommendations: [
+    '[1] Remind clinicians on the importance of correct urinary sample collection, in order to prevent contamination with commensals ',
+    '[2] Provide training resources for clinicans',
+    '[3] Provide "How to" poster for doctors toilet walls, informing patients to evacuate the first part of urine, clean and then collect a mid-stream sample',
+    '[4] Make sure each surgery has adequate provisions for patients to clean themselves when collecting a sample'
+  ]
+};
+const r_3_4 = {
+  standards: 'U7',
+  text: 'Proportion of patients reviewed for whom suprapubic urine samples were collected for culture',
+  numerator: q_4_7,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'aseptic' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correct sample collection, to prevent contamination',
+    '[2] Train clinicians on the correct indications for when a suprapubic sample is required '
+  ]
+};
+const r_3_5 = {
+  standards: 'U8',
+  text: 'Proportion of patients from whom suprapubic urine was collected using aseptic technique',
+  numerator: q_4_8,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'aseptic' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correct sample collection, to prevent contamination',
+    '[2] Train clinicians on the correct indications for when a suprapubic sample is required '
+  ]
+};
+const r_3_6 = {
+  standards: 'U9',
+  text: 'Proportion of patients for whom a minimum of 3ml urine was collected for culture',
+  numerator: q_4_9,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'minimum' },
+  recommendations: [
+    '[1] Remind clinicians of the importance of having sufficient sample to test',
+    '[2] Provide training for clinicians to make sure they ask patients to have drunk enough water, and wait a minimum 30m to 1h before giving a sample'
+  ]
+};
+const r_3_7 = {
+  standards: 'U10',
+  text: 'Proportion of patients with correctly labelled sample collection containers',
+  numerator: q_4_10,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'labelled' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correctly labelling patient identifiers on sample containers, as incomplete or incorrect details will lead to samples being rejected ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient details on samples are essential for sample processing, those with incomplete patient identifiers must be rejected and if possible a request for a new sample sent'
+  ]
+};
+const r_3_8 = {
+  standards: 'U11',
+  text: 'Proportion of patients with completely and accurately completed lab request form',
+  numerator: q_4_11,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'form' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correct documentation of patient and sample details on all request forms, as incomplete or incorrect details will lead to samples being rejected ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient & sample details on request forms are essential for sample processing, those with incomplete patient identifiers or wrong sample details must be rejected and if possible a request for a new sample sent'
+  ]
+};
+const r_3_9 = {
+  standards: 'U12',
+  text: 'Proportion of patient with urine collection documented in clinical notes',
+  numerator: q_4_12,
+  denominator: q_4_3,
+  target: { sectionId: 'collection-all', id: 'informed' },
+  recommendations: [
+    '[1] Remind clinicians on the importance of complete and correct sample notes and clinical history ',
+    '[2] All samples must be noted and described for the material they contain on the request form to ensure correct sample processing and pairing of samples with the relevant request form'
+  ]
+};
+
+
+const inp_r_sec_3 = {
+  text: 'B2. Sample Collection: Urine',
+  results: [r_3_1, r_3_2, r_3_3, r_3_4, r_3_5, r_3_6, r_3_7, r_3_8, r_3_9]
+};
+
 const results = [
   inp_r_sec_1,
-  inp_r_sec_2
+  inp_r_sec_2,
+  inp_r_sec_3,
+  // inp_r_sec_4
 ]
 
 export { title, instructions, questions, targets, results, departments }
