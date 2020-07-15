@@ -655,7 +655,7 @@ const r_1_2 = {
   recommendations: [
     '[1] Conduct clinician training on use of faecal culture to diagnose diahorreal disease',
     '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
-    '[3] Ensure efficient systems for sample collecti""&""on and transport to lab',
+    '[3] Ensure efficient systems for sample collection and transport to lab',
     '[4] Consider official training visits for facilities with <60% compliance',
     '[5] Consider clinical audits for facilites with <40% compliance',
   ]
@@ -670,7 +670,7 @@ const r_1_3 = {
   recommendations: [
     '[1] Conduct clinician training on use of urine culture to diagnose urinary tract infection',
     '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
-    '[3] Ensure efficient systems for sample collecti""&""on and transport to lab',
+    '[3] Ensure efficient systems for sample collection and transport to lab',
     '[4] Consider official training visits for facilities with <60% compliance',
     '[5] Consider clinical audits for facilites with <40% compliance',
   ]
@@ -685,7 +685,7 @@ const r_1_4 = {
   recommendations: [
     '[1] Conduct clinician training on use of blood culture to diagnose bloodstream infections',
     '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
-    '[3] Ensure efficient systems for sample collecti""&""on and transport to lab',
+    '[3] Ensure efficient systems for sample collection and transport to lab',
     '[4] Consider official training visits for facilities with <60% compliance',
     '[5] Consider clinical audits for facilites with <40% compliance',
   ]
@@ -877,17 +877,258 @@ const r_3_9 = {
   ]
 };
 
-
 const inp_r_sec_3 = {
   text: 'B2. Sample Collection: Urine',
   results: [r_3_1, r_3_2, r_3_3, r_3_4, r_3_5, r_3_6, r_3_7, r_3_8, r_3_9]
+};
+
+
+const r_4_1 = {
+  standards: 'B4',
+  text: 'Proportion of patients for whom informed consent was obtained and documented in the clinical notes before taking blood for culture',
+  numerator: q_5_4,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-all', id: 'informed' },
+  recommendations: [
+    '[1] Remind clinicians of the importance of correct use & documentation of request forms, including informed consent, as incomplete forms will lead to samples being rejected. ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that patient details, including informed consent, are essential for sample processing',
+  ]
+
+};
+const r_4_2 = {
+  standards: 'B5',
+  text: 'Proportion of patients for whom blood for culture was taken prior to administration of antibiotics',
+  numerator: q_5_5,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-all', id: 'antibiotics' },
+  recommendations: [
+    '[1] Please note that best practice states that blood samples should be sent prior to prescribing of antibiotics',
+    '[2] Samples where patients have already taken antibiotics must have this noted, as well as which antibiotic was taken, as antibiotic use can lead to false negatives and will require staff to have knowledge in order to interpret results correctly',
+    '[3] Stipulate that a "Report" line is included in all clinical reports, that antibiotic use prior to blood sampling, must be noted',
+  ]
+
+};
+const r_4_3 = {
+  standards: 'B6',
+  text: 'Proportion of patients for whom clinician taking blood sample washed hands prior to procedure',
+  numerator: q_5_6,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'washed' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
+    '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples',
+    '[3] Ensure clinicians have sufficient access to wash stations, disinfection material & gloves',
+  ]
+
+};
+const r_4_4 = {
+  standards: 'B7',
+  text: 'Proportion of patients for whom clinician taking blood sample disinfected hands prior to procedure',
+  numerator: q_5_7,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'disinfected' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
+    '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples',
+    '[3] Ensure clinicians have sufficient access to wash stations, disinfection material & gloves',
+  ]
+
+};
+const r_4_5 = {
+  standards: 'B8',
+  text: 'Proportion of patients for whom clinician taking blood sample used sterile gloves for procedure',
+  numerator: q_5_8,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'sterile' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
+    '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples',
+    '[3] Ensure clinicians have sufficient access to wash stations, disinfection material & gloves',
+  ]
+
+};
+const r_4_6 = {
+  standards: 'B9',
+  text: 'Proportion of patients from whom blood was drawn from peripheral sites for blood culture',
+  numerator: q_5_9,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'peripheral' },
+  recommendations: [
+    '[1] Ensure there is sufficient training for clinicians on the correct procedures and sites for blood sampling',
+  ]
+
+};
+const r_4_7 = {
+  standards: 'B10',
+  text: 'Proportion of patients for whom blood cultures were drawn from separate venipuncture sites',
+  numerator: q_5_10,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'venipuncture' },
+  recommendations: [
+    '[1] Ensure there is sufficient training for clinicians on the correct procedures and sites for blood sampling',
+  ]
+
+};
+const r_4_8 = {
+  standards: 'B11',
+  text: 'Proportion of patients for whom puncture site was cleaned using appropriate disinfectant',
+  numerator: q_5_11,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'cleaned' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
+    '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples ',
+    '[3] Ensure clinicians have sufficient access to disinfection materials and alcohol swabs',
+    '[4] Conduct onsite training if samples are repeatedly contaminated',
+  ]
+
+};
+const r_4_9 = {
+  standards: 'B12',
+  text: 'Proportion of patients for whom puncture site was disinfected allowed time to dry before inserting needle',
+  numerator: q_5_12,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'site-dry' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
+    '[2] Ensure clinicians understand the correct method for decontaminating a blood sampling site, including letting the disinfection dry off before use',
+    '[3] Conduct onsite training if samples are repeatedly contaminated',
+  ]
+
+};
+const r_4_10 = {
+  standards: 'B13',
+  text: 'Proportion of patients for whom the blood culture bottle tops were disinfected prior to inoculation',
+  numerator: q_5_13,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'tops-disinfected' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination, including alcohol cleaning of bottle tops before introducing blood sample',
+    '[2] Ensure clinicians understand the correct method for decontaminating a blood bottles - conduct onsite training if samples are repeatedly contaminated',
+  ]
+
+};
+const r_4_11 = {
+  standards: 'B14',
+  text: 'Proportion of patients for whom the blood culture bottle tops allowed to dry prior to inoculation',
+  numerator: q_5_14,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'tops-dry' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting introducing blood samples to avoid cross contamination',
+    '[2] Ensure clinicians understand the correct method for decontaminating a blood bottle, including letting the disinfection dry off before use',
+    '[3] Conduct onsite training if samples are repeatedly contaminated',
+  ]
+
+};
+const r_4_12 = {
+  standards: 'B15',
+  text: 'Proportion of patients whom needles were not exchanged between blood culture collection and inoculation of blood culture bottles',
+  numerator: q_5_15,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'needles' },
+  recommendations: [
+    '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
+    '[2] Ensure clinicians understand the significance of sterile single use needles for blood collection',
+    '[3] Ensure a sufficient supply of single use sterile needles and equipment',
+    '[4] Conduct onsite training if samples are repeatedly contaminated',
+  ]
+
+};
+const r_4_13 = {
+  standards: 'B16',
+  text: 'Proportion of patients whom had blood culture bottles inoculated first, if blood is collected for other tests',
+  numerator: q_5_16,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'first' },
+  recommendations: [
+    '[1] Ensure clinicians understand the significance of introducing blood into culture bottles first to avoid chemical cross contamination with other tests. ',
+    '[2] Provide clinicians with charts, to show the order in which to inoculate bottles',
+    '[3] Conduct onsite training if samples are repeatedly spoiled',
+  ]
+
+};
+const r_4_14 = {
+  standards: 'B17',
+  text: 'Proportion of patients whom had a minimum of 2 and maximum of 3 blood cultures drawn within 24 hours',
+  numerator: q_5_17,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'drawn' },
+  recommendations: [
+    '[1] Ensure training for clinicians to understand the reasons why 2-3 bottles are required within a 24h period',
+  ]
+
+};
+const r_4_15 = {
+  standards: 'B18',
+  text: 'Proportion of patients patients whom had an aerobic blood culture in a resource-limited setting',
+  numerator: q_5_18,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'aerobic' },
+  recommendations: [
+    '[1] Ensure clinicians understand the significance of collecting an aerobic bottle of blood over an anaerobic one - Paediatric patients rarely have anaerobes, therefore prioritise aerobic bottles',
+    '[2] Send clinicians reminders that aerobic bacteria predominate in adult blood infections too, if a choice is necessary, choose to use aerobic',
+  ]
+
+};
+const r_4_16 = {
+  standards: 'B19',
+  text: 'Proportion of patients whom had blood collection where the volume followed the manufacturer\'s recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children',
+  numerator: q_5_19,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-blood', id: 'volume' },
+  recommendations: [
+    '[1] Ensure clinicians understand the significance of adequate blood volumes required for reliable blood cultures. Less than the recommended volume will most likely lead to a false negative',
+    '[2] Conduct onsite training for sites where blood isn\'t routinely collected at sufficient quantities',
+  ]
+
+};
+const r_4_17 = {
+  standards: 'B20',
+  text: 'Proportion of patients with correctly labelled blood culture bottles',
+  numerator: q_5_20,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-all', id: 'labelled' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correctly labelling patient identifiers on sample containers, as incomplete or incorrect details will lead to samples being rejected ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient details on samples are essential for sample processing, those with incomplete patient identifiers must be rejected and if possible a request for a new sample sent',
+  ]
+
+};
+const r_4_18 = {
+  standards: 'B21',
+  text: 'Proportion of patients with completely and accurately completed lab request form',
+  numerator: q_5_21,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-all', id: 'form' },
+  recommendations: [
+    '[1] Remind clinicians of the significance of correct documentation of patient and sample details on all request forms, as incomplete or incorrect details will lead to samples being rejected ',
+    '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient & sample details on request forms are essential for sample processing, those with incomplete patient identifiers or wrong sample details must be rejected and if possible a request for a new sample sent',
+  ]
+
+};
+const r_4_19 = {
+  standards: 'B22',
+  text: 'Proportion of patient with blood collection documented in clinical notes',
+  numerator: q_5_22,
+  denominator: q_5_3,
+  target: { sectionId: 'collection-all', id: 'informed' },
+  recommendations: [
+    '[1] Remind clinicians on the importance of complete and correct sample notes and clinical history',
+    '[2] All samples must be noted and described for the material they contain on the request form to ensure correct sample processing and pairing of samples with the relevant request form',
+  ]
+
+};
+const inp_r_sec_4 = {
+  text: 'B3. Sample Collection: Blood',
+  results: [r_4_1, r_4_2, r_4_3, r_4_4, r_4_5, r_4_6, r_4_7, r_4_8, r_4_9, r_4_10, r_4_11, r_4_12, r_4_13, r_4_14, r_4_15, r_4_16, r_4_17, r_4_18, r_4_19]
 };
 
 const results = [
   inp_r_sec_1,
   inp_r_sec_2,
   inp_r_sec_3,
-  // inp_r_sec_4
+  inp_r_sec_4
 ]
 
 export { title, instructions, questions, targets, results, departments }
