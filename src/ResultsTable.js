@@ -1,15 +1,22 @@
 import React from 'react';
 import sectionsMap from './sections';
+import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 
 
 import _ from 'lodash';
 
-const NEAR_THRESHHOLD = .8;
+// const NEAR_THRESHHOLD = .8;
 
 class ResultsTable extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      nearThreshhold: 90,
+    };
+
+    this.updateThreshhold = this.updateThreshhold.bind(this);
   }
 
   getSectionTable(rSection) {
@@ -63,11 +70,13 @@ class ResultsTable extends React.Component {
     let perfClass = '';
     let content = null;
 
+    const nearCutoff = (targetValue * this.state.nearThreshhold/100);
+
     if (isPerc || dep === 'total') {
       content = Math.round(responseValue) + '%';
       if (responseValue >= targetValue) {
         perfClass = 'ahead ';
-      } else if (responseValue > (targetValue * NEAR_THRESHHOLD)) {
+      } else if (responseValue > nearCutoff) {
         perfClass = 'near ';
       } else {
         perfClass = 'behind ';
@@ -87,15 +96,43 @@ class ResultsTable extends React.Component {
     return <td className={classes} key={dep}>{content}</td>
   }
 
+  updateThreshhold(e) {
+    this.setState({ nearThreshhold: e.target.value });
+  }
+  getLegend() {
+    const threshhold = <span className='threshhold'>{this.state.nearThreshhold}%</span>;
+    return (
+      <div className='legend'>
+        <h4 className='text-center mb-2'>Legend</h4>
+        <h5><span className='example ahead'></span>Meets Target</h5>
+        <h5><span className='example near'></span>Near Target<strong>*</strong></h5>
+        <h5><span className='example behind'></span>Behind Target</h5>
+        <Form.Group >
+          <Form.Label>
+            <strong>*</strong>indicates that the value is at least {threshhold} of the target value
+          </Form.Label>
+          <Form.Control type="range" custom
+            onChange={this.updateThreshhold}
+            defaultValue={this.state.nearThreshhold}
+            min={1}
+            max={99}
+          />
+          <em>(drag slider to adjust)</em>
+        </Form.Group>
+      </div>
+    )
+  }
+
   render() {
 
     return (
       <div className='results-table'>
+        {this.getLegend()}
         {this.props.resultSections.map(rSection => {
 
           return (
             <div>
-              <h4 className='mt-2'>{rSection.text}</h4>
+              <h4 className='mt-3'>{rSection.text}</h4>
               {this.getSectionTable(rSection)}
             </div>
           )

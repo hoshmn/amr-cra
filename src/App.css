@@ -156,17 +156,50 @@ input.target ~ label {
   line-height: 36px;
 }
 
-.response-value.ahead {
+.response-value.ahead, .legend .example.ahead {
   background-color: #a8d08d;
 }
-.response-value.near {
+.response-value.near, .legend .example.near {
   background-color: #ffe598;
 }
-.response-value.behind {
+.response-value.behind, .legend .example.behind {
   background-color: #f4b083;
 }
 .response-value.total {
   font-weight: bolder;
+}
+
+.legend .example {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.legend {
+  max-width: 272px;
+  padding: 40px;
+  /* margin: 20px; */
+  border: 1px solid;
+}
+.legend h4 {
+  text-decoration: underline;
+}
+.legend h5 {
+  font-weight: lighter;
+}
+.legend label {
+  font-size: 14px;
+}
+.legend .threshhold {
+  font-weight: bold;
+  color: #007bff;
+}
+.legend em {
+  font-size: 12px;
+  text-align: center;
+  display: block;
+  margin-top: -10px;
 }
 
 /* UNIVERSAL TABLE STYLES */
