@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f5395b2f956987be9f0d9968e0d672a9",
+    "revision": "30e5076a799649550815c3b3665f6f50",
     "url": "/amr-cra/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/amr-cra/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "0e7b28c73026bc04a0ba",
+    "revision": "535e9a1ed62db6617e78",
     "url": "/amr-cra/static/css/main.bf69bdab.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/amr-cra/static/js/2.535e744a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0e7b28c73026bc04a0ba",
-    "url": "/amr-cra/static/js/main.ed7382c8.chunk.js"
+    "revision": "535e9a1ed62db6617e78",
+    "url": "/amr-cra/static/js/main.183636c3.chunk.js"
   },
   {
     "revision": "d7895946fd6db3846ae9",
