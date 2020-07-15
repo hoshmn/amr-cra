@@ -2,6 +2,7 @@ import React from 'react';
 import sectionsMap from './sections';
 import Table from 'react-bootstrap/Table';
 
+
 import _ from 'lodash';
 
 const NEAR_THRESHHOLD = .8;
@@ -56,18 +57,34 @@ class ResultsTable extends React.Component {
   }
 
   getResponseCell(responseValue, result, dep) {
+    const isPerc = result.numerator;
+
     const { targetValue } = result;
     let perfClass = '';
-    if (responseValue > targetValue) {
-      perfClass = 'ahead ';
-    } else if (responseValue > (targetValue * NEAR_THRESHHOLD)) {
-      perfClass = 'near ';
+    let content = null;
+
+    if (isPerc || dep === 'total') {
+      content = Math.round(responseValue) + '%';
+      if (responseValue >= targetValue) {
+        perfClass = 'ahead ';
+      } else if (responseValue > (targetValue * NEAR_THRESHHOLD)) {
+        perfClass = 'near ';
+      } else {
+        perfClass = 'behind ';
+      }
     } else {
-      perfClass = 'behind ';
+
+      content = !!responseValue ? 'Yes' : 'No';
+      if (!!responseValue) {
+        perfClass = 'ahead ';
+      } else {
+        perfClass = 'behind ';
+      }
     }
+
     const classes = 'response-value ' + perfClass + dep;
 
-    return <td className={classes} key={dep}>{Math.round(responseValue)+'%'}</td>
+    return <td className={classes} key={dep}>{content}</td>
   }
 
   render() {
