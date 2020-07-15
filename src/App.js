@@ -12,7 +12,7 @@ import { getTargetId, getTableCellId } from './helperFunctions';
 
 import _ from 'lodash'
 
-const DEV = true;
+const DEV = false;
 
 // TODO:
 // - feed in correct text for results missed standards, prioritize
@@ -34,7 +34,6 @@ class App extends React.Component {
 
   sendMap(section, sectionObj) {
     this[section] = sectionObj;
-    console.log(section, sectionObj)
   }
 
   submit() {
@@ -67,15 +66,12 @@ class App extends React.Component {
         } else if (q.subType === '%') {
           const el = document.querySelector(`#${uid}`);
           let val = el ? Number(el.value) : null;
-          console.log(el)
-          console.log(val)
           q.responses[d.id] = val;
           TOTAL += val||0;
         }
       });
       // q.responses.TOTAL = TOTAL;
     })
-    console.log(inputSectionObj);
 
     inputResultSections.forEach(rSect => {
       rSect.results.forEach(r => {
@@ -88,7 +84,6 @@ class App extends React.Component {
         // r.responseData = {};
 
         if (question) {
-          console.log('rq: ', r.question);
 
           r.responseData = r.question.responses;
           let answered = 0;
@@ -105,7 +100,6 @@ class App extends React.Component {
           r.actualPerc = !answered ? '?' : (yeses/answered) * 100;
 
         } else if (numerator && denominator) { // it's a % type result
-          console.log('rn: ', r.numerator, ' rd: ', r.denominator);
 
           r.responseData = {};
           let totalNum = 0;
@@ -114,7 +108,7 @@ class App extends React.Component {
             let perc = null;
             const denomV = _.get(r, ['denominator', 'responses', dept]);
             if (_.isNil(numV) || _.isNil(denomV)) {
-              console.log('Empty num or denom val');
+              console.warn('Empty num or denom val');
               // _.set(r.responseData, dept, '?');
               perc = '?';
             } else {
@@ -172,9 +166,13 @@ class App extends React.Component {
   }
 
   getSubmitTab() {
+    const submittedMessage = !this.state.submitted ? null :
+      <div>Assessment sumbitted. See section tabs for results.</div>;
     return (
       <div>
         <div className='warnings text-danger'>{this.state.warnings.join('\n')}</div>
+        {submittedMessage}
+
         <Button
           disabled={this.state.submitted}
           onClick={this.submit} 
@@ -195,10 +193,12 @@ class App extends React.Component {
       inputsTitle += ' [RESULTS]';
     }
 
+    const defaultActiveKey = DEV ? 'submit' : 'facility';
+
     return (
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
-        <Tabs defaultActiveKey='submit'>
+        <Tabs defaultActiveKey={defaultActiveKey}>
           <Tab eventKey='facility' title={facilityTitle}>
             {this.getFacilityTab()}
            </Tab>

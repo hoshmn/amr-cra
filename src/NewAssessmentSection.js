@@ -10,7 +10,7 @@ import { getTableCellId, getTargetId } from './helperFunctions'
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = true;
+const DEV = false;
 
 const radioNoTag = '_no';
 
@@ -43,7 +43,7 @@ class AssessmentSection extends React.Component {
 
       if (DEV && requiresSetup) {
         const { targets } = sectionsMap[this.props.section];
-        console.log('!!!', targets);
+
         targets.forEach(tSection => 
           tSection.sectionTargets.forEach(t => {
             _.set(targetData, [tSection.sectionId, t.id], 100);
@@ -74,7 +74,7 @@ class AssessmentSection extends React.Component {
     return (
       <div className='instructions'>
         <h3>{title}</h3>
-        {instructions.map((sect, i) =><span className='instruction' key={i}>{sect}</span>)}
+        {instructions.map((sect, i) =><span className='instruction' key={'inst-'+i}>{sect}</span>)}
         {!DEV && !this.state.begun && this.getDeptSelection()}
         {!DEV && !this.state.begun && this.getTargetSetting()}
         {!DEV && !this.state.begun && this.getStartButton()}
@@ -95,7 +95,7 @@ class AssessmentSection extends React.Component {
       case 'q':
         const { id, subType, expectedValue = true } = el;
         this.qs.push(el);
-        // expectedOutput[id] = expectedValue;
+
         if (subType === 'box') {
           return this.getQuestionBox(el);
         } else if (subType === 'y_n') {
@@ -104,16 +104,8 @@ class AssessmentSection extends React.Component {
           return this.getQuestionPerc(el);
         }
     
-      // case 'section':
-      //   return this.getSection(el);
-    
-      // case 'section':
-      //   return this.getSection(el);
-    
-      // case 'section':
-      //   return this.getSection(el);
-    
       default:
+        console.error('Unknown element type: ', el);
         break;
     }
   }
@@ -127,7 +119,7 @@ class AssessmentSection extends React.Component {
       content = _.map(children, this.processElement);
     }
     return (
-      <Card key={id}>
+      <Card key={'sect-'+id}>
         <Card.Header>
             <Accordion.Toggle as={Button} variant='link' eventKey={id}>
               {dataSource + ' ' + text}  
@@ -144,26 +136,26 @@ class AssessmentSection extends React.Component {
   }
 
   getQTable(children) {
-    // console.log('hit')
+
     return (
       <Table striped bordered responsive>
       <thead>
         <tr>
           <th></th>
           {this.state.selectedDepts.map(d => {
-            return <th key={d.name}>{d.name}</th>
+            return <th key={'th-'+d.name}>{d.name}</th>
           })}
         </tr>
       </thead>
       <tbody>
-        {children.map(q => {
+        {children.map((q, i) => {
           this.qs.push(q);
           const { id, text, tags, standards, subType } = q;
           const question = ( // TODO: KEY
             <>
               {!!tags && !!tags.length &&
                 <span className='specimen-tags'>
-                  {tags.map(t => <i key={t} className={t} />)}
+                  {tags.map(t => <i key={'tag-'+q.id+'-'+t} className={t} />)}
                 </span>
               }
               <span className='response-text'>{text}</span>
@@ -172,7 +164,7 @@ class AssessmentSection extends React.Component {
           )
 
           return (
-            <tr key={q.id}>
+            <tr key={'tr-'+i+'-'+q.id}>
               <td>{question}</td>
               {this.state.selectedDepts.map(d => {
 
@@ -236,7 +228,7 @@ class AssessmentSection extends React.Component {
       <>
         {!!tags && !!tags.length &&
           <span className='specimen-tags'>
-            {tags.map(t => <i key={t} className={t} />)}
+            {tags.map(t => <i key={'tag-'+id+'-'+t} className={t} />)}
           </span>
         }
         <span className='response-text'>{text}</span>
@@ -259,7 +251,7 @@ class AssessmentSection extends React.Component {
       <>
         {!!tags && !!tags.length &&
           <span className='specimen-tags'>
-            {tags.map(t => <i key={t} className={t} />)}
+            {tags.map(t => <i key={'tag-'+id+'-'+t} className={t} />)}
           </span>
         }
         <span className='response-text'>{text}</span>
@@ -268,13 +260,13 @@ class AssessmentSection extends React.Component {
     )
     return (
       <>
-      <Form.Control 
-        id={id}
-        key={id}
-        // label={label}
-        type='number' min={0} max={100}
-      />
-      {label}
+        <Form.Control 
+          id={id}
+          key={id}
+          // label={label}
+          type='number' min={0} max={100}
+        />
+        {label}
       </>
     )
   }
@@ -303,7 +295,7 @@ class AssessmentSection extends React.Component {
           <Form.Label>
             {!!tags && !!tags.length &&
               <span className='specimen-tags'>
-                {tags.map(t => <i key={t} className={t} />)}
+                {tags.map(t => <i key={'tag-'+id+'-'+t} className={t} />)}
               </span>
             }
             <span className='question-text'>{text}</span>
@@ -331,7 +323,6 @@ class AssessmentSection extends React.Component {
   
   removeDept(selectedDepts, item) {
     // const depts = [...this.state.selectedDepts];
-    
     this.setState({ selectedDepts });
   }
 
@@ -440,34 +431,21 @@ class AssessmentSection extends React.Component {
             <div className='target-section' key={tSection.sectionName}>
               <h5>{tSection.sectionName}</h5>
               {tSection.sectionTargets.map((t, idx) => (
-                <>
+                <div key={getTargetId(tSection.sectionId, t.id)}>
                   <Form.Control
                     className='target'
                     // label={t.text}
-                    key={getTargetId(tSection.sectionId, t.id)}
                     id={getTargetId(tSection.sectionId, t.id)}
                     type='number' min={0} max={100} defaultValue={100}
                     />
                   <Form.Label>{t.text}</Form.Label>
                   <br/>  
-                </>
+                </div>
               ))}
               <br/>
             </div>
           ))}
       </div>
-      // <Card key='targets'>
-      //   <Card.Header>
-      //       <Accordion.Toggle as={Button} variant='link' eventKey='targets'>
-      //         Set Assessment Targets  
-      //       </Accordion.Toggle>
-      //   </Card.Header>
-      //   <Accordion.Collapse eventKey='targets'>
-      //     <Card.Body>
-
-      //     </Card.Body>
-      //   </Accordion.Collapse>
-      // </Card>
     )
   }
 

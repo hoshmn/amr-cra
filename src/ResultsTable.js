@@ -76,7 +76,7 @@ class ResultsTable extends React.Component {
       content = Math.round(responseValue) + '%';
       if (responseValue >= targetValue) {
         perfClass = 'ahead ';
-      } else if (responseValue > nearCutoff) {
+      } else if (responseValue >= nearCutoff) {
         perfClass = 'near ';
       } else {
         perfClass = 'behind ';
@@ -131,7 +131,7 @@ class ResultsTable extends React.Component {
         {this.props.resultSections.map(rSection => {
 
           return (
-            <div>
+            <div key={rSection.text}>
               <h4 className='mt-3'>{rSection.text}</h4>
               {this.getSectionTable(rSection)}
             </div>
