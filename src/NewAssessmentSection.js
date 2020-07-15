@@ -3,7 +3,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
 import sectionsMap from './sections';
 import { getTableCellId, getTargetId } from './helperFunctions'
@@ -147,7 +146,7 @@ class AssessmentSection extends React.Component {
   getQTable(children) {
     // console.log('hit')
     return (
-      <Table striped bordered responsive size='lg'>
+      <Table striped bordered responsive>
       <thead>
         <tr>
           <th></th>

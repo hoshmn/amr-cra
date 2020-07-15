@@ -296,7 +296,7 @@ const r_1_1 = {
   text: 'Percentage of departments that should have a copy of the current treatment guidelines',
   question: q_1_1,
   target: { sectionId: 'documentation', id: 'guidelines' },
-  standard: 'F1, U1, B1',
+  standards: 'F1, U1, B1',
   resources: [],
   recommendations: [
     'Distribute treatment guidelines to departments with none currently available'
@@ -307,7 +307,7 @@ const r_1_2 = {
   numerator: q_3_02,
   denominator: q_3_01,
   target: { sectionId: 'collection-all', id: 'significant' },
-  standard: 'F3',
+  standards: 'F3',
   resources: [],
   recommendations: [
     '[1] Conduct clinician training on use of faecal culture to diagnose diahorreal disease',
@@ -321,7 +321,7 @@ const r_1_3 = {
   text: 'Proportion of patients with clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy who had urine culture ordered',
   question: null,
   target: { sectionId: 'collection-all', id: 'significant' },
-  standard: 'U3',
+  standards: 'U3',
   resources: [],
   recommendations: [
     '[1] Conduct clinician training on use of urine culture to diagnose urinary tract infection',
@@ -335,7 +335,7 @@ const r_1_4 = {
   text: 'Proportion of patients with clinical suspicion of bloodstream infection who had blood culture ordered',
   question: null,
   target: { sectionId: 'collection-all', id: 'significant' },
-  standard: 'B3',
+  standards: 'B3',
   resources: [],
   recommendations: [
     '[1] Conduct clinician training on use of blood culture to diagnose bloodstream infections',
@@ -352,7 +352,7 @@ const inp_r_sec_1 = {
 
 
 const r_2_1 = {
-  standard: 'F4',
+  standards: 'F4',
   text: 'Proportion of patients for whom informed consent was obtained and documented in the clinical notes before performing faeces culture',
   numerator: q_3_04,
   denominator: q_3_03,
@@ -364,7 +364,7 @@ const r_2_1 = {
   resources: []
 } 
 const r_2_2 = {
-  standard: 'F5',
+  standards: 'F5',
   text: 'Proportion of patients from whom faeces were collected using aseptic technique',
   numerator: q_3_05,
   denominator: q_3_03,
@@ -376,7 +376,7 @@ const r_2_2 = {
   resources: []
 } 
 const r_2_3 = {
-  standard: 'F6',
+  standards: 'F6',
   text: 'Proportion of patients for whom a minimum of 1g of feaces was collected for faeces culture',
   numerator: q_3_06,
   denominator: q_3_03,
@@ -388,7 +388,7 @@ const r_2_3 = {
   resources: []
 } 
 const r_2_4 = {
-  standard: 'F7',
+  standards: 'F7',
   text: 'Proportion of patients with correctly labelled sample collection containers',
   numerator: q_3_07,
   denominator: q_3_03,
@@ -400,7 +400,7 @@ const r_2_4 = {
   resources: []
 } 
 const r_2_5 = {
-  standard: 'F8',
+  standards: 'F8',
   text: 'Proportion of patients with completely and accurately completed lab request form',
   numerator: q_3_08,
   denominator: q_3_03,
@@ -412,7 +412,7 @@ const r_2_5 = {
   resources: []
 } 
 const r_2_6 = {
-  standard: 'F9',
+  standards: 'F9',
   text: 'Proportion of patients with faecal collection documented in clinical notes',
   numerator: q_3_09,
   denominator: q_3_03,
@@ -425,7 +425,7 @@ const r_2_6 = {
 } 
 
 const inp_r_sec_2 = {
-  text: 'A. Appropriate Diagnostic Test Order (Clinical Facility, by Department)',
+  text: 'B1. Sample Collection: Faeces',
   results: [r_2_1, r_2_2, r_2_3, r_2_4, r_2_5, r_2_6]
 };
 

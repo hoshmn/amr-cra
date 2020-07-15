@@ -99,7 +99,7 @@ button.submit {
   margin: 30px;
 }
 
-.results {
+.results, .results-table {
   /* display: none; */
   padding: 30px;
 }
@@ -156,12 +156,28 @@ input.target ~ label {
   line-height: 36px;
 }
 
+.response-value.ahead {
+  background-color: #a8d08d;
+}
+.response-value.near {
+  background-color: #ffe598;
+}
+.response-value.behind {
+  background-color: #f4b083;
+}
+.response-value.total {
+  font-weight: bolder;
+}
+
 /* UNIVERSAL TABLE STYLES */
 table.table th {
   text-align: center;
 }
 table.table td {
   vertical-align: middle;
+}
+table.table td:not(:first-of-type) {
+  text-align: center;
 }
 table.table tr input[type='number'] {
   min-width: 70px;

@@ -25,7 +25,7 @@ class App extends React.Component {
       warnings: [],
       submitted: false,
       missedFQs: null,
-      processedInputs: null,
+      inputsResults: null,
     };
 
     this.sendMap = this.sendMap.bind(this);
@@ -134,12 +134,10 @@ class App extends React.Component {
       })
     });
 
-    debugger
-
     this.setState({ 
       submitted: true,
       missedFQs,
-      processedInputs: inputResultSections,
+      inputsResults: inputResultSections,
       warnings: []
     });;
   }
@@ -161,7 +159,7 @@ class App extends React.Component {
     if (this.state.submitted) {
       return (
         <ResultsTable 
-          processedQs={this.state.processedInputs}
+          resultSections={this.state.inputsResults}
           section='inputs'
         />);
     }
@@ -200,7 +198,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
-        <Tabs defaultActiveKey='inputs'>
+        <Tabs defaultActiveKey='submit'>
           <Tab eventKey='facility' title={facilityTitle}>
             {this.getFacilityTab()}
            </Tab>
