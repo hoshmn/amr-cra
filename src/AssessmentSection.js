@@ -10,7 +10,7 @@ import { getTableCellId, getTargetId } from './helperFunctions'
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = false;
+const DEV = true;
 
 const radioNoTag = '_no';
 
@@ -19,7 +19,7 @@ class AssessmentSection extends React.Component {
     super(props);
 
     const { departments } = sectionsMap[this.props.section];
-    const selectedDepts = DEV && departments ? departments.slice(0,4) : []
+    const selectedDepts = DEV && departments ? departments : []
     this.state = { contents: null, selectedDepts, begun: false, warnings: [] };
 
     this.toggleSubQs = this.toggleSubQs.bind(this);
@@ -327,7 +327,7 @@ class AssessmentSection extends React.Component {
   }
 
   begin() {
-    const fourDepts = this.state.selectedDepts.length === 4;
+    const deptsSelected = this.state.selectedDepts.length;
     
     const { targets } = sectionsMap[this.props.section];
     const targetData = {};
@@ -355,14 +355,14 @@ class AssessmentSection extends React.Component {
     )
 
     const warnings = [];
-    if (!fourDepts) {
-      warnings.push('select four departments to assess')
+    if (!deptsSelected) {
+      warnings.push('select departments to assess')
     }
     if (!targetsComplete) {
       warnings.push('ensure that all target percentages are set as integers less than or equal to 100')
     }
 
-    const begun = fourDepts && targetsComplete;
+    const begun = deptsSelected && targetsComplete;
     this.setState({ warnings, begun }, () => {
       if (begun) {
         this.generateQuestions(targetData);
@@ -400,12 +400,11 @@ class AssessmentSection extends React.Component {
 
     return (
       <div className='mt-3'>
-        <h4>Select four departments to assess</h4>
+        <h4>Select departments to assess</h4>
         <Multiselect
           options={departments}
           placeholder='select departments'
           avoidHighlightFirstOption={true}
-          selectionLimit={4}
           showCheckbox={true}
           closeOnSelect={false}
           closeIcon='cancel'
