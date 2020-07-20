@@ -75,7 +75,11 @@ class ResultsTable extends React.Component {
 
     const nearCutoff = (targetValue * this.state.nearThreshhold/100);
 
-    if (isPerc || dep === 'total') {
+    if (!responseValue) {
+      content = 'No Data';
+      perfClass = 'missing ';
+
+    } else if (isPerc || dep === 'total') {
       content = Math.round(responseValue) + '%';
       if (responseValue >= targetValue) {
         perfClass = 'ahead ';
@@ -84,8 +88,8 @@ class ResultsTable extends React.Component {
       } else {
         perfClass = 'behind ';
       }
-    } else {
 
+    } else {
       content = !!responseValue ? 'Yes' : 'No';
       if (!!responseValue) {
         perfClass = 'ahead ';

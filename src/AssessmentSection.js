@@ -19,7 +19,7 @@ class AssessmentSection extends React.Component {
     super(props);
 
     const { departments } = sectionsMap[this.props.section];
-    const selectedDepts = DEV && departments ? departments.slice(0,5) : []
+    const selectedDepts = DEV && departments ? departments.slice() : []
     this.state = {
       contents: null,
       selectedDepts,
@@ -75,10 +75,10 @@ class AssessmentSection extends React.Component {
   }
 
   getInstructions() {
-    const { title, instructions } = sectionsMap[this.props.section];
+    const { title, instructions, requiresSetup } = sectionsMap[this.props.section];
     return (
       <div className='instructions'>
-        <h3>{title}</h3>
+        <h3>{title}: {this.state.begun || !requiresSetup ? 'Data Input' : 'Targets'}</h3>
         {instructions.map((sect, i) =><span className='instruction' key={'inst-'+i}>{sect}</span>)}
         {!DEV && !this.state.begun && this.getDeptSelection()}
         {!DEV && !this.state.begun && this.getTargetSetting()}

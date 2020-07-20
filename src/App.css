@@ -165,6 +165,9 @@ input.target ~ label {
 .response-value.behind, .legend .example.behind {
   background-color: #f4b083;
 }
+.response-value.missing {
+  font-variant: all-small-caps;
+}
 .response-value.total {
   font-weight: bolder;
 }

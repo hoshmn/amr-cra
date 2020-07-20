@@ -60,18 +60,18 @@ class App extends React.Component {
       inputSectionObj.questions.forEach(q => {
         // add responses
         q.responses = {};
-        let TOTAL = 0;
+        // let TOTAL = 0;
         inputSectionObj.departments.forEach(d => {
           const uid = getTableCellId(d, q);
           if (q.subType === 'y_n') {
             const correctAnswerGiven = !!document.querySelector(`#${uid}:checked`);
             q.responses[d.id] = correctAnswerGiven;
-            TOTAL += correctAnswerGiven;
+            // TOTAL += correctAnswerGiven;
           } else if (q.subType === '%') {
             const el = document.querySelector(`#${uid}`);
-            let val = el ? Number(el.value) : null;
+            let val = el.value ? Number(el.value) : null;
             q.responses[d.id] = val;
-            TOTAL += val||0;
+            // TOTAL += val||0;
           }
         });
         // q.responses.TOTAL = TOTAL;
@@ -114,7 +114,7 @@ class App extends React.Component {
               if (_.isNil(numV) || _.isNil(denomV)) {
                 console.warn('Empty num or denom val');
                 // _.set(r.responseData, dept, '?');
-                perc = '?';
+                // leave null
               } else {
                 totalNum += numV;
                 totalDenom += denomV;
@@ -124,7 +124,7 @@ class App extends React.Component {
               _.set(r.responseData, dept, perc);
             });
 
-            r.actualPerc = !totalDenom ? '?' : (totalNum / totalDenom) * 100
+            r.actualPerc = !totalDenom ? null : (totalNum / totalDenom) * 100
 
           } else {
             console.error('Cannot calculate result without a linked question or num/denom: ', r);
