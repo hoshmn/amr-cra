@@ -2,7 +2,7 @@
 const types = ['q', 'section', 'preface'];
 const subTypes = ['box', 'y_n'];
 
-const title = 'Facility-Level Assessment';
+const title = 'Clinical Facility Level Assessment';
 
 const instructions = [
   'Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment.',

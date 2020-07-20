@@ -5,7 +5,7 @@ const subTypes = [
   'table' // for sections
 ];
 
-const title = 'Clinical Facility Data Inputs';
+const title = 'Clinical Facility - by department';
 
 const instructions = [
   'Clinical Facility Data Inputs instructions...',
@@ -33,10 +33,10 @@ const departments = [
 const targets = [
   { sectionId: 'documentation', sectionName: 'Indicator: Documentation, Policies & Structures', sectionTargets: [
     { id: 'guidelines', text: "Percentage of departments that should have a copy of the current treatment guidelines" },
-    { id: 'handbook', text: "Percentage of departments that should have a copy of the current Laboratory Handbook" },
-    { id: 'monitor', text: "Percentage of departments that actively monitor test results for patterns suggestive of nosocomial outbreaks or hospital acquired infections" },
-    { id: 'nosocomial', text: "Percentage of departments that engage the laboratory if there is suggestive of nosocomial outbreaks or hospital acquired infections?" },
-    { id: 'meet', text: "Percentage of departments that have clinical staff and laboratory staff regularly meet (at least quarterly) to troubleshoot gaps in laboratory-clinical linkages, including specimen collection, referral, interpretation and reporting?" },
+    // { id: 'handbook', text: "Percentage of departments that should have a copy of the current Laboratory Handbook" },
+    // { id: 'monitor', text: "Percentage of departments that actively monitor test results for patterns suggestive of nosocomial outbreaks or hospital acquired infections" },
+    // { id: 'nosocomial', text: "Percentage of departments that engage the laboratory if there is suggestive of nosocomial outbreaks or hospital acquired infections?" },
+    // { id: 'meet', text: "Percentage of departments that have clinical staff and laboratory staff regularly meet (at least quarterly) to troubleshoot gaps in laboratory-clinical linkages, including specimen collection, referral, interpretation and reporting?" },
   ]},
 
   { sectionId: 'collection-all', sectionName: 'Indicator: Sample Collection (All)', sectionTargets: [
@@ -66,25 +66,25 @@ const targets = [
     { id: 'volume', text: "Percentageof patients whom had blood collection where the volume followed the manufacturer's recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children" },
   ]},
 
-  { sectionId: 'turnaround', sectionName: 'Indicator: Turnaround time (TAT) of sample sent to lab', sectionTargets: [
-    { id: 'faeces', text: "Turnaround time from faeces sample collection to receipt at lab (in hours)" },
-    { id: 'urine', text: "Turnaround time from urine sample collection to receipt at lab  (in hours)" },
-    { id: 'blood', text: "Turnaround time from blood sample collection to receipt at lab  (in hours)" },
-    { id: 'transported', text: "Percentage of samples transported to lab within target TAT" },
-    { id: 'sent', text: "Percentage of clinical staff that are aware of the target times for sample sent to the lab" },
-    { id: 'store', text: "Percentage of clinical staff that are aware of how to store a sample if there is a delay in transporting it to the lab" },
-    { id: 'fridge', text: "Percentage of departments that have a designated fridge for storage of samples" },
-  ]},
+  // { sectionId: 'turnaround', sectionName: 'Indicator: Turnaround time (TAT) of sample sent to lab', sectionTargets: [
+  //   { id: 'faeces', text: "Turnaround time from faeces sample collection to receipt at lab (in hours)" },
+  //   { id: 'urine', text: "Turnaround time from urine sample collection to receipt at lab  (in hours)" },
+  //   { id: 'blood', text: "Turnaround time from blood sample collection to receipt at lab  (in hours)" },
+  //   { id: 'transported', text: "Percentage of samples transported to lab within target TAT" },
+  //   { id: 'sent', text: "Percentage of clinical staff that are aware of the target times for sample sent to the lab" },
+  //   { id: 'store', text: "Percentage of clinical staff that are aware of how to store a sample if there is a delay in transporting it to the lab" },
+  //   { id: 'fridge', text: "Percentage of departments that have a designated fridge for storage of samples" },
+  // ]},
 
-  { sectionId: 'result-use', sectionName: 'Indicator: Use Test Result', sectionTargets: [
-    { id: 'folder', text: "Percentage of patients whose records were reviewed where there is evidence that laboratory test results are placed in the patient folder" },
-    { id: 'communicated', text: "Percentage of patients that critical call out test results from the lab were communicated promptly to the clinician/wards and documented" },
-    { id: 'revised', text: "Percentage of patients where there is evidence that antibiotic treatment is revised based on the laboratory AST result" },
-    { id: 'guidelines', text: "Proportion of patients where antibiotic treatment followed the clinical site prescriber guidelines for common medical conditions" },
-    { id: 'formulary', text: "Proportion of patients where there is evidence that antibiotic treatment is consistent with medices formulary " },
-    { id: 'engage', text: "Percentage of wards or department that engage the laboratory if there is suggestive of nosocomial outbreaks or hospital acquired infections" },
-    { id: 'meet', text: "Percentage of wards or departments where clinical staff and laboratory staff meet at least quarterly" },
-  ]},
+  // { sectionId: 'result-use', sectionName: 'Indicator: Use Test Result', sectionTargets: [
+  //   { id: 'folder', text: "Percentage of patients whose records were reviewed where there is evidence that laboratory test results are placed in the patient folder" },
+  //   { id: 'communicated', text: "Percentage of patients that critical call out test results from the lab were communicated promptly to the clinician/wards and documented" },
+  //   { id: 'revised', text: "Percentage of patients where there is evidence that antibiotic treatment is revised based on the laboratory AST result" },
+  //   { id: 'guidelines', text: "Proportion of patients where antibiotic treatment followed the clinical site prescriber guidelines for common medical conditions" },
+  //   { id: 'formulary', text: "Proportion of patients where there is evidence that antibiotic treatment is consistent with medices formulary " },
+  //   { id: 'engage', text: "Percentage of wards or department that engage the laboratory if there is suggestive of nosocomial outbreaks or hospital acquired infections" },
+  //   { id: 'meet', text: "Percentage of wards or departments where clinical staff and laboratory staff meet at least quarterly" },
+  // ]},
 ];
 
 // QUESTIONS

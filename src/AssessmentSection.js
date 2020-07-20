@@ -10,7 +10,7 @@ import { getTableCellId, getTargetId } from './helperFunctions'
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = true;
+const DEV = false;
 
 const radioNoTag = '_no';
 
@@ -173,7 +173,7 @@ class AssessmentSection extends React.Component {
           const trClass = denominator ? 'denominator' : 'numerator'
           return (
             <tr key={'tr-'+i+'-'+q.id} className={trClass}>
-              <td title={dataSource}>{question}</td>
+              <td title={dataSource||'[data source]'}>{question}</td>
               {this.state.selectedDepts.map(d => {
 
                 const uid = getTableCellId(d, q);

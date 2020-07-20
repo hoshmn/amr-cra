@@ -198,7 +198,7 @@ class App extends React.Component {
   render() {
     const { facility, inputs } = this.state.submitted;
     let facilityTitle = 'Clinical Facility Level';
-    let inputsTitle = 'Clinical Facility Data Inputs';
+    let inputsTitle = 'Clinical Facility - by department';
     if (facility) {
       facilityTitle += ' [RESULTS]';
     } else if (inputs) {
