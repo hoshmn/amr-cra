@@ -19,7 +19,7 @@ class AssessmentSection extends React.Component {
     super(props);
 
     const { departments } = sectionsMap[this.props.section];
-    const selectedDepts = DEV && departments ? departments : []
+    const selectedDepts = DEV && departments ? departments.slice(0,5) : []
     this.state = {
       contents: null,
       selectedDepts,

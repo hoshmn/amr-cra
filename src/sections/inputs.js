@@ -122,7 +122,7 @@ const inp_sec_1 = {
   text: 'Department Documents, Policies & Structures',
   type: 'section',
   subType: 'table',
-  children: [q_1_1, q_1_2, q_1_3, q_1_4]
+  children: [q_1_1] // not needed for now, q_1_2, q_1_3, q_1_4]
 };
 
 
@@ -280,7 +280,8 @@ const inp_sec_3 = {
   text: 'Faeces Culture',
   type: 'section',
   subType: 'table',
-  children: [q_3_01, q_3_02, q_3_03, q_3_04, q_3_05, q_3_06, q_3_07, q_3_08, q_3_09, q_3_10, q_3_11, q_3_12, q_3_13, q_3_14, q_3_15]
+  children: [q_3_01, q_3_02, q_3_03, q_3_04, q_3_05, q_3_06, q_3_07, q_3_08, q_3_09] 
+  // not needed for now, q_3_10, q_3_11, q_3_12, q_3_13, q_3_14, q_3_15]
 };
 
 const q_4_1 = {
@@ -415,7 +416,8 @@ const inp_sec_4 = {
   text: 'Urine Culture',
   type: 'section',
   subType: 'table',
-  children: [q_4_1, q_4_2, q_4_3, q_4_4, q_4_5, q_4_6, q_4_7, q_4_8, q_4_9, q_4_10, q_4_11, q_4_12, q_4_13, q_4_14, q_4_15, q_4_16, q_4_17, q_4_18]
+  children: [q_4_1, q_4_2, q_4_3, q_4_4, q_4_5, q_4_6, q_4_7, q_4_8, q_4_9, q_4_10, q_4_11, q_4_12, q_4_13] 
+  // not needed for now, q_4_14, q_4_15, q_4_16, q_4_17, q_4_18]
 };
 
 
@@ -621,12 +623,13 @@ const inp_sec_5 = {
   text: 'Blood Culture',
   type: 'section',
   subType: 'table',
-  children: [q_5_1, q_5_2, q_5_3, q_5_4, q_5_5, q_5_6, q_5_7, q_5_8, q_5_9, q_5_10, q_5_11, q_5_12, q_5_13, q_5_14, q_5_15, q_5_16, q_5_17, q_5_18, q_5_19, q_5_20, q_5_21, q_5_22, q_5_23, q_5_24, q_5_25, q_5_26, q_5_27, q_5_28]
+  children: [q_5_1, q_5_2, q_5_3, q_5_4, q_5_5, q_5_6, q_5_7, q_5_8, q_5_9, q_5_10, q_5_11, q_5_12, q_5_13, q_5_14, q_5_15, q_5_16, q_5_17, q_5_18, q_5_19, q_5_20, q_5_21, q_5_22]
+  // not needed for now, q_5_23, q_5_24, q_5_25, q_5_26, q_5_27, q_5_28]
 };
 
 const questions = [
   inp_sec_1,
-  inp_sec_2,
+  // inp_sec_2, not needed for now
   inp_sec_3,
   inp_sec_4,
   inp_sec_5
