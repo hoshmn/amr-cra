@@ -205,10 +205,14 @@ input.target ~ label {
   margin-top: -10px;
 }
 
-td.response-text-cell > div, td.links > div {
+td.response-text-cell > div {
   min-width: 150px;
 }
-td.recommendations > div {
+td.links .link:not(:last-of-type) {
+  padding-bottom: 7px;
+
+}
+td.recommendations > div, td.links > div {
   min-width: 200px;
 }
 td.recommendations .point:not(:last-of-type) {

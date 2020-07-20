@@ -664,7 +664,16 @@ const r_1_2 = {
   denominator: q_3_1,
   target: { sectionId: 'collection-all', id: 'significant' },
   standards: 'F3',
-  resources: [],
+  resources: [
+    {
+      title: 'Faecal culture methodology',
+      link: 'https://drive.google.com/drive/folders/1Y2LqvJ374uNHXtIXvyNhLpet9s8SKnol?usp=sharing'
+    },
+    {
+      title: 'Laboratory Diagnosis of Bacterial Gastroenteritis',
+      link: 'https://drive.google.com/drive/folders/1Y2LqvJ374uNHXtIXvyNhLpet9s8SKnol?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Conduct clinician training on use of faecal culture to diagnose diahorreal disease',
     '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
@@ -679,7 +688,12 @@ const r_1_3 = {
   denominator: q_4_1,
   target: { sectionId: 'collection-all', id: 'significant' },
   standards: 'U3',
-  resources: [],
+  resources: [
+    {
+      title: 'Primary Culture Media for Routine Urine Processing',
+      link: 'https://drive.google.com/drive/folders/1Y2LqvJ374uNHXtIXvyNhLpet9s8SKnol?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Conduct clinician training on use of urine culture to diagnose urinary tract infection',
     '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
@@ -694,7 +708,24 @@ const r_1_4 = {
   denominator: q_5_1,
   target: { sectionId: 'collection-all', id: 'significant' },
   standards: 'B3',
-  resources: [],
+  resources: [
+    {
+      title: 'Epidemiology of Bacteremia in Febrile Infants in the United States',
+      link: 'https://drive.google.com/drive/folders/1Y2LqvJ374uNHXtIXvyNhLpet9s8SKnol?usp=sharing'
+    },
+    {
+      title: 'Sepsis: A Review of Advances in Management',
+      link: 'https://drive.google.com/drive/folders/1Y2LqvJ374uNHXtIXvyNhLpet9s8SKnol?usp=sharing'
+    },
+    {
+      title: 'Sepsis Management',
+      link: 'https://drive.google.com/drive/folders/1Y2LqvJ374uNHXtIXvyNhLpet9s8SKnol?usp=sharing'
+    },
+    {
+      title: 'Sepsis Roadmap',
+      link: 'https://drive.google.com/drive/folders/1Y2LqvJ374uNHXtIXvyNhLpet9s8SKnol?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Conduct clinician training on use of blood culture to diagnose bloodstream infections',
     '[2] Ensure uninterrupted supplies and reagents available to conduct faecal culture testing',
@@ -719,7 +750,12 @@ const r_2_1 = {
     '[1] Remind clinicians of the importance of correct use & documentation of request forms, including informed consent, as incomplete forms will lead to samples being rejected.',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that patient details, including informed consent, are essential for sample processing',
   ],
-  resources: []
+  resources: [
+    {
+      title: 'An effective multisource informed consent procedure for research and clinical practice',
+      link: 'https://drive.google.com/file/d/1h4jZn94FORB4Mau8BL13vaY9-DPeVjF7/view?usp=sharing'
+    }
+  ]
 }
 const r_2_2 = {
   standards: 'F5',
@@ -731,7 +767,13 @@ const r_2_2 = {
     '[1] Remind clinicians that samples not collected aseptically, are of doubtful clinical significance.',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that samples not collected aseptically, are of doubtful clinical significance, and a repeat sample must be sent ASAP',
   ],
-  resources: []
+  resources: [
+    {
+      title: 'An effective multisource informed consent procedure for research and clinical practice',
+      link: 'https://drive.google.com/file/d/1h4jZn94FORB4Mau8BL13vaY9-DPeVjF7/view?usp=sharing'
+    }
+
+  ]
 }
 const r_2_3 = {
   standards: 'F6',
@@ -743,7 +785,12 @@ const r_2_3 = {
     '[1] Remind clinicians that a suffient quantity of faecal mater is required for testing and true representation of the microbes within',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that samples not collected in sufficient quantity may adversly affect the results and may lead to false negatives',
   ],
-  resources: []
+  resources: [
+    {
+      title: 'Laboratory Diagnosis of Bacterial Gastroenteritis',
+      link: 'https://drive.google.com/file/d/1h4jZn94FORB4Mau8BL13vaY9-DPeVjF7/view?usp=sharing'
+    }
+  ]
 }
 const r_2_4 = {
   standards: 'F7',
@@ -755,7 +802,12 @@ const r_2_4 = {
     '[1] Remind clinicians of the significance of correctly labelling patient identifiers on sample containers, as incomplete or incorrect details will lead to samples being rejected',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient details on samples are essential for sample processing, those with incomplete patient identifiers must be rejected and if possible a request for a new sample sent',
   ],
-  resources: []
+  resources: [
+    {
+      title: 'Correct labelling of samples in: WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/file/d/1h4jZn94FORB4Mau8BL13vaY9-DPeVjF7/view?usp=sharing'
+    }
+  ]
 }
 const r_2_5 = {
   standards: 'F8',
@@ -767,7 +819,12 @@ const r_2_5 = {
     '[1] Remind clinicians of the significance of correct documentation of patient and sample details on all request forms, as incomplete or incorrect details will lead to samples being rejected',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient & sample details on request forms are essential for sample processing, those with incomplete patient identifiers or wrong sample details must be rejected and if possible a request for a new sample sent',
   ],
-  resources: []
+  resources: [
+    {
+      title: 'Correct labelling of request forms in: WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/file/d/1h4jZn94FORB4Mau8BL13vaY9-DPeVjF7/view?usp=sharing'
+    }
+  ]
 }
 const r_2_6 = {
   standards: 'F9',
@@ -779,7 +836,12 @@ const r_2_6 = {
     '[1] Remind clinicians on the importance of complete and correct sample notes and clinical history',
     '[2] All samples must be noted and described for the material they contain on the request form to ensure correct sample processing and pairing of samples with the relevant request form',
   ],
-  resources: []
+  resources: [
+    {
+      title: 'Laboratory Diagnosis of Bacterial Gastroenteritis',
+      link: 'https://drive.google.com/file/d/1h4jZn94FORB4Mau8BL13vaY9-DPeVjF7/view?usp=sharing'
+    }
+  ]
 }
 
 const inp_r_sec_2 = {
@@ -793,6 +855,12 @@ const r_3_1 = {
   numerator: q_4_4,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'informed' },
+  resources: [
+    {
+      title: 'An effective multisource informed consent procedure for research and clinical practice',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the importance of correct use & documentation of request forms, including informed consent, as incomplete forms will lead to samples being rejected. ',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that patient details, including informed consent, are essential for sample processing'
@@ -804,6 +872,12 @@ const r_3_2 = {
   numerator: q_4_5,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'antibiotics' },
+  resources: [
+    {
+      title: 'Update on the approach of urinary tract infection in childhood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Please note that best practice states that urine sample should be sent prior to prescribing of antibiotics',
     '[2] Samples where patients have already taken antibiotics must have this noted, as well as which antibiotic was taken, as antibiotic use can lead to false negatives and will require staff to have knowledge in order to interpret results correctly',
@@ -816,6 +890,12 @@ const r_3_3 = {
   numerator: q_4_6,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'aseptic' },
+  resources: [
+    {
+      title: 'Collection of Mid-Stream urine guidelines',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the importance of correct urinary sample collection, in order to prevent contamination with commensals ',
     '[2] Provide training resources for clinicans',
@@ -829,6 +909,9 @@ const r_3_4 = {
   numerator: q_4_7,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'aseptic' },
+  resources: [
+
+  ],
   recommendations: [
     '[1] Remind clinicians of the significance of correct sample collection, to prevent contamination',
     '[2] Train clinicians on the correct indications for when a suprapubic sample is required '
@@ -840,6 +923,12 @@ const r_3_5 = {
   numerator: q_4_8,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'aseptic' },
+  resources: [
+    {
+      title: 'Update on the approach of urinary tract infection in childhood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the significance of correct sample collection, to prevent contamination',
     '[2] Train clinicians on the correct indications for when a suprapubic sample is required '
@@ -851,6 +940,16 @@ const r_3_6 = {
   numerator: q_4_9,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'minimum' },
+  resources: [
+    {
+      title: 'Update on the approach of urinary tract infection in childhood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Collection of mid-stream urine samples guidelines',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the importance of having sufficient sample to test',
     '[2] Provide training for clinicians to make sure they ask patients to have drunk enough water, and wait a minimum 30m to 1h before giving a sample'
@@ -862,6 +961,12 @@ const r_3_7 = {
   numerator: q_4_10,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'labelled' },
+  resources: [
+    {
+      title: 'Correct labelling of samples in: WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the significance of correctly labelling patient identifiers on sample containers, as incomplete or incorrect details will lead to samples being rejected ',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient details on samples are essential for sample processing, those with incomplete patient identifiers must be rejected and if possible a request for a new sample sent'
@@ -873,6 +978,12 @@ const r_3_8 = {
   numerator: q_4_11,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'form' },
+  resources: [
+    {
+      title: 'Correct labelling of request forms in: WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the significance of correct documentation of patient and sample details on all request forms, as incomplete or incorrect details will lead to samples being rejected ',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient & sample details on request forms are essential for sample processing, those with incomplete patient identifiers or wrong sample details must be rejected and if possible a request for a new sample sent'
@@ -884,6 +995,9 @@ const r_3_9 = {
   numerator: q_4_12,
   denominator: q_4_3,
   target: { sectionId: 'collection-all', id: 'informed' },
+  resources: [
+
+  ],
   recommendations: [
     '[1] Remind clinicians on the importance of complete and correct sample notes and clinical history ',
     '[2] All samples must be noted and described for the material they contain on the request form to ensure correct sample processing and pairing of samples with the relevant request form'
@@ -902,6 +1016,12 @@ const r_4_1 = {
   numerator: q_5_4,
   denominator: q_5_3,
   target: { sectionId: 'collection-all', id: 'informed' },
+  resources: [
+    {
+      title: 'An effective multisource informed consent procedure ',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the importance of correct use & documentation of request forms, including informed consent, as incomplete forms will lead to samples being rejected. ',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that patient details, including informed consent, are essential for sample processing',
@@ -914,6 +1034,16 @@ const r_4_2 = {
   numerator: q_5_5,
   denominator: q_5_3,
   target: { sectionId: 'collection-all', id: 'antibiotics' },
+  resources: [
+    {
+      title: 'Blood Culture BioMerieux',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Sepsis: A Review of Advances in Management',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Please note that best practice states that blood samples should be sent prior to prescribing of antibiotics',
     '[2] Samples where patients have already taken antibiotics must have this noted, as well as which antibiotic was taken, as antibiotic use can lead to false negatives and will require staff to have knowledge in order to interpret results correctly',
@@ -927,6 +1057,12 @@ const r_4_3 = {
   numerator: q_5_6,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'washed' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
     '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples',
@@ -940,6 +1076,12 @@ const r_4_4 = {
   numerator: q_5_7,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'disinfected' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
     '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples',
@@ -953,6 +1095,12 @@ const r_4_5 = {
   numerator: q_5_8,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'sterile' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
     '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples',
@@ -966,6 +1114,12 @@ const r_4_6 = {
   numerator: q_5_9,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'peripheral' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Ensure there is sufficient training for clinicians on the correct procedures and sites for blood sampling',
   ]
@@ -977,6 +1131,12 @@ const r_4_7 = {
   numerator: q_5_10,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'venipuncture' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Ensure there is sufficient training for clinicians on the correct procedures and sites for blood sampling',
   ]
@@ -988,6 +1148,12 @@ const r_4_8 = {
   numerator: q_5_11,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'cleaned' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
     '[2] Send clinicians "How to" posters, if possible, showing correctly collect blood samples ',
@@ -1002,6 +1168,12 @@ const r_4_9 = {
   numerator: q_5_12,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'site-dry' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
     '[2] Ensure clinicians understand the correct method for decontaminating a blood sampling site, including letting the disinfection dry off before use',
@@ -1015,6 +1187,12 @@ const r_4_10 = {
   numerator: q_5_13,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'tops-disinfected' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination, including alcohol cleaning of bottle tops before introducing blood sample',
     '[2] Ensure clinicians understand the correct method for decontaminating a blood bottles - conduct onsite training if samples are repeatedly contaminated',
@@ -1027,6 +1205,12 @@ const r_4_11 = {
   numerator: q_5_14,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'tops-dry' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting introducing blood samples to avoid cross contamination',
     '[2] Ensure clinicians understand the correct method for decontaminating a blood bottle, including letting the disinfection dry off before use',
@@ -1040,6 +1224,12 @@ const r_4_12 = {
   numerator: q_5_15,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'needles' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the significance of correct asceptic technique when collecting blood samples to avoid cross contamination',
     '[2] Ensure clinicians understand the significance of sterile single use needles for blood collection',
@@ -1054,6 +1244,20 @@ const r_4_13 = {
   numerator: q_5_16,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'first' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Blood collection procedure',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Order of Blood bottle collection',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Ensure clinicians understand the significance of introducing blood into culture bottles first to avoid chemical cross contamination with other tests. ',
     '[2] Provide clinicians with charts, to show the order in which to inoculate bottles',
@@ -1067,6 +1271,16 @@ const r_4_14 = {
   numerator: q_5_17,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'drawn' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Blood collection procedure',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Ensure training for clinicians to understand the reasons why 2-3 bottles are required within a 24h period',
   ]
@@ -1078,6 +1292,16 @@ const r_4_15 = {
   numerator: q_5_18,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'aerobic' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Blood collection procedure',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Ensure clinicians understand the significance of collecting an aerobic bottle of blood over an anaerobic one - Paediatric patients rarely have anaerobes, therefore prioritise aerobic bottles',
     '[2] Send clinicians reminders that aerobic bacteria predominate in adult blood infections too, if a choice is necessary, choose to use aerobic',
@@ -1090,6 +1314,16 @@ const r_4_16 = {
   numerator: q_5_19,
   denominator: q_5_3,
   target: { sectionId: 'collection-blood', id: 'volume' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Blood collection procedure',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Ensure clinicians understand the significance of adequate blood volumes required for reliable blood cultures. Less than the recommended volume will most likely lead to a false negative',
     '[2] Conduct onsite training for sites where blood isn\'t routinely collected at sufficient quantities',
@@ -1102,6 +1336,16 @@ const r_4_17 = {
   numerator: q_5_20,
   denominator: q_5_3,
   target: { sectionId: 'collection-all', id: 'labelled' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Blood collection procedure',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the significance of correctly labelling patient identifiers on sample containers, as incomplete or incorrect details will lead to samples being rejected ',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient details on samples are essential for sample processing, those with incomplete patient identifiers must be rejected and if possible a request for a new sample sent',
@@ -1114,6 +1358,16 @@ const r_4_18 = {
   numerator: q_5_21,
   denominator: q_5_3,
   target: { sectionId: 'collection-all', id: 'form' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+    {
+      title: 'Blood collection procedure',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians of the significance of correct documentation of patient and sample details on all request forms, as incomplete or incorrect details will lead to samples being rejected ',
     '[2] Stipulate that a "Reply" line should be included on clinical reports that correct patient & sample details on request forms are essential for sample processing, those with incomplete patient identifiers or wrong sample details must be rejected and if possible a request for a new sample sent',
@@ -1126,6 +1380,12 @@ const r_4_19 = {
   numerator: q_5_22,
   denominator: q_5_3,
   target: { sectionId: 'collection-all', id: 'informed' },
+  resources: [
+    {
+      title: 'WHO guidelines on drawing blood',
+      link: 'https://drive.google.com/drive/folders/14aQ12USIOsuHyLOU75sHVQ8oVi4N0Pk0?usp=sharing'
+    },
+  ],
   recommendations: [
     '[1] Remind clinicians on the importance of complete and correct sample notes and clinical history',
     '[2] All samples must be noted and described for the material they contain on the request form to ensure correct sample processing and pairing of samples with the relevant request form',

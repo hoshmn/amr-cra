@@ -115,14 +115,21 @@ class ResultsTable extends React.Component {
     )
   }
 
-  getLinksCell({ actualPerc, targetValue }) {
+  getLinksCell({ actualPerc, targetValue, resources }) {
+
     if (actualPerc && targetValue && (actualPerc >= targetValue)) {
       return <td></td>;
     }
 
     return (
-      <td className='links scrollable'>
-        <div>some links</div>
+      <td className='links'>
+        <div>{resources && resources.map(r => {
+          return (
+            <div key={r.title} className='link'>
+              <a href={r.link}>{r.title}</a>
+            </div>
+          )
+        })}</div>
       </td>
     )
 
@@ -138,7 +145,7 @@ class ResultsTable extends React.Component {
 
     const nearCutoff = (targetValue * this.state.nearThreshhold/100);
 
-    if (!responseValue) {
+    if (_.isNil(responseValue)) {
       content = 'No Data';
       perfClass = 'missing ';
 

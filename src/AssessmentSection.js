@@ -10,7 +10,7 @@ import { getTableCellId, getTargetId } from './helperFunctions'
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = true;
+const DEV = false;
 
 const radioNoTag = '_no';
 
@@ -19,7 +19,7 @@ class AssessmentSection extends React.Component {
     super(props);
 
     const { departments } = sectionsMap[this.props.section];
-    const selectedDepts = DEV && departments ? departments.slice() : []
+    const selectedDepts = DEV || true && departments ? departments.slice(0,4) : []
     this.state = {
       contents: null,
       selectedDepts,
