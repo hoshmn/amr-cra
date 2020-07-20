@@ -170,64 +170,66 @@ const inp_sec_2 = {
 };
 
 
-const q_3_01 = {
-  id: 'q_3_01',
+const q_3_1 = {
+  id: 'q_3_1',
+  denominator: true,
   text: 'Number of patients with dysentery whose records were reviewed',
   type: 'q',
   subType: '%',
   standards: 'F3'
 };
-const q_3_02 = {
-  id: 'q_3_02',
+const q_3_2 = {
+  id: 'q_3_2',
   text: 'Number of patients reviewed who had faecal culture ordered',
   type: 'q',
   subType: '%',
   standards: 'F3',
 };
-const q_3_03 = {
-  id: 'q_3_03',
+const q_3_3 = {
+  id: 'q_3_3',
+  denominator: true,
   text: 'Number of patients for whom faecal sample collection procedure was witnessed',
   type: 'q',
   subType: '%',
   standards: 'F4-F9'
 };
-const q_3_04 = {
-  id: 'q_3_04',
+const q_3_4 = {
+  id: 'q_3_4',
   text: 'Number of patients for whom informed consent was obtained and documented in the clinical notes before performing faeces culture',
   type: 'q',
   subType: '%',
   standards: 'F4'
 };
-const q_3_05 = {
-  id: 'q_3_05',
+const q_3_5 = {
+  id: 'q_3_5',
   text: 'Number of patients from whom faeces were collected using aseptic technique',
   type: 'q',
   subType: '%',
   standards: 'F5'
 };
-const q_3_06 = {
-  id: 'q_3_06',
+const q_3_6 = {
+  id: 'q_3_6',
   text: 'Number of patients for whom a minimum of 1g of feaces was collected for faeces culture',
   type: 'q',
   subType: '%',
   standards: 'F6'
 };
-const q_3_07 = {
-  id: 'q_3_07',
+const q_3_7 = {
+  id: 'q_3_7',
   text: 'Number of patients for whom the faeces collection containers are correctly labelled including at least: patient identifiers, site, date and time of collection',
   type: 'q',
   subType: '%',
   standards: 'F7'
 };
- const q_3_08 = {
-   id: 'q_3_08',
+ const q_3_8 = {
+   id: 'q_3_8',
    text: 'Number of patients for whom the lab request form was filled out completely and accurately, including at least: patient identifiers, site, date and time of collection, clinical information regarding suspected diagnosis, and contact details of requesting doctor',
    type: 'q',
    subType: '%',
    standards: 'F8'
  };
-const q_3_09 = {
-  id: 'q_3_09',
+const q_3_9 = {
+  id: 'q_3_9',
   text: 'Number of patients for whom faeces collection is documented in the clinical notes',
   type: 'q',
   subType: '%',
@@ -280,12 +282,13 @@ const inp_sec_3 = {
   text: 'Faeces Culture',
   type: 'section',
   subType: 'table',
-  children: [q_3_01, q_3_02, q_3_03, q_3_04, q_3_05, q_3_06, q_3_07, q_3_08, q_3_09] 
+  children: [q_3_1, q_3_2, q_3_3, q_3_4, q_3_5, q_3_6, q_3_7, q_3_8, q_3_9] 
   // not needed for now, q_3_10, q_3_11, q_3_12, q_3_13, q_3_14, q_3_15]
 };
 
 const q_4_1 = {
   id: 'q_4_1',
+  denominator: true,
   type: 'q',
   subType: '%',
   standards: 'U3',
@@ -300,6 +303,7 @@ const q_4_2 = {
 };
 const q_4_3 = {
   id: 'q_4_3',
+  denominator: true,
   type: 'q',
   subType: '%',
   standards: 'U5-11',
@@ -423,6 +427,7 @@ const inp_sec_4 = {
 
 const q_5_1 = {
   id: 'q_5_1',
+  denominator: true,
   type: 'q',
   subType: '%',
   standards: 'B3',
@@ -437,6 +442,7 @@ const q_5_2 = {
 };
 const q_5_3 = {
   id: 'q_5_3',
+  denominator: true,
   type: 'q',
   subType: '%',
   standards: 'B4-B22',
@@ -650,8 +656,8 @@ const r_1_1 = {
 }
 const r_1_2 = {
   text: 'Proportion of patients with dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection who had faecal culture ordered',
-  numerator: q_3_02,
-  denominator: q_3_01,
+  numerator: q_3_2,
+  denominator: q_3_1,
   target: { sectionId: 'collection-all', id: 'significant' },
   standards: 'F3',
   resources: [],
@@ -702,8 +708,8 @@ const inp_r_sec_1 = {
 const r_2_1 = {
   standards: 'F4',
   text: 'Proportion of patients for whom informed consent was obtained and documented in the clinical notes before performing faeces culture',
-  numerator: q_3_04,
-  denominator: q_3_03,
+  numerator: q_3_4,
+  denominator: q_3_3,
   target: { sectionId: 'collection-all', id: 'informed' },
   recommendations: [
     '[1] Remind clinicians of the importance of correct use & documentation of request forms, including informed consent, as incomplete forms will lead to samples being rejected.',
@@ -714,8 +720,8 @@ const r_2_1 = {
 const r_2_2 = {
   standards: 'F5',
   text: 'Proportion of patients from whom faeces were collected using aseptic technique',
-  numerator: q_3_05,
-  denominator: q_3_03,
+  numerator: q_3_5,
+  denominator: q_3_3,
   target: { sectionId: 'collection-all', id: 'aseptic' },
   recommendations: [
     '[1] Remind clinicians that samples not collected aseptically, are of doubtful clinical significance.',
@@ -726,8 +732,8 @@ const r_2_2 = {
 const r_2_3 = {
   standards: 'F6',
   text: 'Proportion of patients for whom a minimum of 1g of feaces was collected for faeces culture',
-  numerator: q_3_06,
-  denominator: q_3_03,
+  numerator: q_3_6,
+  denominator: q_3_3,
   target: { sectionId: 'collection-all', id: 'minimum' },
   recommendations: [
     '[1] Remind clinicians that a suffient quantity of faecal mater is required for testing and true representation of the microbes within',
@@ -738,8 +744,8 @@ const r_2_3 = {
 const r_2_4 = {
   standards: 'F7',
   text: 'Proportion of patients with correctly labelled sample collection containers',
-  numerator: q_3_07,
-  denominator: q_3_03,
+  numerator: q_3_7,
+  denominator: q_3_3,
   target: { sectionId: 'collection-all', id: 'labelled' },
   recommendations: [
     '[1] Remind clinicians of the significance of correctly labelling patient identifiers on sample containers, as incomplete or incorrect details will lead to samples being rejected',
@@ -750,8 +756,8 @@ const r_2_4 = {
 const r_2_5 = {
   standards: 'F8',
   text: 'Proportion of patients with completely and accurately completed lab request form',
-  numerator: q_3_08,
-  denominator: q_3_03,
+  numerator: q_3_8,
+  denominator: q_3_3,
   target: { sectionId: 'collection-all', id: 'form' },
   recommendations: [
     '[1] Remind clinicians of the significance of correct documentation of patient and sample details on all request forms, as incomplete or incorrect details will lead to samples being rejected',
@@ -762,8 +768,8 @@ const r_2_5 = {
 const r_2_6 = {
   standards: 'F9',
   text: 'Proportion of patients with faecal collection documented in clinical notes',
-  numerator: q_3_09,
-  denominator: q_3_03,
+  numerator: q_3_9,
+  denominator: q_3_3,
   target: { sectionId: 'collection-all', id: 'informed' },
   recommendations: [
     '[1] Remind clinicians on the importance of complete and correct sample notes and clinical history',

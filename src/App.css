@@ -62,7 +62,7 @@ h3 {
   font-weight: 300;
   font-size: 14px;
   /* padding-bottom: 7px; */
-  padding-left: 7px;
+  padding-left: 2px;
 }
 
 .form-check {
@@ -213,7 +213,13 @@ table.table td:not(:first-of-type) {
   text-align: center;
 }
 table.table tr input[type='number'] {
-  min-width: 70px;
-  max-width: 80px;
+  width: 80px;
   margin: auto;
+}
+
+tr.numerator > td:first-of-type {
+  padding-left: 30px;
+}
+tr.denominator > td:first-of-type .response-text {
+  font-weight: 500;
 }

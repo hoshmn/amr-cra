@@ -155,7 +155,7 @@ class AssessmentSection extends React.Component {
       <tbody>
         {children.map((q, i) => {
           this.qs.push(q);
-          const { id, text, tags, standards, subType } = q;
+          const { id, text, tags, standards, subType, denominator } = q;
           const question = ( // TODO: KEY
             <>
               {!!tags && !!tags.length &&
@@ -167,9 +167,9 @@ class AssessmentSection extends React.Component {
               {!!standards && <span className='standard-tag'> ({standards})</span>}
             </>
           )
-
+          const trClass = denominator ? 'denominator' : 'numerator'
           return (
-            <tr key={'tr-'+i+'-'+q.id}>
+            <tr key={'tr-'+i+'-'+q.id} className={trClass}>
               <td>{question}</td>
               {this.state.selectedDepts.map(d => {
 
@@ -187,8 +187,9 @@ class AssessmentSection extends React.Component {
                   case 'y_n':
                     content = (
                       <>
-                        <Form.Check name={uid} type='radio' id={uid} label='yes' />
-                        <Form.Check name={uid} type='radio' id={uid+radioNoTag} label='no' />
+                        <Form.Check name={uid} type='checkbox' id={uid} label='' custom />
+                        {/* <Form.Check name={uid} type='radio' id={uid} label='yes' />
+                        <Form.Check name={uid} type='radio' id={uid+radioNoTag} label='no' /> */}
                       </>
                       )
                     break;
@@ -245,6 +246,7 @@ class AssessmentSection extends React.Component {
         id={id}
         key={id}
         label={label}
+        custom
         // name={id}
       />
     )

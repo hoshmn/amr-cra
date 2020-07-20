@@ -205,7 +205,7 @@ class App extends React.Component {
       inputsTitle += ' [RESULTS]';
     }
 
-    const defaultActiveKey = DEV ? 'facility' : 'instructions';
+    const defaultActiveKey = DEV ? 'inputs' : 'instructions';
 
     return (
       <div className='App'>
@@ -213,6 +213,9 @@ class App extends React.Component {
         <Tabs defaultActiveKey={defaultActiveKey}>
           <Tab eventKey='instructions' title='Instructions'>
             do some ish
+            Tab and Space for speedier nav
+            () hover for standard
+            tags
           </Tab>
           <Tab eventKey='facility' title={facilityTitle}>
             {this.getFacilityTab()}
