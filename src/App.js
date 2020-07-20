@@ -23,7 +23,7 @@ class App extends React.Component {
 
     this.state = { 
       warnings: [],
-      submitted: false,
+      submitted: {},
       missedFQs: null,
       inputsResults: null,
     };
@@ -36,112 +36,122 @@ class App extends React.Component {
     this[section] = sectionObj;
   }
 
-  submit() {
-    if (!this['facility'] || !this['inputs']) {
-      const warnings = ['You must begin all assessment sections before submitting.'];
-      this.setState({ warnings })
-      return;
+  submit(section) {
+    if (section === 'facility') {
+
+      const missedFQs = this['facility'].questions.filter(q => {
+        const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
+        return !correctAnswerGiven;
+      });
+
+      const { submitted } = this.state;
+      this.setState({ 
+        submitted: {...submitted, [section]: true },
+        missedFQs,
+        warnings: []
+      });
+
+    } else if (section === 'inputs') {
+
+      // process inputs sections
+      const inputSectionObj = this['inputs'];
+      const { results: inputResultSections } = sectionsMap['inputs'];
+
+      inputSectionObj.questions.forEach(q => {
+        // add responses
+        q.responses = {};
+        let TOTAL = 0;
+        inputSectionObj.departments.forEach(d => {
+          const uid = getTableCellId(d, q);
+          if (q.subType === 'y_n') {
+            const correctAnswerGiven = !!document.querySelector(`#${uid}:checked`);
+            q.responses[d.id] = correctAnswerGiven;
+            TOTAL += correctAnswerGiven;
+          } else if (q.subType === '%') {
+            const el = document.querySelector(`#${uid}`);
+            let val = el ? Number(el.value) : null;
+            q.responses[d.id] = val;
+            TOTAL += val||0;
+          }
+        });
+        // q.responses.TOTAL = TOTAL;
+      })
+
+      inputResultSections.forEach(rSect => {
+        rSect.results.forEach(r => {
+          const { target, question, numerator, denominator } = r;
+          if (!target) {
+            console.error('Cannot calculate result without target: ', r);
+          }
+          // _.get
+          r.targetValue = inputSectionObj.targetData[target.sectionId][target.id];
+          // r.responseData = {};
+
+          if (question) {
+
+            r.responseData = r.question.responses;
+            let answered = 0;
+            let yeses = 0;
+            _.each(r.responseData, resp => {
+              if (!_.isNil(resp)) {
+                answered++;
+              }
+              if (!!resp) {
+                yeses++;
+              }
+            });
+
+            r.actualPerc = !answered ? '?' : (yeses/answered) * 100;
+
+          } else if (numerator && denominator) { // it's a % type result
+
+            r.responseData = {};
+            let totalNum = 0;
+            let totalDenom = 0;
+            _.each(r.numerator.responses, (numV, dept) => {
+              let perc = null;
+              const denomV = _.get(r, ['denominator', 'responses', dept]);
+              if (_.isNil(numV) || _.isNil(denomV)) {
+                console.warn('Empty num or denom val');
+                // _.set(r.responseData, dept, '?');
+                perc = '?';
+              } else {
+                totalNum += numV;
+                totalDenom += denomV;
+                perc = (numV / denomV) * 100;
+              }
+
+              _.set(r.responseData, dept, perc);
+            });
+
+            r.actualPerc = !totalDenom ? '?' : (totalNum / totalDenom) * 100
+
+          } else {
+            console.error('Cannot calculate result without a linked question or num/denom: ', r);
+          }
+        })
+      });
+
+
+      const { submitted } = this.state;
+      this.setState({ 
+        submitted: {...submitted, [section]: true },
+        inputsResults: inputResultSections,
+        warnings: []
+      });
+      
     }
 
 
-    const missedFQs = this['facility'].questions.filter(q => {
-      const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
-      return !correctAnswerGiven;
-    });
-
-    // process inputs sections
-    const inputSectionObj = this['inputs'];
-    const { results: inputResultSections } = sectionsMap['inputs'];
-
-    inputSectionObj.questions.forEach(q => {
-      // add responses
-      q.responses = {};
-      let TOTAL = 0;
-      inputSectionObj.departments.forEach(d => {
-        const uid = getTableCellId(d, q);
-        if (q.subType === 'y_n') {
-          const correctAnswerGiven = !!document.querySelector(`#${uid}:checked`);
-          q.responses[d.id] = correctAnswerGiven;
-          TOTAL += correctAnswerGiven;
-        } else if (q.subType === '%') {
-          const el = document.querySelector(`#${uid}`);
-          let val = el ? Number(el.value) : null;
-          q.responses[d.id] = val;
-          TOTAL += val||0;
-        }
-      });
-      // q.responses.TOTAL = TOTAL;
-    })
-
-    inputResultSections.forEach(rSect => {
-      rSect.results.forEach(r => {
-        const { target, question, numerator, denominator } = r;
-        if (!target) {
-          console.error('Cannot calculate result without target: ', r);
-        }
-        // _.get
-        r.targetValue = inputSectionObj.targetData[target.sectionId][target.id];
-        // r.responseData = {};
-
-        if (question) {
-
-          r.responseData = r.question.responses;
-          let answered = 0;
-          let yeses = 0;
-          _.each(r.responseData, resp => {
-            if (!_.isNil(resp)) {
-              answered++;
-            }
-            if (!!resp) {
-              yeses++;
-            }
-          });
-
-          r.actualPerc = !answered ? '?' : (yeses/answered) * 100;
-
-        } else if (numerator && denominator) { // it's a % type result
-
-          r.responseData = {};
-          let totalNum = 0;
-          let totalDenom = 0;
-          _.each(r.numerator.responses, (numV, dept) => {
-            let perc = null;
-            const denomV = _.get(r, ['denominator', 'responses', dept]);
-            if (_.isNil(numV) || _.isNil(denomV)) {
-              console.warn('Empty num or denom val');
-              // _.set(r.responseData, dept, '?');
-              perc = '?';
-            } else {
-              totalNum += numV;
-              totalDenom += denomV;
-              perc = (numV / denomV) * 100;
-            }
-
-            _.set(r.responseData, dept, perc);
-          });
-
-          r.actualPerc = !totalDenom ? '?' : (totalNum / totalDenom) * 100
-
-        } else {
-          console.error('Cannot calculate result without a linked question or num/denom: ', r);
-        }
-      })
-    });
-
-    this.setState({ 
-      submitted: true,
-      missedFQs,
-      inputsResults: inputResultSections,
-      warnings: []
-    });;
   }
 
   getFacilityTab() {
-    if (this.state.submitted) {
+    if (this.state.submitted['facility']) {
       return <Results missedFQs={this.state.missedFQs} />;
     }
     return (
       <AssessmentSection
+        submit={this.submit}
         sendMap={this.sendMap}
         section='facility'
       />
@@ -150,7 +160,7 @@ class App extends React.Component {
 
 
   getInputsTab() {
-    if (this.state.submitted) {
+    if (this.state.submitted['inputs']) {
       return (
         <ResultsTable 
           resultSections={this.state.inputsResults}
@@ -159,6 +169,7 @@ class App extends React.Component {
     }
     return (
       <AssessmentSection
+        submit={this.submit}
         sendMap={this.sendMap}
         section='inputs'
       />
@@ -185,27 +196,31 @@ class App extends React.Component {
   }
 
   render() {
-    const submitTitle = this.state.submitted ? 'Submit': 'Submit';
+    const { facility, inputs } = this.state.submitted;
     let facilityTitle = 'Clinical Facility Level';
     let inputsTitle = 'Clinical Facility Data Inputs';
-    if (this.state.submitted) {
+    if (facility) {
       facilityTitle += ' [RESULTS]';
+    } else if (inputs) {
       inputsTitle += ' [RESULTS]';
     }
 
-    const defaultActiveKey = DEV ? 'submit' : 'facility';
+    const defaultActiveKey = DEV ? 'facility' : 'instructions';
 
     return (
       <div className='App'>
         <h2>AMR Continuous Quality Improvement Assessment</h2>
         <Tabs defaultActiveKey={defaultActiveKey}>
+          <Tab eventKey='instructions' title='Instructions'>
+            do some ish
+          </Tab>
           <Tab eventKey='facility' title={facilityTitle}>
             {this.getFacilityTab()}
-           </Tab>
+          </Tab>
           <Tab eventKey='inputs' title={inputsTitle}>
             {this.getInputsTab()}
           </Tab>
-          <Tab eventKey='submit' title={submitTitle}>
+          <Tab eventKey='dashboard' title='Dashboard' disabled={!facility || !inputs}>
             {this.getSubmitTab()}
           </Tab>
         </Tabs>

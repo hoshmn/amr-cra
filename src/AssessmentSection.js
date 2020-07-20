@@ -20,7 +20,12 @@ class AssessmentSection extends React.Component {
 
     const { departments } = sectionsMap[this.props.section];
     const selectedDepts = DEV && departments ? departments : []
-    this.state = { contents: null, selectedDepts, begun: false, warnings: [] };
+    this.state = {
+      contents: null,
+      selectedDepts,
+      begun: DEV || false,
+      warnings: []
+    };
 
     this.toggleSubQs = this.toggleSubQs.bind(this);
     this.selectDept = this.selectDept.bind(this);
@@ -392,6 +397,28 @@ class AssessmentSection extends React.Component {
     )
   }
 
+  getSubmitButton() {
+    const { requiresSetup } = sectionsMap[this.props.section];
+    if (requiresSetup && !this.state.begun) {
+      return;
+    }
+
+    let warningText = null;
+    if (this.state.warnings.length) {
+      warningText = `Please ${this.state.warnings.join(' and ')}.`;
+    }
+    return (
+      <div className='text-center my-5'> 
+        <div className='warnings text-danger'>{warningText}</div>
+        <Button
+          onClick={() => this.props.submit(this.props.section)} 
+        >
+          Submit Assessment Section
+        </Button>
+      </div>
+    )
+  }
+
   getDeptSelection() {
     const { departments } = sectionsMap[this.props.section];
     if (!departments) {
@@ -456,6 +483,7 @@ class AssessmentSection extends React.Component {
       <Accordion id={`${this.props.section}-section`}>
         {this.getInstructions()}
         {(showContents || DEV) && this.state.contents}
+        {this.getSubmitButton()}
       </Accordion>
     );
   }
