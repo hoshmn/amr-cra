@@ -1,5 +1,8 @@
 import React from 'react';
 import sectionsMap from './sections';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 
@@ -125,18 +128,35 @@ class ResultsTable extends React.Component {
 
   render() {
 
+    const { section, resultSections } = this.props;
+    const defaultKey = resultSections[0].text;
+
     return (
       <div className='results-table'>
         {this.getLegend()}
-        {this.props.resultSections.map(rSection => {
+        <Accordion
+          id={`${section}-result-table`}
+          defaultActiveKey={defaultKey}
+          className='my-5'
+        >
+          {this.props.resultSections.map(rSection => {
 
-          return (
-            <div key={rSection.text}>
-              <h4 className='mt-3'>{rSection.text}</h4>
-              {this.getSectionTable(rSection)}
-            </div>
-          )
-        })}
+            return (
+              <Card key={rSection.text}>
+                <Card.Header>
+                    <Accordion.Toggle as={Button} variant='link' eventKey={rSection.text}>
+                      {rSection.text}
+                    </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey={rSection.text}>
+                  <Card.Body>
+                    {this.getSectionTable(rSection)}
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            )
+          })}
+        </Accordion>
       </div>
     )
   }
