@@ -203,7 +203,7 @@ input.target ~ label {
 }
 
 /* UNIVERSAL TABLE STYLES */
-table.table th {
+table.table th:not(:first-of-type) {
   text-align: center;
 }
 table.table td {

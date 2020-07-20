@@ -141,12 +141,14 @@ class AssessmentSection extends React.Component {
   }
 
   getQTable(children) {
-
+    const extractedText = 'Number of patients'
+    const extract = children.every(q => q.text.startsWith(extractedText))
+    const upperCornerText = extract ? extractedText + '...' : null;
     return (
       <Table striped bordered responsive>
       <thead>
         <tr>
-          <th></th>
+          <th>{upperCornerText}</th>
           {this.state.selectedDepts.map(d => {
             return <th key={'th-'+d.name}>{d.name}</th>
           })}
@@ -155,7 +157,8 @@ class AssessmentSection extends React.Component {
       <tbody>
         {children.map((q, i) => {
           this.qs.push(q);
-          const { id, text, tags, standards, subType, denominator } = q;
+          const { id, text, tags, standards, dataSource, subType, denominator } = q;
+          const displayText = extract ? '...' + text.slice(extractedText.length+1) : text
           const question = ( // TODO: KEY
             <>
               {!!tags && !!tags.length &&
@@ -163,14 +166,14 @@ class AssessmentSection extends React.Component {
                   {tags.map(t => <i key={'tag-'+q.id+'-'+t} className={t} />)}
                 </span>
               }
-              <span className='response-text'>{text}</span>
+              <span className='response-text'>{displayText}</span>
               {!!standards && <span className='standard-tag'> ({standards})</span>}
             </>
           )
           const trClass = denominator ? 'denominator' : 'numerator'
           return (
             <tr key={'tr-'+i+'-'+q.id} className={trClass}>
-              <td>{question}</td>
+              <td title={dataSource}>{question}</td>
               {this.state.selectedDepts.map(d => {
 
                 const uid = getTableCellId(d, q);

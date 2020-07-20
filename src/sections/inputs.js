@@ -95,6 +95,7 @@ const q_1_1 = {
   type: 'q',
   subType: 'y_n',
   standards: 'F1, U1, B1',
+  dataSource: '[LC2.1]'
 };
 const q_1_2 = {
   id: 'q_1_2',
@@ -102,6 +103,7 @@ const q_1_2 = {
   type: 'q',
   subType: 'y_n',
   standards: 'F17, U19, B30',
+  dataSource: '[LC2.2]'
 };
 const q_1_3 = {
   id: 'q_1_3',
@@ -109,6 +111,7 @@ const q_1_3 = {
   type: 'q',
   subType: 'y_n',
   standards: 'F17, U19, B30',
+  dataSource: '[LC2.2]'
 };
 const q_1_4 = {
   id: 'q_1_4',
@@ -116,6 +119,7 @@ const q_1_4 = {
   type: 'q',
   subType: 'y_n',
   standards: 'F17, U19, B30',
+  dataSource: '[LC2.2]'
 };
 const inp_sec_1 = {
   id: 'fac_sec_1',
