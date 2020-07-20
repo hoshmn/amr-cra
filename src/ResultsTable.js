@@ -38,6 +38,9 @@ class ResultsTable extends React.Component {
               <th>Target</th>
               {depts.map(d => <th key={d.name}>{d.name}</th>)}
               <th>Total Actual</th>
+              <th>Priority</th>
+              <th>Recommended Actions</th>
+              <th>Links to Resources</th>
             </tr>
           </thead>
           <tbody>
@@ -51,20 +54,80 @@ class ResultsTable extends React.Component {
   getResultRow(result) {
     const { text, standards, targetValue, actualPerc, responseData } = result;
     const question = (
-      <>
+      <div>
         <span className='response-text'>{text}</span>
         {!!standards && <span className='standard-tag'> ({standards})</span>}
-      </>
+      </div>
     );
     return (
       <tr key={text}>
-        <td>{question}</td>
+        <td className='response-text-cell'>{question}</td>
         <td>{targetValue+'%'}</td>
         {_.map(responseData, (responseValue, dep) => this.getResponseCell(responseValue, result, dep))}
         {this.getResponseCell(actualPerc, result, 'total')}
+        {this.getPriorityCell(result)}
+        {this.getRecsCell(result)}
+        {this.getLinksCell(result)}
       </tr>
     );
   }
+
+  getPriorityCell({ actualPerc, targetValue }) {
+    let disabled = false;
+    if (actualPerc && targetValue && (actualPerc >= targetValue)) {
+      disabled = true;
+    }
+
+    return (
+      <td>
+        <Form.Control as='select' custom disabled={disabled}>
+          <option></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </Form.Control>
+      </td>
+    )
+  }
+
+  getRecsCell({ actualPerc, targetValue, recommendations }) {
+    if (actualPerc && targetValue && (actualPerc >= targetValue)) {
+      return <td></td>;
+    }
+
+    const formatPoint = (r, i) => {
+
+      const text = r.replace(/^\[\d+\]/, '');
+      const pointNumber = recommendations.length > 1 ? i+1 : null;
+      return (
+        <div className='point' key={i}>
+          <span className='point-number'>{pointNumber}</span>{text}
+        </div>
+      )
+    }
+
+    return (
+      <td className='recommendations scrollable'>
+        <div>
+          {recommendations.map((r, i) => formatPoint(r, i))}
+        </div>
+      </td>
+    )
+  }
+
+  getLinksCell({ actualPerc, targetValue }) {
+    if (actualPerc && targetValue && (actualPerc >= targetValue)) {
+      return <td></td>;
+    }
+
+    return (
+      <td className='links scrollable'>
+        <div>some links</div>
+      </td>
+    )
+
+  }
+
 
   getResponseCell(responseValue, result, dep) {
     const isPerc = result.numerator;

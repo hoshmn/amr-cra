@@ -205,6 +205,25 @@ input.target ~ label {
   margin-top: -10px;
 }
 
+td.response-text-cell > div, td.links > div {
+  min-width: 150px;
+}
+td.recommendations > div {
+  min-width: 200px;
+}
+td.recommendations .point:not(:last-of-type) {
+  padding-bottom: 7px;
+}
+td.recommendations .point-number {
+  font-weight: 800;
+  color: #4747e0;
+  font-size: large;
+}
+td.scrollable > div {
+  overflow: auto;
+  max-height: 250px;
+}
+
 /* UNIVERSAL TABLE STYLES */
 table.table th:not(:first-of-type) {
   text-align: center;
