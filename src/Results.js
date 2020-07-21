@@ -36,10 +36,10 @@ class Results extends React.Component {
 
     const indicatorText = eldest.multiText;
     const indicator = (
-      <>
+      <div className='indicator' title={eldest.standards}>
         {indicatorText}
         {!!eldest.standards && <span className='standard-tag'> ({eldest.standards})</span>}
-      </>
+      </div>
     );
 
     let somethingRight = !!eldest.answeredCorrectly;
@@ -50,8 +50,8 @@ class Results extends React.Component {
     if (!_.isUndefined(eldest.answeredCorrectly) && !eldest.answeredCorrectly) {
       // wrong off the bat
       somethingWrong = true;
-      const eRecs = eldest.recommendations || [];
-      recs.push(eRecs);
+      const eRecs = eldest.recs || [];
+      recs.push(...eRecs);
     } else {
       const parts = eldest.children || eldest.subQs;
       parts.forEach(p => {
@@ -76,12 +76,12 @@ class Results extends React.Component {
       fulfilled = 'Partial';
     }
 
-    const priority = 3;
+    const isFulfilled = fulfilled==='Yes';
       
     return (
       <div>
 
-        <Table striped bordered responsive>
+        <Table bordered striped responsive>
           <thead>
             <tr>
               <th></th>
@@ -99,26 +99,12 @@ class Results extends React.Component {
               <td>
                 {indicator}
               </td>
-              <td>
+              <td className={'fulfilled '+fulfilled}>
                 {fulfilled}
               </td>
-              <td>
-                {priority}
-              </td>
-              <td>
-                {fulfilled !== 'Yes' && recs.map(r => {
-                  return <div>{r}</div>
-                })}
-              </td>
-              <td>
-                {fulfilled !== 'Yes' && links.map(l => {
-                  return <div>
-                    <a href={l.link}>{l.title}</a>
-                  </div>
-                })}
-              </td>
-              {/* <td></td>
-              <td></td> */}
+              {this.getPriorityCell(isFulfilled)}
+              {this.getRecsCell(isFulfilled, recs)}
+              {this.getLinksCell(isFulfilled, links)}
             </tr>
           </tbody>
           </Table>
@@ -126,57 +112,18 @@ class Results extends React.Component {
     );
   }
 
-  getResultRow(result) {
-    const { text, standards, targetValue, actualPerc, responseData } = result;
-    const question = (
-      <div>
-        <span className='response-text'>{text}</span>
-        {!!standards && <span className='standard-tag'> ({standards})</span>}
-      </div>
-    );
-    return (
-      <tr key={text}>
-        <td className='response-text-cell'>{question}</td>
-        <td>{targetValue+'%'}</td>
-        {_.map(responseData, (responseValue, dep) => this.getResponseCell(responseValue, result, dep))}
-        {this.getResponseCell(actualPerc, result, 'total')}
-        {this.getPriorityCell(result)}
-        {this.getRecsCell(result)}
-        {this.getLinksCell(result)}
-      </tr>
-    );
-  }
-
-  getPriorityCell({ actualPerc, targetValue }) {
-    let disabled = false;
-    if (actualPerc && targetValue && (actualPerc >= targetValue)) {
-      disabled = true;
-    }
-
-    return (
-      <td>
-        <Form.Control as='select' custom disabled={disabled}>
-          <option></option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </Form.Control>
-      </td>
-    )
-  }
-
-  getRecsCell({ actualPerc, targetValue, recommendations }) {
-    if (actualPerc && targetValue && (actualPerc >= targetValue)) {
+  getRecsCell(isFulfilled, recommendations) {
+    if (isFulfilled || !recommendations.length) {
       return <td></td>;
     }
 
     const formatPoint = (r, i) => {
-
+      console.log('!!', r)
       const text = r.replace(/^\[\d+\]/, '');
       const pointNumber = recommendations.length > 1 ? i+1 : null;
       return (
         <div className='point' key={i}>
-          <span className='point-number'>{pointNumber}</span>{text}
+          <span className='point-number'>{pointNumber}</span> {text}
         </div>
       )
     }
@@ -190,62 +137,35 @@ class Results extends React.Component {
     )
   }
 
-  getLinksCell({ actualPerc, targetValue, resources }) {
 
-    if (actualPerc && targetValue && (actualPerc >= targetValue)) {
-      return <td></td>;
-    }
+  getPriorityCell(isFulfilled) {
+    const disabled = isFulfilled;
 
     return (
-      <td className='links'>
-        <div>{resources && resources.map(r => {
-          return (
-            <div key={r.title} className='link'>
-              <a href={r.link}>{r.title}</a>
-            </div>
-          )
-        })}</div>
+      <td>
+        <Form.Control as='select' custom disabled={disabled}>
+          <option></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </Form.Control>
       </td>
     )
-
   }
 
-
-  getResponseCell(responseValue, result, dep) {
-    const isPerc = result.numerator;
-
-    const { targetValue } = result;
-    let perfClass = '';
-    let content = null;
-
-    const nearCutoff = (targetValue * this.state.nearThreshhold/100);
-
-    if (_.isNil(responseValue)) {
-      content = 'No Data';
-      perfClass = 'missing ';
-
-    } else if (isPerc || dep === 'total') {
-      content = Math.round(responseValue) + '%';
-      if (responseValue >= targetValue) {
-        perfClass = 'ahead ';
-      } else if (responseValue >= nearCutoff) {
-        perfClass = 'near ';
-      } else {
-        perfClass = 'behind ';
-      }
-
-    } else {
-      content = !!responseValue ? 'Yes' : 'No';
-      if (!!responseValue) {
-        perfClass = 'ahead ';
-      } else {
-        perfClass = 'behind ';
-      }
+  getLinksCell(isFulfilled, links) {
+    if (isFulfilled) {
+      return <td></td>;
     }
-
-    const classes = 'response-value ' + perfClass + dep;
-
-    return <td className={classes} key={dep}>{content}</td>
+    return (
+      <td className='links'>
+        {links.map(l => {
+          return <div key={l.text}>
+            <a href={l.link}>{l.title}</a>
+          </div>
+        })}
+      </td>
+    )
   }
 
   render() {

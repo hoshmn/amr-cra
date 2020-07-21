@@ -379,10 +379,10 @@ const fac_sec_2 = {
 const fac_q_3a = {
   id: 'fac_q_3a',
   text: 'To do faecal culture if there is dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection?',
+  recs: ['Add to guidelines to do faecal culture if there is dysentery, suspicion of a public health threat / outbreak or if there are associated signs of systemic infection'],
   standards: 'F3',
   tags: ['f'],
   weight: 1,
-  recs: [],
   resources: [],
   type: 'q',
   subType: 'y_n'
@@ -390,10 +390,10 @@ const fac_q_3a = {
 const fac_q_3b = {
   id: 'fac_q_3b',
   text: 'To do urine culture if there are clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy?',
+  recs: ['Add to guidelines to do urine culture if there are clinical indications such as suspected urinary tract infection; systemic sepsis without a clear focus or asymptomatic bacteriuria in pregnancy'],
   standards: 'U3',
   tags: ['u'],
   weight: 1,
-  recs: [],
   resources: [],
   type: 'q',
   subType: 'y_n'
@@ -401,10 +401,10 @@ const fac_q_3b = {
 const fac_q_3c = {
   id: 'fac_q_3c',
   text: 'To do blood culture with clinical suspicion of blood stream infection?',
+  recs: ['Add to guidelines to do blood culture with clinical suspicion of blood stream infection'],
   standards: 'B3',
   tags: ['b'],
   weight: 1,
-  recs: [],
   resources: [],
   type: 'q',
   subType: 'y_n'
@@ -430,27 +430,33 @@ const fac_sec_2b = {
 
 const fac_q_4a = {
   id:'fac_q_4a', type:'q', subType:'box',
-  text: `Patient identifiers`
+  text: `Patient identifiers`,
+  recs: [`Add patient identifiers`]
 }
 const fac_q_4b = {
   id:'fac_q_4b', type:'q', subType:'box',
-  text: `Site name`
+  text: `Site name`,
+  recs: [`Add site name`]
 }
 const fac_q_4c = {
   id:'fac_q_4c', type:'q', subType:'box',
-  text: `Date of admission`
+  text: `Date of admission`,
+  recs: [`Add date of admission`]
 }
 const fac_q_4d = {
   id:'fac_q_4d', type:'q', subType:'box',
-  text: `Date & time of collection`
+  text: `Date & time of collection`,
+  recs: [`Add date & time of collection`]
 }
 const fac_q_4e = {
   id:'fac_q_4e', type:'q', subType:'box',
-  text: `Clinical information regarding suspected diagnosis`
+  text: `Clinical information regarding suspected diagnosis`,
+  recs: [`Add clinical information regarding suspected diagnosis`]
 }
 const fac_q_4f = {
   id:'fac_q_4f', type:'q', subType:'box',
-  text: `Contact details of requesting doctor`
+  text: `Contact details of requesting doctor`,
+  recs: [`Add contact details of requesting doctor`]
 }
 const fac_q_4_preface = {
   id:'fac_q_4_preface', type:'preface', standards: 'F8, U10, B21',

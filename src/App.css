@@ -156,13 +156,13 @@ input.target ~ label {
   line-height: 36px;
 }
 
-.response-value.ahead, .legend .example.ahead {
+.response-value.ahead, .legend .example.ahead, .fulfilled.Yes {
   background-color: #a8d08d;
 }
-.response-value.near, .legend .example.near {
+.response-value.near, .legend .example.near, .fulfilled.Partial {
   background-color: #ffe598;
 }
-.response-value.behind, .legend .example.behind {
+.response-value.behind, .legend .example.behind, .fulfilled.No {
   background-color: #f4b083;
 }
 .response-value.missing {
