@@ -255,7 +255,7 @@ const fac_q_1 = {
   // expectedValue: true,
   // revealIf: true,
   multipart: true,
-  multiText: 'The clinical facility have an oversight committee that revises treatment guidelines and medicines formulary and/or stewardship practices based on cumulative AST antibiograms, pharmacy antibiotic usage data and the outcomes from stewardship ward rounds.',
+  multiText: 'The clinical facility has an oversight committee that revises treatment guidelines and medicines formulary and/or stewardship practices based on cumulative AST antibiograms, pharmacy antibiotic usage data and the outcomes from stewardship ward rounds.',
   subQs: [fac_q_1_sub_preface,fac_q_1_c1,fac_q_1_c2,fac_q_1_c3,fac_q_1_c4]
 }
 const fac_sec_1 = {
@@ -362,7 +362,7 @@ const fac_q_2 = {
   type: 'q',
   subType: 'y_n',
   multipart: true,
-  multiText: 'A “Laboratory Handbook” available to clinical staff which describes specimen collection, storage, and transportation of samples, and meets all requirements.',
+  multiText: 'A “Laboratory Handbook” is available to clinical staff which describes specimen collection, storage, and transportation of samples, and meets all requirements.',
   subQs: [fac_q_2_sub_preface,fac_q_2_c1,fac_q_2_c2,fac_q_2_c3,fac_q_2_c4,fac_q_2_c5,fac_q_2_c6,fac_q_2_c7,fac_q_2_c8,fac_q_2_c9,fac_q_2_c10,fac_q_2_c11,fac_q_2_c12,fac_q_2_c13,fac_q_2_c14,fac_q_2_c15]
 }
 // collection containers / sample deliveries?
