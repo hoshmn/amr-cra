@@ -313,8 +313,8 @@ class AssessmentSection extends React.Component {
           </Form.Label>
 
           <div className='response-text'>
-              <Form.Check onChange={onChange} name={id} inline type='radio' id={id} label='yes' />
-              <Form.Check onChange={onChange} name={id} inline type='radio' id={id+radioNoTag} label='no' />
+              <Form.Check onChange={onChange} name={id} inline type='radio' id={id} label='Yes' />
+              <Form.Check onChange={onChange} name={id} inline type='radio' id={id+radioNoTag} label='No' />
           </div>
         </Form.Group>
 

@@ -24,7 +24,7 @@ class App extends React.Component {
     this.state = { 
       warnings: [],
       submitted: {},
-      missedFQs: null,
+      // missedFQs: null,
       inputsResults: null,
     };
 
@@ -36,18 +36,28 @@ class App extends React.Component {
     this[section] = sectionObj;
   }
 
+  processMultipartQs(qs) {
+    if (!qs) return;
+    qs.forEach(q => {
+      if (q.type === 'q') {
+        const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
+        q.answeredCorrectly = correctAnswerGiven;
+      }
+
+      this.processMultipartQs(q.subQs);
+      this.processMultipartQs(q.children);
+    })
+  }
+
   submit(section) {
+    // TODO "flat map" this."section" object may no longer be useful
     if (section === 'facility') {
 
-      const missedFQs = this['facility'].questions.filter(q => {
-        const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
-        return !correctAnswerGiven;
-      });
+      this.processMultipartQs(sectionsMap['facility'].questions);
 
       const { submitted } = this.state;
       this.setState({ 
         submitted: {...submitted, [section]: true },
-        missedFQs,
         warnings: []
       });
 
@@ -147,7 +157,7 @@ class App extends React.Component {
 
   getFacilityTab() {
     if (this.state.submitted['facility']) {
-      return <Results missedFQs={this.state.missedFQs} />;
+      return <Results processedQs={sectionsMap['facility'].questions} />;
     }
     return (
       <AssessmentSection
