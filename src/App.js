@@ -186,21 +186,10 @@ class App extends React.Component {
     )
   }
 
-  getSubmitTab() {
-    const submittedMessage = !this.state.submitted ? null :
-      <div>Assessment sumbitted. See section tabs for results.</div>;
+  getDashboardTab() {
     return (
-      <div>
-        <div className='warnings text-danger'>{this.state.warnings.join('\n')}</div>
-        {submittedMessage}
-
-        <Button
-          disabled={this.state.submitted}
-          onClick={this.submit} 
-          variant='outline-primary' size='lg'
-        >
-          {this.state.submitted ? 'Submitted' : 'Submit Assessment'}
-        </Button>
+      <div className='text-center m-5'>
+        Now that all sections have been submitted, your ranked priorities and summary graphics will appear here.
       </div>
     )
   }
@@ -211,7 +200,8 @@ class App extends React.Component {
     let inputsTitle = 'Clinical Facility - by department';
     if (facility) {
       facilityTitle += ' [RESULTS]';
-    } else if (inputs) {
+    }
+    if (inputs) {
       inputsTitle += ' [RESULTS]';
     }
 
@@ -234,7 +224,7 @@ class App extends React.Component {
             {this.getInputsTab()}
           </Tab>
           <Tab eventKey='dashboard' title='Dashboard' disabled={!facility || !inputs}>
-            {this.getSubmitTab()}
+            {this.getDashboardTab()}
           </Tab>
         </Tabs>
       </div>
