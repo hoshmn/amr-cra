@@ -40,7 +40,7 @@ class App extends React.Component {
     if (!qs) return;
     qs.forEach(q => {
       if (q.type === 'q') {
-        const correctAnswerGiven = document.querySelector(`#${q.id}:checked`);
+        const correctAnswerGiven = !!document.querySelector(`#${q.id}:checked`);
         q.answeredCorrectly = correctAnswerGiven;
       }
 
@@ -157,7 +157,7 @@ class App extends React.Component {
 
   getFacilityTab() {
     if (this.state.submitted['facility']) {
-      return <Results processedQs={sectionsMap['facility'].questions} />;
+      return <Results section='facility' />;
     }
     return (
       <AssessmentSection
