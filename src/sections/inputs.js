@@ -5,11 +5,17 @@ const subTypes = [
   'table' // for sections
 ];
 
-const title = 'Clinical Facility - by department';
+const title = 'Clinical Facility - by Department';
 
 const instructions = [
-  'Clinical Facility Data Inputs instructions...',
-  'Before beggining this section, please select four departments to assess and set the target numbers.'
+  'For each Department selected, collect and input the data for the indicators under each assessment subsection below. Please click on each subsection to expand the data inputs required.',
+  'For your information, data inputs that act as denominators (totals) are bolded.'
+];
+const departmentInstructions = [
+  'This section assess indicators relevant to the clinical facility, by department level. Before beginning, please select a minimum of 1 and up to 8 relevant departments at the clinical facility of assessment.'
+];
+const targetInstructions = [
+  'For the following clinical facility indicator categories, please select a target that is appropriate for the clinical facility. Default targets are set based on best practice, but can be changed. '
 ];
 
 const departments = [
@@ -1404,4 +1410,4 @@ const results = [
   inp_r_sec_4
 ]
 
-export { title, instructions, questions, targets, results, departments }
+export { title, instructions, targetInstructions, departmentInstructions, questions, targets, results, departments }

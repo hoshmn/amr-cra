@@ -272,6 +272,7 @@ class App extends React.Component {
 
         <h3>AMR Continuous Quality Improvement (CQI)</h3>
         <h4> Assessment Tool for Clinical Facilities & Laboratories</h4>
+        <h6>v0.7 (June 2020)</h6>
         </div>
         <Tabs defaultActiveKey={defaultActiveKey}>
           <Tab eventKey='instructions' title='Instructions'>

@@ -180,6 +180,7 @@ class Results extends React.Component {
     return (
       <div id={`${section}-result-page`} className='result-page'>
         <div className='instructions'>
+          <h3>Results for the Clinical Facility Level</h3>
           <div className="my-3">
             Based on your inputs, your assessment results by indicator, recommendations to address the specific gaps identified for that indicator, and, where available, relevant links to further resources are provided. 
           </div>

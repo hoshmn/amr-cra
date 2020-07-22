@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 import _ from 'lodash';
@@ -28,6 +30,8 @@ class ResultsTable extends React.Component {
 
     let depts = _.keys(_.get(rSection, 'results.0.responseData', {}));
     depts = depts.map(dStr => _.find(departments, d => d.id === dStr));
+
+    const totalTitle = 'This is the total indicator result for all assessed departments';
     return (
       <div>
 
@@ -35,9 +39,9 @@ class ResultsTable extends React.Component {
           <thead>
             <tr>
               <th></th>
-              <th>Target</th>
+              <th className='target-th'>Target</th>
               {depts.map(d => <th key={d.name}>{d.name}</th>)}
-              <th>Total Actual</th>
+              <th title={totalTitle}>Total Actual</th>
               <th>Priority</th>
               <th>Recommended Actions</th>
               <th>Links to Resources</th>
@@ -62,7 +66,7 @@ class ResultsTable extends React.Component {
     return (
       <tr key={text}>
         <td className='response-text-cell'>{question}</td>
-        <td>{targetValue+'%'}</td>
+        <td className='target-td'>{targetValue+'%'}</td>
         {_.map(responseData, (responseValue, dep) => this.getResponseCell(responseValue, result, dep))}
         {this.getResponseCell(actualPerc, result, 'total')}
         {this.getPriorityCell(result)}
@@ -136,6 +140,7 @@ class ResultsTable extends React.Component {
 
 
   getResponseCell(responseValue, result, dep) {
+    const isTotal = dep == 'total';
     const isPerc = result.numerator;
 
     const { targetValue } = result;
@@ -148,7 +153,7 @@ class ResultsTable extends React.Component {
       content = 'No Data';
       perfClass = 'missing ';
 
-    } else if (isPerc || dep === 'total') {
+    } else if (isPerc || isTotal) {
       content = Math.round(responseValue) + '%';
       if (responseValue >= targetValue) {
         perfClass = 'ahead ';
@@ -167,9 +172,9 @@ class ResultsTable extends React.Component {
       }
     }
 
-    const classes = 'response-value ' + perfClass + dep;
-
-    return <td className={classes} key={dep}>{content}</td>
+    const classes = 'response-value ' + perfClass + (isTotal ? 'total' : '');
+    const title = isTotal ? 'This is the total indicator result for all assessed departments' : null;
+    return <td className={classes} title={title} key={dep}>{content}</td>
   }
 
   updateThreshhold(e) {
@@ -206,11 +211,24 @@ class ResultsTable extends React.Component {
 
     return (
       <div className='results-table'>
-        {this.getLegend()}
+        <div className='instructions'>
+        <h3>Results for the Clinical Facility - by Department</h3>
+          <div className='instruction my-2'>
+            Based on your inputs, your assessment results by indicator, recommendations to address the specific gaps identified for that indicators and where available, relevant links to further resources are provided.
+          </div>
+          <div className='instruction my-2'>
+            Colour coding of results by department is based on the legend below. You can select the threshold at which a result is considered <span className='target-ex'>Near Target</span>, and if the result is below this it will be considered <span className='target-ex'>Behind Target</span>.
+          </div>
+          {this.getLegend()}
+          <div className='instruction my-2'>
+            For each indicator, please select a priority level for the recommended action, with 1 being the highest and 3 being the lowest.
+          </div>
+
+        </div>
         <Accordion
           id={`${section}-result-table`}
           defaultActiveKey={defaultKey}
-          className='my-5'
+          className='mb-5'
         >
           {this.props.resultSections.map(rSection => {
 

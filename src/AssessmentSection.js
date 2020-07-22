@@ -78,8 +78,8 @@ class AssessmentSection extends React.Component {
     const { title, instructions, requiresSetup } = sectionsMap[this.props.section];
     return (
       <div className='instructions'>
-        <h3>{title}: {this.state.begun || !requiresSetup ? 'Data Input' : 'Targets'}</h3>
-        {instructions.map((sect, i) =><span className='instruction' key={'inst-'+i}>{sect}</span>)}
+        <h3>{this.state.begun || !requiresSetup ? 'Data Inputs' : 'Targets'} for the {title}</h3>
+        {(this.state.begun || !requiresSetup) && instructions.map((sect, i) =><span className='instruction' key={'inst-'+i}>{sect}</span>)}
         {this.props.section === 'facility' && (
           <span className='instruction'>
             The following coloured circles are used to indicate questions pertaining to specific specimen types:
@@ -435,13 +435,14 @@ class AssessmentSection extends React.Component {
   }
 
   getDeptSelection() {
-    const { departments } = sectionsMap[this.props.section];
+    const { departments, departmentInstructions } = sectionsMap[this.props.section];
     if (!departments) {
       return;
     }
 
     return (
-      <div className='mt-3'>
+      <div className='mt-5'>
+        {departmentInstructions.map((sect, i) =><span className='instruction my-2' key={'inst-'+i}>{sect}</span>)}
         <h4>Select departments to assess</h4>
         <Multiselect
           options={departments}
@@ -451,6 +452,7 @@ class AssessmentSection extends React.Component {
           closeOnSelect={false}
           closeIcon='cancel'
           //selectedValues={1} // Preselected value to persist in dropdown
+          selectionLimit={8}
           onSelect={this.selectDept}
           onRemove={this.removeDept}
           displayValue="name" // Property name to display in the dropdown options
@@ -460,14 +462,15 @@ class AssessmentSection extends React.Component {
   }
 
   getTargetSetting() {
-    const { targets } = sectionsMap[this.props.section];
+    const { targets, targetInstructions } = sectionsMap[this.props.section];
     if (!targets) {
       return;
     }
 
     return (
-      <div className='mt-3'>
-        <h4>Set targets for the assessment</h4>
+      <div className='mt-5'>
+          {targetInstructions.map((sect, i) =><span className='instruction my-2' key={'inst-'+i}>{sect}</span>)}
+          <h4 className='my-3'>Set targets for the Clinical Facility Level</h4>
           {targets.map(tSection => (
             <div className='target-section' key={tSection.sectionName}>
               <h5>{tSection.sectionName}</h5>

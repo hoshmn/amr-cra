@@ -1,5 +1,16 @@
-import { title as facilityTitle, instructions as facilityInstructions, questions as facilityQuestions } from './facility';
-import { title as inputsTitle, instructions as inputsInstructions, questions as inputsQuestions, targets as inputsTargets, results as inputsResults, departments } from './inputs';
+import {
+  title as facilityTitle,
+  instructions as facilityInstructions,
+  questions as facilityQuestions } from './facility';
+import {
+  title as inputsTitle,
+  instructions as inputsInstructions,
+  questions as inputsQuestions,
+  targets as inputsTargets,
+  results as inputsResults,
+  departments,
+  targetInstructions,
+  departmentInstructions } from './inputs';
 
 const sectionsMap = {
   facility: { 
@@ -14,7 +25,9 @@ const sectionsMap = {
     requiresSetup: true,
     targets: inputsTargets,
     results: inputsResults,
-    departments
+    departments,
+    targetInstructions,
+    departmentInstructions
   }
 }
 
