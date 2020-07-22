@@ -80,6 +80,16 @@ class AssessmentSection extends React.Component {
       <div className='instructions'>
         <h3>{title}: {this.state.begun || !requiresSetup ? 'Data Input' : 'Targets'}</h3>
         {instructions.map((sect, i) =><span className='instruction' key={'inst-'+i}>{sect}</span>)}
+        {this.props.section === 'facility' && (
+          <span className='instruction'>
+            The following coloured circles are used to indicate questions pertaining to specific specimen types:
+            <span className='specimen-tags'>
+              {" "}<i className='f' /> (faeces), 
+              {" "}<i className='u' /> (urine), and 
+              {" "}<i className='b' /> (blood).
+            </span>
+          </span>
+        )}
         {!DEV && !this.state.begun && this.getDeptSelection()}
         {!DEV && !this.state.begun && this.getTargetSetting()}
         {!DEV && !this.state.begun && this.getStartButton()}

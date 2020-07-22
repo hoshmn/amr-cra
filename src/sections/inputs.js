@@ -555,7 +555,7 @@ const q_5_18 = {
   type: 'q',
   subType: '%',
   standards: 'B18',
-  text: 'Number of patients whom had an aerobic bloood culture in a resource-limited setting'
+  text: 'Number of patients whom had an aerobic blood culture in a resource-limited setting'
 };
 const q_5_19 = {
   id: 'q_5_19',
@@ -569,7 +569,7 @@ const q_5_20 = {
   type: 'q',
   subType: '%',
   standards: 'B20',
-  text: 'Number of patients for whom blood culture bottles are correctly labelled inlcuding at least: patient identifiers, site, date and time of collection'
+  text: 'Number of patients for whom blood culture bottles are correctly including at least: patient identifiers, site, date and time of collection'
 };
 const q_5_21 = {
   id: 'q_5_21',

@@ -187,7 +187,7 @@ class Results extends React.Component {
             Click on each subsection header to expand the provided result, recommendations and resources, where available. 
           </div>
           <div className="my-3">
-            For each indicator, please select a priority level for the recommended action, with 1 being the highest and 3 being the lowest. 
+            For each indicator that does not meet target performance, please select a priority level for the recommended action, with 1 being the highest and 3 being the lowest. 
           </div>
         </div>
         <Accordion

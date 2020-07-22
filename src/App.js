@@ -24,6 +24,7 @@ const DEV = false;
 // - transfer repos
 // - standardize ""
 // - doc
+// - remove DEV
 
 class App extends React.Component {
   constructor(props) {
