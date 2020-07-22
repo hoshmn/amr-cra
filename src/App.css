@@ -1,29 +1,58 @@
+* {
+  color: #061336; /* near-black navy */
+}
+
+.tab-content {
+  padding-top: 30px;
+}
+
+.site-title {
+  /* color: #0d2468; */
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.landing-page .logos {
+  display: flex;
+  justify-content: space-evenly;
+}
+.landing-page .find {
+  max-width: 212px;
+}
+.landing-page .cdc {
+  max-width: 442px;
+  padding-right: 3vw;
+}
+.landing-page .bd {
+  max-width: 290px;
+  height: 90%;
+  padding-right: 3vw;
+
+}
+.landing-page .logos {
+  display: flex;
+}
+.landing-page .logos {
+  display: flex;
+}
+.landing-page .logo {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+em.note, .landing-page ul {
+  font-size: smaller;
+}
+
 div.form-group {
   margin-bottom: 7px;
 }
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 div.card-body {
   padding-left: 35px;
   padding-right: 35px;
 }
 
-h2 {
-  padding: 30px;
-  text-align: center;
-}
-h3 {
-  padding-top: 30px;
-  padding-bottom: 20px;
-}
+
 .instructions {
   padding: 0 35px 15px;
 }
@@ -43,10 +72,6 @@ h3 {
   display: block;
 }
 
-/* .question {
-  padding-top: 20px;
-  padding-left: 20px;
-} */
 .form-label {
   padding-top: 7px;
 }
@@ -100,49 +125,12 @@ button.submit {
 }
 
 .results, .results-table {
-  /* display: none; */
   padding: 30px;
-}
-
-.results .prio-section {
-  border: solid 2px;
-  margin-bottom: 20px;
-  padding: 30px;
-}
-.results .prio-1 {
-  border-color: red;
-}
-.results .prio-2 {
-  border-color: orange;
-}
-.results .prio-3 {
-  border-color: gold;
-}
-.results h3 {
-  padding: 30px 0;
-}
-.results h5 {
-  padding-top: 20px;
-}
-.results .priority {
-  text-align: center;
-}
-.results .negate-tag {
-  color: red;
-  transform: rotate(45deg) scale(1.5);
-  display: inline-block;
-}
-.results .resources {
-  padding-bottom: 30px;
-}
-.results .text {
-  color: #19195b;
 }
 
 #multiselectContainerReact {
   max-width: 500px;
 }
-
 
 input.target {
   padding-right: 3px;
@@ -205,6 +193,7 @@ input.target ~ label {
   margin-top: -10px;
 }
 
+/* UNIVERSAL TABLE STYLES */
 td.response-text-cell > div {
   min-width: 150px;
 }
@@ -212,7 +201,7 @@ td.links .link:not(:last-of-type) {
   padding-bottom: 7px;
 
 }
-td.recommendations > div, td.links > div {
+td.recommendations > div, .results-table td.links > div {
   min-width: 200px;
 }
 td.recommendations .point:not(:last-of-type) {
@@ -228,7 +217,6 @@ td.scrollable > div {
   max-height: 250px;
 }
 
-/* UNIVERSAL TABLE STYLES */
 table.table th:not(:first-of-type) {
   text-align: center;
 }

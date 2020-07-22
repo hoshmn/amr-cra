@@ -36,7 +36,7 @@ class Results extends React.Component {
 
     const indicatorText = eldest.multiText;
     const indicator = (
-      <div className='indicator' title={eldest.standards}>
+      <div className='indicator' title={eldest.dataSource}>
         {indicatorText}
         {!!eldest.standards && <span className='standard-tag'> ({eldest.standards})</span>}
       </div>
@@ -80,14 +80,13 @@ class Results extends React.Component {
       
     return (
       <div>
-
         <Table bordered striped responsive>
           <thead>
             <tr>
               <th></th>
               {/* <th>Standard</th> */}
               {/* <th>Indicator</th> */}
-              <th>Fulfilled</th>
+              <th>AMR Standard Met</th>
               <th>Priority</th>
               <th>Recommended Actions</th>
               <th>Links to Resources</th>
@@ -96,7 +95,7 @@ class Results extends React.Component {
           <tbody>
             {/* {section.results.map(r => this.getResultRow(r))} */}
             <tr>
-              <td>
+              <td className='response-text-cell'>
                 {indicator}
               </td>
               <td className={'fulfilled '+fulfilled}>
@@ -113,7 +112,10 @@ class Results extends React.Component {
   }
 
   getRecsCell(isFulfilled, recommendations) {
-    if (isFulfilled || !recommendations.length) {
+    if (isFulfilled) {
+      return <td>N/A</td>;
+    }
+    if (!recommendations.length) {
       return <td></td>;
     }
 
@@ -139,11 +141,13 @@ class Results extends React.Component {
 
 
   getPriorityCell(isFulfilled) {
-    const disabled = isFulfilled;
+    if (isFulfilled) {
+      return <td>N/A</td>;
+    }
 
     return (
       <td>
-        <Form.Control as='select' custom disabled={disabled}>
+        <Form.Control as='select' custom>
           <option></option>
           <option>1</option>
           <option>2</option>
@@ -155,7 +159,7 @@ class Results extends React.Component {
 
   getLinksCell(isFulfilled, links) {
     if (isFulfilled) {
-      return <td></td>;
+      return <td>N/A</td>;
     }
     return (
       <td className='links'>
@@ -174,14 +178,22 @@ class Results extends React.Component {
     console.log("1", this.props.processedQs);
     const defaultKey = processedQs[0].text;
     return (
-      <div className='result-page'>
+      <div id={`${section}-result-page`} className='result-page'>
+        <div className='instructions'>
+          <div className="my-3">
+            Based on your inputs, your assessment results by indicator, recommendations to address the specific gaps identified for that indicator, and, where available, relevant links to further resources are provided. 
+          </div>
+          <div className="my-3">
+            Click on each subsection header to expand the provided result, recommendations and resources, where available. 
+          </div>
+          <div className="my-3">
+            For each indicator, please select a priority level for the recommended action, with 1 being the highest and 3 being the lowest. 
+          </div>
+        </div>
         <Accordion
-          id={`${section}-result-page`}
           defaultActiveKey={defaultKey}
-          className='my-5'
         >
           {processedQs.map(section => {
-
             return (
               <Card key={section.text}>
                 <Card.Header>

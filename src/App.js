@@ -3,6 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import './App.css';
+// import findLogo from './logo_mobile.svg';
+import findLogo from './find-logo.jpg';
+import cdcLogo from './africa-cdc-logo.png';
+import bdLogo from './bd-logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AssessmentSection from './AssessmentSection';
 import Results from './Results';
@@ -15,7 +19,11 @@ import _ from 'lodash'
 const DEV = false;
 
 // TODO:
-// - feed in correct text for results missed standards, prioritize
+// - feed in correct text for results missed standards, prioritize---
+// - order and prune imports
+// - transfer repos
+// - standardize ""
+// - doc
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +32,6 @@ class App extends React.Component {
     this.state = { 
       warnings: [],
       submitted: {},
-      // missedFQs: null,
       inputsResults: null,
     };
 
@@ -70,21 +77,20 @@ class App extends React.Component {
       inputSectionObj.questions.forEach(q => {
         // add responses
         q.responses = {};
-        // let TOTAL = 0;
+
         inputSectionObj.departments.forEach(d => {
           const uid = getTableCellId(d, q);
           if (q.subType === 'y_n') {
             const correctAnswerGiven = !!document.querySelector(`#${uid}:checked`);
             q.responses[d.id] = correctAnswerGiven;
-            // TOTAL += correctAnswerGiven;
+
           } else if (q.subType === '%') {
             const el = document.querySelector(`#${uid}`);
             let val = el.value ? Number(el.value) : null;
             q.responses[d.id] = val;
-            // TOTAL += val||0;
           }
         });
-        // q.responses.TOTAL = TOTAL;
+
       })
 
       inputResultSections.forEach(rSect => {
@@ -152,7 +158,59 @@ class App extends React.Component {
       
     }
 
+  }
 
+  getLandingTab() {
+    // return null
+    return (
+      <div className="landing-page mb-4">
+        <div className="logos">
+          <img className="logo find" src={findLogo} />
+          <img className="logo cdc" src={cdcLogo} />
+          <img className="logo bd" src={bdLogo} />
+        </div>
+
+        <div className="instructions my-3">
+          <div className="my-3">
+            This Antimicrobial Resistance (AMR) Continuous Quality Improvement (CQI) Assessment Tool provides users a framework to assess clinical facilities and laboratories in order to identify gaps within the Patient Diagnostic Pathway. This tool uses the AMR standards as measurants and provides a prioritized set of recommended actions to address the identified gaps.
+          </div>
+
+          <div className="my-3">
+            There are three types of sections that are assessed in this tool:
+            <ul>
+              <li>Clinical Facility Level - applies to the whole clinical facility</li>
+              <li>Clinical Facility, by Department - applies to the individual Department inputs at the Clinical Facility. A minimum of one department’s data is required, with a maximum of X.</li>
+              <li>Laboratory - applies to the relevant laboratory used for AMR diagnostic services by the Clinical Facility </li>
+            </ul>
+          </div>
+
+          <div className="my-3">
+            This tool is organized into the following components and is based on the Patient Diagnostic Pathway.
+            <ul>
+              <li>Clinical Facility Level - includes indicators that apply to the whole clinical facility </li>
+              <li>A. Appropriate Diagnostic Test Order (Clinical Facility, by Department) </li>
+              <li>B1. Sample Collection - Faeces (Clinical Facility, by Department)</li>
+              <li>B2. Sample Collection - Urine (Clinical Facility, by Department)</li>
+              <li>B3. Sample Collection - Blood (Clinical Facility, by Department)</li>
+              <li>C. Sample Sent to Lab (Clinical Facility, by Department)</li>
+              <li>D. Sample Received at Lab (Laboratory)</li>
+              <li>E. Sample Received at Lab (Laboratory)</li>
+              <li>F. Test Result Reported (Laboratory)</li>
+              <li>G. Use Test Result (Clinical Facility, by Department)</li>
+            </ul>
+          </div>
+
+          <div className="my-3">
+            Using the list of prioritized gaps and recommended actions, the clinical facility and laboratory can devise and implement a plan. Suggested resources are included to support this. 
+          </div>
+
+          <em className="note my-3">
+            Note: This is an online prototype and includes only sections Clinical Facility, A. Appropriate Diagnosis and B1-B3. Sample Collection (Faeces, Urine, Blood). 
+          </em>
+
+        </div>
+      </div>
+    )
   }
 
   getFacilityTab() {
@@ -197,7 +255,7 @@ class App extends React.Component {
   render() {
     const { facility, inputs } = this.state.submitted;
     let facilityTitle = 'Clinical Facility Level';
-    let inputsTitle = 'Clinical Facility - by department';
+    let inputsTitle = 'Clinical Facility - by Department';
     if (facility) {
       facilityTitle += ' [RESULTS]';
     }
@@ -209,13 +267,14 @@ class App extends React.Component {
 
     return (
       <div className='App'>
-        <h2>AMR Continuous Quality Improvement Assessment</h2>
+        <div className='site-title text-center my-4'>
+
+        <h3>AMR Continuous Quality Improvement (CQI)</h3>
+        <h4> Assessment Tool for Clinical Facilities & Laboratories</h4>
+        </div>
         <Tabs defaultActiveKey={defaultActiveKey}>
           <Tab eventKey='instructions' title='Instructions'>
-            do some ish
-            Tab and Space for speedier nav
-            () hover for standard
-            tags
+            {this.getLandingTab()}
           </Tab>
           <Tab eventKey='facility' title={facilityTitle}>
             {this.getFacilityTab()}

@@ -5,8 +5,8 @@ const subTypes = ['box', 'y_n'];
 const title = 'Clinical Facility Level';
 
 const instructions = [
-  'Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment.',
-  'The corresponding data sources are indicated in the section headers for reference. The relevant standards are indicated after each question in parentheses.'
+  'Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment and click “Submit Assessment Section”, when complete.',
+  'The corresponding data sources are indicated in the subsection headers for reference. The relevant AMR standards are indicated after each question in parentheses.'
 ];
 
 // const questions = [{
@@ -473,7 +473,7 @@ const fac_q_4_preface = {
 }
 const fac_sec_3 = {
   id: 'fac_sec_3',
-  text: 'Lab Request form',
+  text: 'Lab Request Form',
   dataSource: '[LC1.5]',
   type: 'section',
   children: [fac_q_4_preface]

@@ -73,14 +73,13 @@ class ResultsTable extends React.Component {
   }
 
   getPriorityCell({ actualPerc, targetValue }) {
-    let disabled = false;
     if (actualPerc && targetValue && (actualPerc >= targetValue)) {
-      disabled = true;
+      return <td>N/A</td>
     }
 
     return (
       <td>
-        <Form.Control as='select' custom disabled={disabled}>
+        <Form.Control as='select' custom>
           <option></option>
           <option>1</option>
           <option>2</option>
@@ -92,7 +91,7 @@ class ResultsTable extends React.Component {
 
   getRecsCell({ actualPerc, targetValue, recommendations }) {
     if (actualPerc && targetValue && (actualPerc >= targetValue)) {
-      return <td></td>;
+      return <td>N/A</td>;
     }
 
     const formatPoint = (r, i) => {
@@ -118,7 +117,7 @@ class ResultsTable extends React.Component {
   getLinksCell({ actualPerc, targetValue, resources }) {
 
     if (actualPerc && targetValue && (actualPerc >= targetValue)) {
-      return <td></td>;
+      return <td>N/A</td>;
     }
 
     return (
