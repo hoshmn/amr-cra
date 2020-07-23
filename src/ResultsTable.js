@@ -212,7 +212,7 @@ class ResultsTable extends React.Component {
     return (
       <div className='results-table'>
         <div className='instructions'>
-        <h3>Results for the Clinical Facility - by Department</h3>
+        <h3>Results for the Clinical Facility, by Department</h3>
           <div className='instruction my-2'>
             Based on your inputs, your assessment results by indicator, recommendations to address the specific gaps identified for that indicators and where available, relevant links to further resources are provided.
           </div>
@@ -248,6 +248,12 @@ class ResultsTable extends React.Component {
             )
           })}
         </Accordion>
+
+        <div className='text-center my-5'>
+          <Button onClick={this.props.proceed}>
+            Proceed to Assessment Results Dashboard
+          </Button>
+        </div>
       </div>
     )
   }

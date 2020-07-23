@@ -10,20 +10,16 @@ import { getTableCellId, getTargetId } from './helperFunctions'
 import { Multiselect } from 'multiselect-react-dropdown';
 import _ from 'lodash'
 
-const DEV = false;
-
 const radioNoTag = '_no';
 
 class AssessmentSection extends React.Component {
   constructor(props) {
     super(props);
 
-    const { departments } = sectionsMap[this.props.section];
-    const selectedDepts = DEV || true && departments ? departments.slice(0,4) : []
     this.state = {
       contents: null,
-      selectedDepts,
-      begun: DEV || false,
+      selectedDepts: [],
+      begun: false,
       warnings: []
     };
 
@@ -44,19 +40,7 @@ class AssessmentSection extends React.Component {
 
 
     const targetData = {};
-    if (!requiresSetup || DEV) {
-
-      if (DEV && requiresSetup) {
-        const { targets } = sectionsMap[this.props.section];
-
-        targets.forEach(tSection => 
-          tSection.sectionTargets.forEach(t => {
-            _.set(targetData, [tSection.sectionId, t.id], 100);
-          })
-        )
-      }
-
-
+    if (!requiresSetup) {
       this.generateQuestions(targetData);
     }
   }
@@ -90,9 +74,9 @@ class AssessmentSection extends React.Component {
             </span>
           </span>
         )}
-        {!DEV && !this.state.begun && this.getDeptSelection()}
-        {!DEV && !this.state.begun && this.getTargetSetting()}
-        {!DEV && !this.state.begun && this.getStartButton()}
+        {!this.state.begun && this.getDeptSelection()}
+        {!this.state.begun && this.getTargetSetting()}
+        {!this.state.begun && this.getStartButton()}
       </div>
     )
   }
@@ -190,11 +174,7 @@ class AssessmentSection extends React.Component {
                 let content;
                 switch (subType) {
                   case '%':
-                    let dv = null;
-                    if (DEV) {
-                      dv = Math.floor(Math.random() * 100);
-                    }
-                    content = <Form.Control type='number' min={0} id={uid} defaultValue={dv} />;
+                    content = <Form.Control type='number' min={0} id={uid} />;
                     break;
 
                   case 'y_n':
@@ -401,14 +381,14 @@ class AssessmentSection extends React.Component {
       warningText = `Please ${this.state.warnings.join(' and ')}.`;
     }
     return (
-      <> 
-        <div className='warnings text-danger'>{warningText}</div>
+      <div className='text-center mt-2 mb-5'> 
         <Button
-          onClick={this.begin} 
+          onClick={this.begin}
         >
-          Begin Assessment
+          Submit Targets & Proceed to Data Inputs
         </Button>
-      </>
+        <div className='warnings text-danger'>{warningText}</div>
+      </div>
     )
   }
 
@@ -424,12 +404,12 @@ class AssessmentSection extends React.Component {
     }
     return (
       <div className='text-center my-5'> 
-        <div className='warnings text-danger'>{warningText}</div>
         <Button
           onClick={() => this.props.submit(this.props.section)} 
         >
           Submit Assessment Section
         </Button>
+        <div className='warnings text-danger'>{warningText}</div>
       </div>
     )
   }
@@ -494,13 +474,14 @@ class AssessmentSection extends React.Component {
   }
 
   render() {
-    const { departments, targets, requiresSetup } = sectionsMap[this.props.section];
+    const { questions, requiresSetup } = sectionsMap[this.props.section];
     const showContents = this.state.begun || !requiresSetup;
 
+    const defaultKey = questions[0].id;
     return (
-      <Accordion id={`${this.props.section}-section`}>
+      <Accordion defaultActiveKey={defaultKey} id={`${this.props.section}-section`} >
         {this.getInstructions()}
-        {(showContents || DEV) && this.state.contents}
+        {showContents && this.state.contents}
         {this.getSubmitButton()}
       </Accordion>
     );

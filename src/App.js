@@ -7,6 +7,7 @@ import './App.css';
 import findLogo from './find-logo.jpg';
 import cdcLogo from './africa-cdc-logo.png';
 import bdLogo from './bd-logo.png';
+import dashboard from './dashboard.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AssessmentSection from './AssessmentSection';
 import Results from './Results';
@@ -16,10 +17,7 @@ import { getTargetId, getTableCellId } from './helperFunctions';
 
 import _ from 'lodash'
 
-const DEV = false;
-
 // TODO:
-// - feed in correct text for results missed standards, prioritize---
 // - order and prune imports
 // - transfer repos
 // - standardize ""
@@ -30,14 +28,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
+      activeTab: 'instructions',
       warnings: [],
       submitted: {},
       inputsResults: null,
     };
 
+    this.setActiveTab = this.setActiveTab.bind(this);
     this.sendMap = this.sendMap.bind(this);
     this.submit = this.submit.bind(this);
+  }
+
+  setActiveTab(activeTab) {
+    console.log(activeTab);
+    this.setState({ activeTab });
   }
 
   sendMap(section, sectionObj) {
@@ -180,7 +185,7 @@ class App extends React.Component {
             There are three types of sections that are assessed in this tool:
             <ul>
               <li>Clinical Facility Level - applies to the whole clinical facility</li>
-              <li>Clinical Facility, by Department - applies to the individual Department inputs at the Clinical Facility. A minimum of one department’s data is required, with a maximum of X.</li>
+              <li>Clinical Facility, by Department - applies to the individual Department inputs at the Clinical Facility. A minimum of one department’s data is required, with a maximum of 8.</li>
               <li>Laboratory - applies to the relevant laboratory used for AMR diagnostic services by the Clinical Facility </li>
             </ul>
           </div>
@@ -209,6 +214,12 @@ class App extends React.Component {
             Note: This is an online prototype and includes only sections Clinical Facility, A. Appropriate Diagnosis and B1-B3. Sample Collection (Faeces, Urine, Blood). 
           </em>
 
+          <div className='text-center my-5'>
+            <Button onClick={() => this.setActiveTab('facility')}>
+              Proceed to Assessment
+            </Button>
+          </div>
+
         </div>
       </div>
     )
@@ -216,7 +227,7 @@ class App extends React.Component {
 
   getFacilityTab() {
     if (this.state.submitted['facility']) {
-      return <Results section='facility' />;
+      return <Results section='facility' proceed={()=>this.setActiveTab('inputs')} />;
     }
     return (
       <AssessmentSection
@@ -234,6 +245,7 @@ class App extends React.Component {
         <ResultsTable 
           resultSections={this.state.inputsResults}
           section='inputs'
+          proceed={()=>this.setActiveTab('dashboard')}
         />);
     }
     return (
@@ -248,7 +260,8 @@ class App extends React.Component {
   getDashboardTab() {
     return (
       <div className='text-center m-5'>
-        Now that all sections have been submitted, your ranked priorities and summary graphics will appear here.
+        <h5>Now that all sections have been submitted, your ranked priorities and summary graphics will appear here.</h5>
+        <img src={dashboard} />
       </div>
     )
   }
@@ -256,7 +269,7 @@ class App extends React.Component {
   render() {
     const { facility, inputs } = this.state.submitted;
     let facilityTitle = 'Clinical Facility Level';
-    let inputsTitle = 'Clinical Facility - by Department';
+    let inputsTitle = 'Clinical Facility, by Department';
     if (facility) {
       facilityTitle += ' [RESULTS]';
     }
@@ -264,8 +277,7 @@ class App extends React.Component {
       inputsTitle += ' [RESULTS]';
     }
 
-    const defaultActiveKey = DEV ? 'inputs' : 'instructions';
-
+    console.log('r: ', this.state.activeTab);
     return (
       <div className='App'>
         <div className='site-title text-center my-4'>
@@ -274,7 +286,10 @@ class App extends React.Component {
         <h4> Assessment Tool for Clinical Facilities & Laboratories</h4>
         <h6>v0.7 (June 2020)</h6>
         </div>
-        <Tabs defaultActiveKey={defaultActiveKey}>
+        <Tabs id="controlled-tab-example"
+          activeKey={this.state.activeTab}
+          onSelect={this.setActiveTab}
+        >
           <Tab eventKey='instructions' title='Instructions'>
             {this.getLandingTab()}
           </Tab>

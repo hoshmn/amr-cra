@@ -5,7 +5,7 @@ const subTypes = [
   'table' // for sections
 ];
 
-const title = 'Clinical Facility - by Department';
+const title = 'Clinical Facility, by Department';
 
 const instructions = [
   'For each Department selected, collect and input the data for the indicators under each assessment subsection below. Please click on each subsection to expand the data inputs required.',

@@ -211,6 +211,12 @@ class Results extends React.Component {
             )
           })}
         </Accordion>
+
+        <div className='text-center my-5'>
+          <Button onClick={this.props.proceed}>
+            Proceed to Next Assessment Section
+          </Button>
+        </div>
       </div>
     )
   }
