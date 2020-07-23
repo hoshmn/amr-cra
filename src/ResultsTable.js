@@ -192,7 +192,7 @@ class ResultsTable extends React.Component {
           <Form.Label>
             <strong>*</strong>indicates that the value is at least {threshhold} of the target value
           </Form.Label>
-          <Form.Control type="range" custom
+          <Form.Control type='range' custom
             onChange={this.updateThreshhold}
             defaultValue={this.state.nearThreshhold}
             min={1}
@@ -214,10 +214,10 @@ class ResultsTable extends React.Component {
         <div className='instructions'>
         <h3>Results for the Clinical Facility, by Department</h3>
           <div className='instruction my-2'>
-            Based on your inputs, your assessment results by indicator, recommendations to address the specific gaps identified for that indicators and where available, relevant links to further resources are provided.
+            Based on your inputs, your assessment results by indicator, recommended actions to address the gaps and relevant links to further resources, where available, are provided.
           </div>
           <div className='instruction my-2'>
-            Colour coding of results by department is based on the legend below. You can select the threshold at which a result is considered <span className='target-ex'>Near Target</span>, and if the result is below this it will be considered <span className='target-ex'>Behind Target</span>.
+            Colour coding of results by department is based on the legend below. You can select the threshold at which a result is considered <span className='target-ex'>Near Target</span>, and if the result is below this, it will be considered <span className='target-ex'>Behind Target</span>.
           </div>
           {this.getLegend()}
           <div className='instruction my-2'>

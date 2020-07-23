@@ -9,23 +9,6 @@ import Table from 'react-bootstrap/Table';
 import _ from 'lodash';
 
 class Results extends React.Component {
-
-  getMissedItem({ id, text, standards }) {
-
-    // return <div key={q.id}>{q.text}</div>;
-    return (
-      <div className='missed-standard' key={id}>
-        <h5>Missed Standard:</h5>
-        <span className='negate-tag'>+</span>
-        {!!standards && <span className='standard-tag'> {standards}: </span>}
-        <span className='text'>
-          "{text}"
-        </span>
-      </div>
-    );
-  }
-
-
   getSectionTable(section) {
 
     const eldest = _.get(section, 'children.0');
@@ -120,7 +103,7 @@ class Results extends React.Component {
     }
 
     const formatPoint = (r, i) => {
-      console.log('!!', r)
+
       const text = r.replace(/^\[\d+\]/, '');
       const pointNumber = recommendations.length > 1 ? i+1 : null;
       return (
@@ -175,19 +158,19 @@ class Results extends React.Component {
   render() {
     const { section } = this.props;
     const processedQs = sectionsMap[section].questions;
-    console.log("1", this.props.processedQs);
+
     const defaultKey = processedQs[0].text;
     return (
       <div id={`${section}-result-page`} className='result-page'>
         <div className='instructions'>
           <h3>Results for the Clinical Facility Level</h3>
-          <div className="my-3">
-            Based on your inputs, your assessment results by indicator, recommendations to address the specific gaps identified for that indicator, and, where available, relevant links to further resources are provided. 
+          <div className='my-3'>
+            Based on your inputs, your assessment results by indicator, recommended actions to address the gaps and relevant links to further resources, where available, are provided.
           </div>
-          <div className="my-3">
+          <div className='my-3'>
             Click on each subsection header to expand the provided result, recommendations and resources, where available. 
           </div>
-          <div className="my-3">
+          <div className='my-3'>
             For each indicator that does not meet target performance, please select a priority level for the recommended action, with 1 being the highest and 3 being the lowest. 
           </div>
         </div>

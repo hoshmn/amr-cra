@@ -68,9 +68,9 @@ class AssessmentSection extends React.Component {
           <span className='instruction'>
             The following coloured circles are used to indicate questions pertaining to specific specimen types:
             <span className='specimen-tags'>
-              {" "}<i className='f' /> (faeces), 
-              {" "}<i className='u' /> (urine), and 
-              {" "}<i className='b' /> (blood).
+              {' '}<i className='f' /> (faeces), 
+              {' '}<i className='u' /> (urine), and 
+              {' '}<i className='b' /> (blood).
             </span>
           </span>
         )}
@@ -435,7 +435,7 @@ class AssessmentSection extends React.Component {
           selectionLimit={8}
           onSelect={this.selectDept}
           onRemove={this.removeDept}
-          displayValue="name" // Property name to display in the dropdown options
+          displayValue='name' // Property name to display in the dropdown options
         />
       </div>
     )

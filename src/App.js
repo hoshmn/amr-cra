@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import './App.css';
-// import findLogo from './logo_mobile.svg';
 import findLogo from './find-logo.jpg';
 import cdcLogo from './africa-cdc-logo.png';
 import bdLogo from './bd-logo.png';
@@ -14,15 +13,7 @@ import Results from './Results';
 import ResultsTable from './ResultsTable';
 import sectionsMap from './sections';
 import { getTargetId, getTableCellId } from './helperFunctions';
-
 import _ from 'lodash'
-
-// TODO:
-// - order and prune imports
-// - transfer repos
-// - standardize ""
-// - doc
-// - remove DEV
 
 class App extends React.Component {
   constructor(props) {
@@ -41,7 +32,6 @@ class App extends React.Component {
   }
 
   setActiveTab(activeTab) {
-    console.log(activeTab);
     this.setState({ activeTab });
   }
 
@@ -63,7 +53,7 @@ class App extends React.Component {
   }
 
   submit(section) {
-    // TODO "flat map" this."section" object may no longer be useful
+    // TODO 'flat map' this.'section' object may no longer be useful
     if (section === 'facility') {
 
       this.processMultipartQs(sectionsMap['facility'].questions);
@@ -167,16 +157,15 @@ class App extends React.Component {
   }
 
   getLandingTab() {
-    // return null
     return (
-      <div className="landing-page mb-4">
+      <div className='landing-page mb-4'>
 
-        <div className="instructions my-3">
-          <div className="my-3">
+        <div className='instructions my-3'>
+          <div className='my-3'>
             <strong>This Antimicrobial Resistance (AMR) Continuous Quality Improvement (CQI) Assessment Tool</strong> provides users a framework to assess clinical facilities and laboratories in order to identify gaps within the Patient Diagnostic Pathway. This tool uses the AMR standards as measurants and provides a prioritized set of recommended actions to address the identified gaps.
           </div>
 
-          <div className="my-3">
+          <div className='my-3'>
             <strong>There are three types of sections that are assessed in this tool:</strong>
             <ul>
               <li>Clinical Facility Level - applies to the whole clinical facility</li>
@@ -185,7 +174,7 @@ class App extends React.Component {
             </ul>
           </div>
 
-          <div className="my-3">
+          <div className='my-3'>
             <strong>This tool is organized into the following components and is based on the Patient Diagnostic Pathway.</strong>
             <ul>
               <li>Clinical Facility Level - includes indicators that apply to the whole clinical facility </li>
@@ -201,11 +190,11 @@ class App extends React.Component {
             </ul>
           </div>
 
-          <div className="my-3">
+          <div className='my-3'>
             Using the list of prioritized gaps and recommended actions, the clinical facility and laboratory can devise and implement a plan. Suggested resources are included to support this.
           </div>
 
-          <em className="note my-3">
+          <em className='note my-3'>
             Note: This is an online prototype and includes only sections Clinical Facility, A. Appropriate Diagnosis and B1-B3. Sample Collection (Faeces, Urine, Blood).
           </em>
 
@@ -257,7 +246,7 @@ class App extends React.Component {
       <div className='dashboard'>
         <h3 className='my-3 mx-5'>Summary of Recommended Actions by Priority Level</h3>
         <div className='my-3 mx-5'>Please select Clinical Facility or Laboratory. The recommended actions are sorted by priority level and assigned a performance rating, based on the assessment results.</div>
-        <div className="note my-3 mx-5"><em>
+        <div className='note my-3 mx-5'><em>
           Note: This is indicative of the summary output dashboard, but is non-functioning in this online prototype.
         </em></div>
         <div className='text-center my-5'>
@@ -278,20 +267,19 @@ class App extends React.Component {
       inputsTitle += ' [RESULTS]';
     }
 
-    console.log('r: ', this.state.activeTab);
     return (
       <div className='App'>
         <div className='site-title text-center my-4'>
 
-        <div className="logos">
-          <img className="logo find" src={findLogo} />
-          <img className="logo cdc" src={cdcLogo} />
-          <img className="logo bd" src={bdLogo} />
+        <div className='logos'>
+          <img className='logo find' src={findLogo} />
+          <img className='logo cdc' src={cdcLogo} />
+          <img className='logo bd' src={bdLogo} />
         </div>
         <h3>AMR Continuous Quality Improvement (CQI)</h3>
         <h4>For Clinical Facilities & Laboratories</h4>
         </div>
-        <Tabs id="controlled-tab-example"
+        <Tabs id='controlled-tab-example'
           activeKey={this.state.activeTab}
           onSelect={this.setActiveTab}
         >
