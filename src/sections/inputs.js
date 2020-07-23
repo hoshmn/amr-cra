@@ -69,7 +69,7 @@ const targets = [
     { id: 'first', text: 'Percentage of patients whom had blood culture bottles inoculated first, if blood is collected for other tests' },
     { id: 'drawn', text: 'Percentage of patients whom had a minimum of 2 and maximum of 3 blood cultures drawn within 24 hours' },
     { id: 'aerobic', text: 'Percentage of patients patients whom had an aerobic blood culture in a resource-limited setting' },
-    { id: 'volume', text: 'Percentageof patients whom had blood collection where the volume followed the manufacturer's recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children' },
+    { id: 'volume', text: 'Percentageof patients whom had blood collection where the volume followed the manufacturer\'s recommendations: typically 10mL per bottle for adults, 1-3 mL per bottle for children' },
   ]},
 
   // { sectionId: 'turnaround', sectionName: 'Indicator: Turnaround time (TAT) of sample sent to lab', sectionTargets: [

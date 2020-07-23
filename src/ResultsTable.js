@@ -140,7 +140,7 @@ class ResultsTable extends React.Component {
 
 
   getResponseCell(responseValue, result, dep) {
-    const isTotal = dep == 'total';
+    const isTotal = dep === 'total';
     const isPerc = result.numerator;
 
     const { targetValue } = result;
