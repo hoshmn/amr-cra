@@ -69,7 +69,7 @@ class App extends React.Component {
       this.processMultipartQs(sectionsMap['facility'].questions);
 
       const { submitted } = this.state;
-      this.setState({ 
+      this.setState({
         submitted: {...submitted, [section]: true },
         warnings: []
       });
@@ -156,12 +156,12 @@ class App extends React.Component {
 
 
       const { submitted } = this.state;
-      this.setState({ 
+      this.setState({
         submitted: {...submitted, [section]: true },
         inputsResults: inputResultSections,
         warnings: []
       });
-      
+
     }
 
   }
@@ -170,19 +170,14 @@ class App extends React.Component {
     // return null
     return (
       <div className="landing-page mb-4">
-        <div className="logos">
-          <img className="logo find" src={findLogo} />
-          <img className="logo cdc" src={cdcLogo} />
-          <img className="logo bd" src={bdLogo} />
-        </div>
 
         <div className="instructions my-3">
           <div className="my-3">
-            This Antimicrobial Resistance (AMR) Continuous Quality Improvement (CQI) Assessment Tool provides users a framework to assess clinical facilities and laboratories in order to identify gaps within the Patient Diagnostic Pathway. This tool uses the AMR standards as measurants and provides a prioritized set of recommended actions to address the identified gaps.
+            <strong>This Antimicrobial Resistance (AMR) Continuous Quality Improvement (CQI) Assessment Tool</strong> provides users a framework to assess clinical facilities and laboratories in order to identify gaps within the Patient Diagnostic Pathway. This tool uses the AMR standards as measurants and provides a prioritized set of recommended actions to address the identified gaps.
           </div>
 
           <div className="my-3">
-            There are three types of sections that are assessed in this tool:
+            <strong>There are three types of sections that are assessed in this tool:</strong>
             <ul>
               <li>Clinical Facility Level - applies to the whole clinical facility</li>
               <li>Clinical Facility, by Department - applies to the individual Department inputs at the Clinical Facility. A minimum of one department’s data is required, with a maximum of 8.</li>
@@ -191,7 +186,7 @@ class App extends React.Component {
           </div>
 
           <div className="my-3">
-            This tool is organized into the following components and is based on the Patient Diagnostic Pathway.
+            <strong>This tool is organized into the following components and is based on the Patient Diagnostic Pathway.</strong>
             <ul>
               <li>Clinical Facility Level - includes indicators that apply to the whole clinical facility </li>
               <li>A. Appropriate Diagnostic Test Order (Clinical Facility, by Department) </li>
@@ -207,11 +202,11 @@ class App extends React.Component {
           </div>
 
           <div className="my-3">
-            Using the list of prioritized gaps and recommended actions, the clinical facility and laboratory can devise and implement a plan. Suggested resources are included to support this. 
+            Using the list of prioritized gaps and recommended actions, the clinical facility and laboratory can devise and implement a plan. Suggested resources are included to support this.
           </div>
 
           <em className="note my-3">
-            Note: This is an online prototype and includes only sections Clinical Facility, A. Appropriate Diagnosis and B1-B3. Sample Collection (Faeces, Urine, Blood). 
+            Note: This is an online prototype and includes only sections Clinical Facility, A. Appropriate Diagnosis and B1-B3. Sample Collection (Faeces, Urine, Blood).
           </em>
 
           <div className='text-center my-5'>
@@ -242,7 +237,7 @@ class App extends React.Component {
   getInputsTab() {
     if (this.state.submitted['inputs']) {
       return (
-        <ResultsTable 
+        <ResultsTable
           resultSections={this.state.inputsResults}
           section='inputs'
           proceed={()=>this.setActiveTab('dashboard')}
@@ -259,9 +254,15 @@ class App extends React.Component {
 
   getDashboardTab() {
     return (
-      <div className='text-center m-5'>
-        <h5>Now that all sections have been submitted, your ranked priorities and summary graphics will appear here.</h5>
-        <img src={dashboard} />
+      <div className='dashboard'>
+        <h3 className='my-3 mx-5'>Summary of Recommended Actions by Priority Level</h3>
+        <div className='my-3 mx-5'>Please select Clinical Facility or Laboratory. The recommended actions are sorted by priority level and assigned a performance rating, based on the assessment results.</div>
+        <div className="note my-3 mx-5"><em>
+          Note: This is indicative of the summary output dashboard, but is non-functioning in this online prototype.
+        </em></div>
+        <div className='text-center my-5'>
+          <img src={dashboard} />
+        </div>
       </div>
     )
   }
@@ -282,9 +283,13 @@ class App extends React.Component {
       <div className='App'>
         <div className='site-title text-center my-4'>
 
+        <div className="logos">
+          <img className="logo find" src={findLogo} />
+          <img className="logo cdc" src={cdcLogo} />
+          <img className="logo bd" src={bdLogo} />
+        </div>
         <h3>AMR Continuous Quality Improvement (CQI)</h3>
-        <h4> Assessment Tool for Clinical Facilities & Laboratories</h4>
-        <h6>v0.7 (June 2020)</h6>
+        <h4>For Clinical Facilities & Laboratories</h4>
         </div>
         <Tabs id="controlled-tab-example"
           activeKey={this.state.activeTab}
@@ -299,7 +304,7 @@ class App extends React.Component {
           <Tab eventKey='inputs' title={inputsTitle}>
             {this.getInputsTab()}
           </Tab>
-          <Tab eventKey='dashboard' title='Dashboard' disabled={!facility || !inputs}>
+          <Tab eventKey='dashboard' title='Dashboard' >
             {this.getDashboardTab()}
           </Tab>
         </Tabs>

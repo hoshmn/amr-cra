@@ -381,7 +381,7 @@ class AssessmentSection extends React.Component {
       warningText = `Please ${this.state.warnings.join(' and ')}.`;
     }
     return (
-      <div className='text-center mt-2 mb-5'> 
+      <div className='text-center my-5'> 
         <Button
           onClick={this.begin}
         >
@@ -421,8 +421,8 @@ class AssessmentSection extends React.Component {
     }
 
     return (
-      <div className='mt-5'>
-        {departmentInstructions.map((sect, i) =><span className='instruction my-2' key={'inst-'+i}>{sect}</span>)}
+      <div className='mt-4'>
+        {departmentInstructions.map((sect, i) =><span className='instruction mt-2' key={'inst-'+i}>{sect}</span>)}
         <h4>Select departments to assess</h4>
         <Multiselect
           options={departments}
@@ -448,27 +448,37 @@ class AssessmentSection extends React.Component {
     }
 
     return (
-      <div className='mt-5'>
+      <div className='mt-4'>
           {targetInstructions.map((sect, i) =><span className='instruction my-2' key={'inst-'+i}>{sect}</span>)}
-          <h4 className='my-3'>Set targets for the Clinical Facility Level</h4>
-          {targets.map(tSection => (
-            <div className='target-section' key={tSection.sectionName}>
-              <h5>{tSection.sectionName}</h5>
-              {tSection.sectionTargets.map((t, idx) => (
-                <div key={getTargetId(tSection.sectionId, t.id)}>
-                  <Form.Control
-                    className='target'
-                    // label={t.text}
-                    id={getTargetId(tSection.sectionId, t.id)}
-                    type='number' min={0} max={100} defaultValue={100}
-                    />
-                  <Form.Label>{t.text}</Form.Label>
-                  <br/>  
-                </div>
-              ))}
-              <br/>
-            </div>
-          ))}
+          <h4 className='mb-3'>Set targets for the Clinical Facility Level</h4>
+          <Accordion>
+            {targets.map(tSection => (
+              <Card className='target-section' key={tSection.sectionName}>
+                <Card.Header>
+                  <Accordion.Toggle as={Button} variant='link' eventKey={tSection.sectionName}>
+                    {tSection.sectionName}
+                  </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey={tSection.sectionName}>
+                  <Card.Body>
+                    {tSection.sectionTargets.map((t, idx) => (
+                      <div key={getTargetId(tSection.sectionId, t.id)}>
+                        <Form.Control
+                          className='target'
+                          // label={t.text}
+                          id={getTargetId(tSection.sectionId, t.id)}
+                          type='number' min={0} max={100} defaultValue={100}
+                        />
+                        <Form.Label>{t.text}</Form.Label>
+                        <br />
+                      </div>
+                    ))}
+                  </Card.Body>
+                </Accordion.Collapse>
+                <br/>
+              </Card>
+            ))}
+          </Accordion>
       </div>
     )
   }

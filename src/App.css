@@ -11,36 +11,34 @@
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
-.landing-page .logos {
+.logos {
   display: flex;
   justify-content: space-evenly;
+  max-width: 825px;
+  margin: auto;
 }
-.landing-page .find {
-  max-width: 212px;
+.logos .find {
+  max-width: 90px;
 }
-.landing-page .cdc {
-  max-width: 442px;
-  padding-right: 3vw;
+.logos .cdc {
+  max-width: 190px;
+  /* padding-right: 3vw; */
 }
-.landing-page .bd {
-  max-width: 290px;
-  height: 90%;
-  padding-right: 3vw;
+.logos .bd {
+  max-width: 123px;
+  max-height: 90%;
+  padding-left: 1.5vw;
+  padding-right: 1.7vw;
 
 }
-.landing-page .logos {
-  display: flex;
-}
-.landing-page .logos {
-  display: flex;
-}
-.landing-page .logo {
+
+.logos .logo {
   margin-top: auto;
   margin-bottom: auto;
 }
 
 em.note, .landing-page ul {
-  font-size: smaller;
+  /* font-size: smaller; */
 }
 
 div.form-group {
@@ -171,9 +169,10 @@ input.target ~ label {
 }
 .legend h4 {
   text-decoration: underline;
+  font-weight: 300;
 }
 .legend h5, .results-table .target-ex {
-  font-weight: lighter;
+  font-weight: bold;
 }
 .legend label {
   font-size: 14px;
@@ -190,6 +189,11 @@ input.target ~ label {
 }
 
 /* UNIVERSAL TABLE STYLES */
+
+.table thead th {
+  border-bottom-color: #7b7b7b !important;
+}
+
 .results-table .target-th, .target-td {
   border-right-color: #7b7b7b !important;
 }

@@ -15,7 +15,7 @@ const departmentInstructions = [
   'This section assess indicators relevant to the clinical facility, by department level. Before beginning, please select a minimum of 1 and up to 8 relevant departments at the clinical facility of assessment.'
 ];
 const targetInstructions = [
-  'For the following clinical facility indicator categories, please select a target that is appropriate for the clinical facility. Default targets are set based on best practice, but can be changed. '
+  'For the following clinical facility indicator categories, please select a target that is appropriate for the clinical facility. Default targets are set based on best practice, but can be changed. Click on each subsection to expand the targets required.'
 ];
 
 const departments = [

@@ -5,7 +5,7 @@ const subTypes = ['box', 'y_n'];
 const title = 'Clinical Facility Level';
 
 const instructions = [
-  'Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment and click “Submit Assessment Section”, when complete.',
+  'This section assesses indicators applicable to the whole clinical facility. Please complete the following, from the "Technical Scorecard: Laboratory Clinical Interface AMR Scorecard", Section 1 in C. Clinical Site Assessment and click “Submit Assessment Section”, when complete.',
   'The corresponding data sources are indicated in the subsection headers for reference. The relevant AMR standards are indicated after each question in parentheses.'
 ];
 
