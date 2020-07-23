@@ -1,25 +1,29 @@
 {
   "files": {
-    "main.css": "/amr-cra/static/css/main.7fa8498d.chunk.css",
-    "main.js": "/amr-cra/static/js/main.d503ec94.chunk.js",
-    "main.js.map": "/amr-cra/static/js/main.d503ec94.chunk.js.map",
+    "main.css": "/amr-cra/static/css/main.9959a50e.chunk.css",
+    "main.js": "/amr-cra/static/js/main.7538bb14.chunk.js",
+    "main.js.map": "/amr-cra/static/js/main.7538bb14.chunk.js.map",
     "runtime-main.js": "/amr-cra/static/js/runtime-main.4cbe4b32.js",
     "runtime-main.js.map": "/amr-cra/static/js/runtime-main.4cbe4b32.js.map",
     "static/css/2.af3c1da9.chunk.css": "/amr-cra/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.1640ef7c.chunk.js": "/amr-cra/static/js/2.1640ef7c.chunk.js",
-    "static/js/2.1640ef7c.chunk.js.map": "/amr-cra/static/js/2.1640ef7c.chunk.js.map",
+    "static/js/2.54052e6e.chunk.js": "/amr-cra/static/js/2.54052e6e.chunk.js",
+    "static/js/2.54052e6e.chunk.js.map": "/amr-cra/static/js/2.54052e6e.chunk.js.map",
     "index.html": "/amr-cra/index.html",
-    "precache-manifest.81e214d9d18852cbca05b0356850fc5a.js": "/amr-cra/precache-manifest.81e214d9d18852cbca05b0356850fc5a.js",
+    "precache-manifest.de4781630d6a536c467addbbf4a43598.js": "/amr-cra/precache-manifest.de4781630d6a536c467addbbf4a43598.js",
     "service-worker.js": "/amr-cra/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/amr-cra/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.7fa8498d.chunk.css.map": "/amr-cra/static/css/main.7fa8498d.chunk.css.map",
-    "static/js/2.1640ef7c.chunk.js.LICENSE.txt": "/amr-cra/static/js/2.1640ef7c.chunk.js.LICENSE.txt"
+    "static/css/main.9959a50e.chunk.css.map": "/amr-cra/static/css/main.9959a50e.chunk.css.map",
+    "static/js/2.54052e6e.chunk.js.LICENSE.txt": "/amr-cra/static/js/2.54052e6e.chunk.js.LICENSE.txt",
+    "static/media/africa-cdc-logo.png": "/amr-cra/static/media/africa-cdc-logo.1fd126e6.png",
+    "static/media/bd-logo.png": "/amr-cra/static/media/bd-logo.2ff30b5d.png",
+    "static/media/dashboard.png": "/amr-cra/static/media/dashboard.9dc434fb.png",
+    "static/media/find-logo.jpg": "/amr-cra/static/media/find-logo.58ca34be.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.4cbe4b32.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.1640ef7c.chunk.js",
-    "static/css/main.7fa8498d.chunk.css",
-    "static/js/main.d503ec94.chunk.js"
+    "static/js/2.54052e6e.chunk.js",
+    "static/css/main.9959a50e.chunk.css",
+    "static/js/main.7538bb14.chunk.js"
   ]
 }
